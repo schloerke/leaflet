@@ -45,7 +45,7 @@ colorNumeric <- function(palette, domain, na.color = "#808080", alpha = FALSE, r
 
   pf = safePaletteFunc(palette, na.color, alpha)
 
-  withColorAttr('numeric', list(na.color = na.color), function(x) {
+  withColorAttr("numeric", list(na.color = na.color), function(x) {
     if (length(x) == 0 || all(is.na(x))) {
       return(pf(x))
     }
@@ -121,7 +121,7 @@ colorBin <- function(palette, domain, bins = 7, pretty = TRUE,
     na.color = na.color, alpha = alpha, reverse = reverse)
   pf = safePaletteFunc(palette, na.color, alpha)
 
-  withColorAttr('bin', list(bins = bins, na.color = na.color), function(x) {
+  withColorAttr("bin", list(bins = bins, na.color = na.color), function(x) {
     if (length(x) == 0 || all(is.na(x))) {
       return(pf(x))
     }
@@ -148,7 +148,7 @@ colorQuantile <- function(palette, domain, n = 4,
   if (!is.null(domain)) {
     bins = quantile(domain, probs, na.rm = TRUE, names = FALSE)
     return(withColorAttr(
-      'quantile', list(probs = probs, na.color = na.color),
+      "quantile", list(probs = probs, na.color = na.color),
       colorBin(palette, domain = NULL, bins = bins, na.color = na.color,
         alpha = alpha, reverse = reverse)
     ))
@@ -160,7 +160,7 @@ colorQuantile <- function(palette, domain, n = 4,
   colorFunc = colorFactor(palette, domain = 1:(length(probs) - 1),
     na.color = na.color, alpha = alpha, reverse = reverse)
 
-  withColorAttr('quantile', list(probs = probs, na.color = na.color), function(x) {
+  withColorAttr("quantile", list(probs = probs, na.color = na.color), function(x) {
     binsToUse = quantile(x, probs, na.rm = TRUE, names = FALSE)
     ints = cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = FALSE)
     if (any(is.na(x) != is.na(ints)))
@@ -220,7 +220,7 @@ colorFactor <- function(palette, domain, levels = NULL, ordered = FALSE,
   }
   lvls = getLevels(domain, NULL, levels, ordered)
 
-  withColorAttr('factor', list(na.color = na.color), function(x) {
+  withColorAttr("factor", list(na.color = na.color), function(x) {
     if (length(x) == 0 || all(is.na(x))) {
       return(rep.int(na.color, length(x)))
     }
@@ -380,7 +380,7 @@ previewColors <- function(pal, values) {
   )
 }
 
-# colorRamp(space = 'Lab') throws error when called with
+# colorRamp(space = "Lab") throws error when called with
 # zero-length input
 filterZeroLength <- function(f) {
   force(f)

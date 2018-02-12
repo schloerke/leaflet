@@ -34,7 +34,7 @@ addSimpleGraticule <- function(
   map,
   interval = 20,
   showOriginLabel = TRUE,
-  redraw = 'move',
+  redraw = "move",
   hidden = FALSE,
   zoomIntervals = list(),
   layerId = NULL,
@@ -44,7 +44,7 @@ addSimpleGraticule <- function(
   invokeMethod(
     map
     , getMapData(map)
-    , 'addSimpleGraticule'
+    , "addSimpleGraticule"
     , interval
     , showOriginLabel
     , redraw

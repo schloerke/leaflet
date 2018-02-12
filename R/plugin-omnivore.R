@@ -32,17 +32,17 @@ addTopoJSON <- function(map, topojson, layerId = NULL, group = NULL,
     fill = fill, fillColor = fillColor, fillOpacity = fillOpacity,
     dashArray = dashArray, smoothFactor = smoothFactor, noClip = noClip
   ))
-  invokeMethod(map, getMapData(map), 'addTopoJSON', topojson, layerId, group, options)
+  invokeMethod(map, getMapData(map), "addTopoJSON", topojson, layerId, group, options)
 }
 
 #' @rdname remove
 #' @export
 removeTopoJSON <- function(map, layerId) {
-  invokeMethod(map, getMapData(map), 'removeTopoJSON', layerId)
+  invokeMethod(map, getMapData(map), "removeTopoJSON", layerId)
 }
 
 #' @rdname remove
 #' @export
 clearTopoJSON <- function(map) {
-  invokeMethod(map, NULL, 'clearTopoJSON')
+  invokeMethod(map, NULL, "clearTopoJSON")
 }

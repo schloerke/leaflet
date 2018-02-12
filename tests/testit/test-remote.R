@@ -3,7 +3,7 @@ library(R6)
 
 # This class is copied from Shiny
 Map <- R6Class(
-  'Map',
+  "Map",
   portable = FALSE,
   public = list(
     initialize = function() {
@@ -58,19 +58,19 @@ Map <- R6Class(
   ),
 
   private = list(
-    env = 'environment'
+    env = "environment"
   )
 )
 
 
 # This class is copied from Shiny
 Callbacks <- R6Class(
-  'Callbacks',
+  "Callbacks",
   portable = FALSE,
   class = FALSE,
   public = list(
     .nextId = integer(0),
-    .callbacks = 'Map',
+    .callbacks = "Map",
 
     initialize = function() {
       .nextId <<- as.integer(.Machine$integer.max)

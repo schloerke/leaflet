@@ -22,7 +22,7 @@ guessLatLongCols <- function(names, stopOnFailure = TRUE) {
 }
 
 resolveFormula <- function(f, data) {
-  if (!inherits(f, 'formula')) return(f)
+  if (!inherits(f, "formula")) return(f)
   if (length(f) != 2L) stop("Unexpected two-sided formula: ", deparse(f))
 
   eval(f[[2]], metaData(data), environment(f))

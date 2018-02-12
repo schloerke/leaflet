@@ -17,9 +17,9 @@
 
 if(FALSE){
 uspop2000 = NULL
-if (file.exists('inst/csv/uspop2000.csv')) {
+if (file.exists("inst/csv/uspop2000.csv")) {
   uspop2000 = read.csv(
-    text = readLines('inst/csv/uspop2000.csv', encoding = 'UTF-8'),
+    text = readLines("inst/csv/uspop2000.csv", encoding = "UTF-8"),
     stringsAsFactors = FALSE
   )
 }

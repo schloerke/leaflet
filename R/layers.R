@@ -72,7 +72,7 @@ bboxAdd <- function(a, b) {
 #' @rdname remove
 #' @export
 clearGroup <- function(map, group) {
-  invokeMethod(map, getMapData(map), 'clearGroup', group);
+  invokeMethod(map, getMapData(map), "clearGroup", group);
 }
 
 #' Show or hide layer groups
@@ -89,13 +89,13 @@ clearGroup <- function(map, group) {
 #'
 #' @export
 showGroup <- function(map, group) {
-  invokeMethod(map, getMapData(map), 'showGroup', group)
+  invokeMethod(map, getMapData(map), "showGroup", group)
 }
 
 #' @rdname showGroup
 #' @export
 hideGroup <- function(map, group) {
-  invokeMethod(map, getMapData(map), 'hideGroup', group)
+  invokeMethod(map, getMapData(map), "hideGroup", group)
 }
 
 #' Set options on layer groups
@@ -129,7 +129,7 @@ hideGroup <- function(map, group) {
 groupOptions <- function(map, group, zoomLevels = NULL) {
   if(is.null(zoomLevels)) # Default to TRUE if nothing specified.
     zoomLevels <- TRUE
-  invokeMethod(map, getMapData(map), 'setGroupOptions', group,
+  invokeMethod(map, getMapData(map), "setGroupOptions", group,
     list(zoomLevels = zoomLevels)
   )
 }
@@ -152,7 +152,7 @@ groupOptions <- function(map, group, zoomLevels = NULL) {
 #' @export
 addTiles <- function(
   map,
-  urlTemplate = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  urlTemplate = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   attribution = NULL,
   layerId = NULL,
   group = NULL,
@@ -162,10 +162,10 @@ addTiles <- function(
   options$attribution = attribution
   if (missing(urlTemplate) && is.null(options$attribution))
     options$attribution = paste(
-      '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
-      'contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+      "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a>",
+      "contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>"
     )
-  invokeMethod(map, data, 'addTiles', urlTemplate, layerId, group,
+  invokeMethod(map, data, "addTiles", urlTemplate, layerId, group,
     options)
 }
 
@@ -299,13 +299,13 @@ projectRasterForLeaflet <- function(x, method) {
 #' @rdname remove
 #' @export
 removeImage <- function(map, layerId) {
-  invokeMethod(map, NULL, 'removeImage', layerId)
+  invokeMethod(map, NULL, "removeImage", layerId)
 }
 
 #' @rdname remove
 #' @export
 clearImages <- function(map) {
-  invokeMethod(map, NULL, 'clearImages')
+  invokeMethod(map, NULL, "clearImages")
 }
 
 #' Extra options for map elements and layers
@@ -324,8 +324,8 @@ tileOptions <- function(
   maxZoom = 18,
   maxNativeZoom = NULL,
   tileSize = 256,
-  subdomains = 'abc',
-  errorTileUrl = '',
+  subdomains = "abc",
+  errorTileUrl = "",
   tms = FALSE,
   noWrap = FALSE,
   zoomOffset = 0,
@@ -375,13 +375,13 @@ tileOptions <- function(
 #' @name remove
 #' @export
 removeTiles <- function(map, layerId) {
-  invokeMethod(map, getMapData(map), 'removeTiles', layerId)
+  invokeMethod(map, getMapData(map), "removeTiles", layerId)
 }
 
 #' @rdname remove
 #' @export
 clearTiles <- function(map) {
-  invokeMethod(map, NULL, 'clearTiles')
+  invokeMethod(map, NULL, "clearTiles")
 }
 
 
@@ -391,19 +391,19 @@ clearTiles <- function(map) {
 #' @export
 addWMSTiles <- function(
   map, baseUrl, layerId = NULL, group = NULL,
-  options = WMSTileOptions(), attribution = NULL, layers = '',
+  options = WMSTileOptions(), attribution = NULL, layers = "",
   data = getMapData(map)
 ) {
-  if(identical(layers, '')) {
+  if(identical(layers, "")) {
     stop("layers is a required argument with comma-separated list of WMS layers to show")
   }
   options$attribution = attribution
   options$layers = layers
-  invokeMethod(map, data, 'addWMSTiles', baseUrl, layerId, group, options)
+  invokeMethod(map, data, "addWMSTiles", baseUrl, layerId, group, options)
 }
 
 #' @param styles comma-separated list of WMS styles
-#' @param format WMS image format (use \code{'image/png'} for layers with
+#' @param format WMS image format (use \code{"image/png"} for layers with
 #'   transparency)
 #' @param transparent if \code{TRUE}, the WMS service will return images with
 #'   transparency
@@ -414,7 +414,7 @@ addWMSTiles <- function(
 #' @describeIn map-options Options for WMS tile layers
 #' @export
 WMSTileOptions <- function(
-  styles = '', format = 'image/jpeg', transparent = FALSE, version = '1.1.1',
+  styles = "", format = "image/jpeg", transparent = FALSE, version = "1.1.1",
   crs = NULL, ...
 ) {
   filterNULL(list(
@@ -450,7 +450,7 @@ addPopups <- function(
   data = getMapData(map)
 ) {
   pts = derivePoints(data, lng, lat, missing(lng), missing(lat), "addPopups")
-  invokeMethod(map, data, 'addPopups', pts$lat, pts$lng, popup, layerId, group, options) %>%
+  invokeMethod(map, data, "addPopups", pts$lat, pts$lng, popup, layerId, group, options) %>%
     expandLimits(pts$lat, pts$lng)
 }
 
@@ -482,13 +482,13 @@ popupOptions <- function(
 #' @rdname remove
 #' @export
 removePopup <- function(map, layerId) {
-  invokeMethod(map, getMapData(map), 'removePopup', layerId)
+  invokeMethod(map, getMapData(map), "removePopup", layerId)
 }
 
 #' @rdname remove
 #' @export
 clearPopups <- function(map) {
-  invokeMethod(map, NULL, 'clearPopups')
+  invokeMethod(map, NULL, "clearPopups")
 }
 
 #' Sanitize textual labels
@@ -510,7 +510,7 @@ safeLabel <- function(label, data) {
 
   label <- evalFormula(label, data)
   if(! (inherits(label, "html") ||
-                    sum(sapply(label, function(x){!inherits(x, 'html')})) == 0)) {
+                    sum(sapply(label, function(x){!inherits(x, "html")})) == 0)) {
     label <- htmltools::htmlEscape(label)
   }
   label
@@ -526,8 +526,8 @@ labelOptions <- function(
   clickable = NULL,
   noHide = NULL,
   permanent = FALSE,
-  className = '',
-  direction = 'auto',
+  className = "",
+  direction = "auto",
   offset = c(0, 0),
   opacity = 1,
   textsize = "10px",
@@ -550,7 +550,7 @@ labelOptions <- function(
 }
 
 #' @param icon the icon(s) for markers; an icon is represented by an R list of
-#'   the form \code{list(iconUrl = '?', iconSize = c(x, y))}, and you can use
+#'   the form \code{list(iconUrl = "?", iconSize = c(x, y))}, and you can use
 #'   \code{\link{icons}()} to create multiple icons; note when you use an R list
 #'   that contains images as local files, these local image files will be base64
 #'   encoded into the HTML page so the icon images will still be available even
@@ -604,7 +604,7 @@ addMarkers <- function(
 
   pts = derivePoints(data, lng, lat, missing(lng), missing(lat), "addMarkers")
   invokeMethod(
-    map, data, 'addMarkers', pts$lat, pts$lng, icon, layerId, group, options,
+    map, data, "addMarkers", pts$lat, pts$lng, icon, layerId, group, options,
     popup, popupOptions, clusterOptions, clusterId,
     safeLabel(label, data), labelOptions,
     getCrosstalkOptions(data)
@@ -635,7 +635,7 @@ addLabelOnlyMarkers <- function(
     map = map, lng = lng, lat = lat, layerId = layerId,
     group = group,
     icon = makeIcon(
-      iconUrl = system.file('htmlwidgets/lib/leaflet/images/1px.png', package = 'leaflet'),
+      iconUrl = system.file("htmlwidgets/lib/leaflet/images/1px.png", package = "leaflet"),
       iconWidth = 1, iconHeight = 1),
       label = label,
       labelOptions = labelOptions,
@@ -650,15 +650,15 @@ addLabelOnlyMarkers <- function(
 markerClusterDependencies <- function() {
   list(
     htmltools::htmlDependency(
-      'leaflet-markercluster',
-      '1.0.5',
-      system.file('htmlwidgets/plugins/Leaflet.markercluster', package = 'leaflet'),
+      "leaflet-markercluster",
+      "1.0.5",
+      system.file("htmlwidgets/plugins/Leaflet.markercluster", package = "leaflet"),
       script = c(
-        'leaflet.markercluster.js',
-        'leaflet.markercluster.freezable.js',
-        'leaflet.markercluster.layersupport.js'
+        "leaflet.markercluster.js",
+        "leaflet.markercluster.freezable.js",
+        "leaflet.markercluster.layersupport.js"
       ),
-      stylesheet = c('MarkerCluster.css', 'MarkerCluster.Default.css')
+      stylesheet = c("MarkerCluster.css", "MarkerCluster.Default.css")
     )
   )
 }
@@ -674,15 +674,15 @@ markerClusterDependencies <- function() {
 #'   green = makeIcon("leaf-green.png", iconWidth = 32, iconHeight = 32)
 #' )
 #'
-#' iconSet[c('red', 'green', 'red')]
+#' iconSet[c("red", "green", "red")]
 iconList <- function(...) {
   res = structure(
     list(...),
     class = "leaflet_icon_set"
   )
-  cls = unlist(lapply(res, inherits, 'leaflet_icon'))
+  cls = unlist(lapply(res, inherits, "leaflet_icon"))
   if (any(!cls))
-    stop('Arguments passed to iconList() must be icon objects returned from makeIcon()')
+    stop("Arguments passed to iconList() must be icon objects returned from makeIcon()")
   res
 }
 
@@ -810,7 +810,7 @@ b64EncodePackedIcons <- function(packedIcons) {
 
   # TODO: remove this when we've got our own encoding function
   markdown::markdownToHTML
-  image_uri = getFromNamespace('.b64EncodeFile', 'markdown')
+  image_uri = getFromNamespace(".b64EncodeFile", "markdown")
   packedIcons$data = sapply(packedIcons$data, function(icon) {
     if (is.character(icon) && file.exists(icon)) {
       image_uri(icon)
@@ -858,16 +858,16 @@ markerOptions <- function(
 #'   spiderfy it so you can see all of its markers
 #' @param removeOutsideVisibleBounds clusters and markers too far from the
 #'   viewport are removed from the map for performance
-#' @param spiderLegPolylineOptions Allows you to specify PolylineOptions (\url{http://leafletjs.com/reference-1.2.0.html#polyline-option}) to style spider legs. By default, they are { weight: 1.5, color: '#222', opacity: 0.5 }
+#' @param spiderLegPolylineOptions Allows you to specify PolylineOptions (\url{http://leafletjs.com/reference-1.2.0.html#polyline-option}) to style spider legs. By default, they are { weight: 1.5, color: "#222", opacity: 0.5 }
 #' @param freezeAtZoom Allows you to freeze cluster expansion to a zoom level.
-#' Can be a zoom level e.g. 10, 12 or 'max' or 'maxKeepSpiderify'
+#' Can be a zoom level e.g. 10, 12 or "max" or "maxKeepSpiderify"
 #' See \url{https://github.com/ghybs/Leaflet.MarkerCluster.Freezable#api-reference}
 #' @describeIn map-options Options for marker clusters
 #' @export
 markerClusterOptions <- function(
   showCoverageOnHover = TRUE, zoomToBoundsOnClick = TRUE,
   spiderfyOnMaxZoom = TRUE, removeOutsideVisibleBounds = TRUE,
-  spiderLegPolylineOptions = list(weight = 1.5, color = '#222', opacity = 0.5),
+  spiderLegPolylineOptions = list(weight = 1.5, color = "#222", opacity = 0.5),
   freezeAtZoom = FALSE,
   ...
 ) {
@@ -925,7 +925,7 @@ addCircleMarkers <- function(
   if (!is.null(clusterOptions))
     map$dependencies = c(map$dependencies, markerClusterDependencies())
   pts = derivePoints(data, lng, lat, missing(lng), missing(lat), "addCircleMarkers")
-  invokeMethod(map, data, 'addCircleMarkers', pts$lat, pts$lng, radius,
+  invokeMethod(map, data, "addCircleMarkers", pts$lat, pts$lng, radius,
                layerId, group, options, clusterOptions, clusterId,
                popup, popupOptions, safeLabel(label, data), labelOptions,
                getCrosstalkOptions(data)) %>%
@@ -935,32 +935,32 @@ addCircleMarkers <- function(
 #' @rdname remove
 #' @export
 removeMarker <- function(map, layerId) {
-  invokeMethod(map, getMapData(map), 'removeMarker', layerId)
+  invokeMethod(map, getMapData(map), "removeMarker", layerId)
 }
 
 #' @rdname remove
 #' @export
 clearMarkers <- function(map) {
-  invokeMethod(map, NULL, 'clearMarkers')
+  invokeMethod(map, NULL, "clearMarkers")
 }
 
 #' @rdname remove
 #' @export
 removeMarkerCluster <- function(map, layerId) {
-  invokeMethod(map, getMapData(map), 'removeMarkerCluster', layerId)
+  invokeMethod(map, getMapData(map), "removeMarkerCluster", layerId)
 }
 
 #' @rdname remove
 #' @export
 clearMarkerClusters <- function(map) {
-  invokeMethod(map, NULL, 'clearMarkerClusters')
+  invokeMethod(map, NULL, "clearMarkerClusters")
 }
 
 #' @param clusterId the id of the marker cluster layer
 #' @rdname remove
 #' @export
 removeMarkerFromCluster <- function(map, layerId, clusterId) {
-  invokeMethod(map, getMapData(map), 'removeMarkerFromCluster', layerId, clusterId)
+  invokeMethod(map, getMapData(map), "removeMarkerFromCluster", layerId, clusterId)
 }
 
 #' @param lineCap a string that defines
@@ -1048,7 +1048,7 @@ addCircles <- function(
     dashArray = dashArray
   )))
   pts = derivePoints(data, lng, lat, missing(lng), missing(lat), "addCircles")
-  invokeMethod(map, data, 'addCircles', pts$lat, pts$lng, radius, layerId, group, options,
+  invokeMethod(map, data, "addCircles", pts$lat, pts$lng, radius, layerId, group, options,
                popup, popupOptions, safeLabel(label, data), labelOptions, highlightOptions,
                getCrosstalkOptions(data)) %>%
     expandLimits(pts$lat, pts$lng)
@@ -1086,7 +1086,7 @@ addPolylines <- function(
     dashArray = dashArray, smoothFactor = smoothFactor, noClip = noClip
   )))
   pgons = derivePolygons(data, lng, lat, missing(lng), missing(lat), "addPolylines")
-  invokeMethod(map, data, 'addPolylines', pgons, layerId, group, options,
+  invokeMethod(map, data, "addPolylines", pgons, layerId, group, options,
                popup, popupOptions, safeLabel(label, data), labelOptions, highlightOptions) %>%
     expandLimitsBbox(pgons)
 }
@@ -1129,7 +1129,7 @@ addRectangles <- function(
   df2 <- validateCoords(lng2, lat2, "addRectangles")
 
   invokeMethod(
-    map, data, 'addRectangles', df1$lat, df1$lng, df2$lat, df2$lng, layerId, group,
+    map, data, "addRectangles", df1$lat, df1$lng, df2$lat, df2$lng, layerId, group,
     options, popup, popupOptions, safeLabel(label, data), labelOptions, highlightOptions
   ) %>%
     expandLimits(c(lat1, lat2), c(lng1, lng2))
@@ -1164,7 +1164,7 @@ addPolygons <- function(
   )))
   pgons = derivePolygons(data, lng, lat, missing(lng), missing(lat), "addPolygons")
   invokeMethod(
-    map, data, 'addPolygons', pgons, layerId, group,
+    map, data, "addPolygons", pgons, layerId, group,
     options, popup, popupOptions, safeLabel(label, data), labelOptions, highlightOptions
   ) %>%
     expandLimitsBbox(pgons)
@@ -1173,13 +1173,13 @@ addPolygons <- function(
 #' @rdname remove
 #' @export
 removeShape <- function(map, layerId) {
-  invokeMethod(map, getMapData(map), 'removeShape', layerId)
+  invokeMethod(map, getMapData(map), "removeShape", layerId)
 }
 
 #' @rdname remove
 #' @export
 clearShapes <- function(map) {
-  invokeMethod(map, NULL, 'clearShapes')
+  invokeMethod(map, NULL, "clearShapes")
 }
 
 #' @param geojson a GeoJSON list, or character vector of length 1
@@ -1204,19 +1204,19 @@ addGeoJSON <- function(map, geojson, layerId = NULL, group = NULL,
     fill = fill, fillColor = fillColor, fillOpacity = fillOpacity,
     dashArray = dashArray, smoothFactor = smoothFactor, noClip = noClip
   )))
-  invokeMethod(map, data, 'addGeoJSON', geojson, layerId, group, options)
+  invokeMethod(map, data, "addGeoJSON", geojson, layerId, group, options)
 }
 
 #' @rdname remove
 #' @export
 removeGeoJSON <- function(map, layerId) {
-  invokeMethod(map, getMapData(map), 'removeGeoJSON', layerId)
+  invokeMethod(map, getMapData(map), "removeGeoJSON", layerId)
 }
 
 #' @rdname remove
 #' @export
 clearGeoJSON <- function(map) {
-  invokeMethod(map, NULL, 'clearGeoJSON')
+  invokeMethod(map, NULL, "clearGeoJSON")
 }
 
 #' Add UI controls to switch layers on and off
@@ -1232,8 +1232,8 @@ clearGeoJSON <- function(map) {
 #'   most commonly used for mostly-opaque tile layers.
 #' @param overlayGroups character vector where each element is the name of a
 #'   group. The user can turn each overlay group on or off independently.
-#' @param position position of control: 'topleft', 'topright', 'bottomleft', or
-#'   'bottomright'
+#' @param position position of control: "topleft", "topright", "bottomleft", or
+#'   "bottomright"
 #' @param options a list of additional options, intended to be provided by
 #'   a call to \code{layersControlOptions}
 #' @template data-getMapData
@@ -1253,13 +1253,13 @@ clearGeoJSON <- function(map) {
 #' @export
 addLayersControl <- function(map,
   baseGroups = character(0), overlayGroups = character(0),
-  position = c('topright', 'bottomright', 'bottomleft', 'topleft'),
+  position = c("topright", "bottomright", "bottomleft", "topleft"),
   options = layersControlOptions(),
   data = getMapData(map)
 ) {
 
   options = c(options, list(position = match.arg(position)))
-  invokeMethod(map, data, 'addLayersControl', baseGroups,
+  invokeMethod(map, data, "addLayersControl", baseGroups,
     overlayGroups, options)
 }
 
@@ -1278,5 +1278,5 @@ layersControlOptions <- function(collapsed = TRUE, autoZIndex = TRUE, ...) {
 #' @rdname addLayersControl
 #' @export
 removeLayersControl <- function(map) {
-  invokeMethod(map, NULL, 'removeLayersControl')
+  invokeMethod(map, NULL, "removeLayersControl")
 }

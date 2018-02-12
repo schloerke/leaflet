@@ -4,8 +4,8 @@ leafletAwesomeMarkersDependencies <- function() {
       "leaflet-awesomemarkers",
       "2.0.3",
       system.file("htmlwidgets/plugins/Leaflet.awesome-markers", package = "leaflet"),
-      script = c('leaflet.awesome-markers.min.js'),
-      stylesheet = c('leaflet.awesome-markers.css')
+      script = c("leaflet.awesome-markers.min.js"),
+      stylesheet = c("leaflet.awesome-markers.css")
     )
   )
 }
@@ -16,8 +16,8 @@ leafletAmBootstrapDependencies <- function(map) {
       "bootstrap",
       "3.3.7",
       system.file("htmlwidgets/plugins/Leaflet.awesome-markers", package = "leaflet"),
-      script = c('bootstrap.min.js'),
-      stylesheet = c('bootstrap.min.css')
+      script = c("bootstrap.min.js"),
+      stylesheet = c("bootstrap.min.css")
     )
   )
 }
@@ -35,7 +35,7 @@ leafletAmFontAwesomeDependencies <- function(map) {
       "fontawesome",
       "4.7.0",
       system.file("htmlwidgets/plugins/Leaflet.awesome-markers", package = "leaflet"),
-      stylesheet = c('font-awesome.min.css')
+      stylesheet = c("font-awesome.min.css")
     )
   )
 }
@@ -53,7 +53,7 @@ leafletAmIonIconDependencies <- function(map) {
       "ionicons",
       "2.0.1",
       system.file("htmlwidgets/plugins/Leaflet.awesome-markers", package = "leaflet"),
-      stylesheet = c('ionicons.min.css')
+      stylesheet = c("ionicons.min.css")
     )
   )
 }
@@ -72,19 +72,19 @@ addIonIcon <- function(map) {
 #' @examples
 #'
 #' iconSet = awesomeIconList(
-#'   home = makeAwesomeIcon(icon = 'Home', library = 'fa'),
-#'   flag = makeAwesomeIcon(icon = 'Flag', library = 'fa')
+#'   home = makeAwesomeIcon(icon = "Home", library = "fa"),
+#'   flag = makeAwesomeIcon(icon = "Flag", library = "fa")
 #' )
 #'
-#' iconSet[c('home', 'flag')]
+#' iconSet[c("home", "flag")]
 awesomeIconList <- function(...) {
   res = structure(
     list(...),
     class = "leaflet_awesome_icon_set"
   )
-  cls = unlist(lapply(res, inherits, 'leaflet_awesome_icon'))
+  cls = unlist(lapply(res, inherits, "leaflet_awesome_icon"))
   if (any(!cls))
-    stop('Arguments passed to awesomeIconList() must be icon objects returned from makeAwesomeIcon()') # nolint
+    stop("Arguments passed to awesomeIconList() must be icon objects returned from makeAwesomeIcon()") # nolint
   res
 }
 
@@ -138,7 +138,7 @@ makeAwesomeIcon <- function(
   extraClasses = NULL,
   squareMarker = FALSE,
   iconRotate = 0,
-  fontFamily = 'monospace',
+  fontFamily = "monospace",
   text = NULL
 ) {
   if (!inherits(library, "formula")) {
@@ -163,16 +163,16 @@ makeAwesomeIcon <- function(
 #' icon data. Shorter argument values will be re-cycled. \code{NULL} values for
 #' these arguments will be ignored.
 #' @param icon Name of the icon
-#' @param library Which icon library. Default \code{'glyphicon'}, other possible
-#'   values are \code{'fa'} (fontawesome) or \code{'ion'} (ionicons).
-#' @param markerColor Possible values are \code{'red'}, \code{'darkred'}, \code{'lightred'}, \code{'orange'},
-#' \code{'beige'}, \code{'green'}, \code{'darkgreen'}, \code{'lightgreen'}, \code{'blue'},
-#' \code{'darkblue'}, \code{'lightblue'}, \code{'purple'}, \code{'darkpurple'}, \code{'pink'},
-#' \code{'cadetblue'}, \code{'white'}, \code{'gray'}, \code{'lightgray'}, \code{'black'}
+#' @param library Which icon library. Default \code{"glyphicon"}, other possible
+#'   values are \code{"fa"} (fontawesome) or \code{"ion"} (ionicons).
+#' @param markerColor Possible values are \code{"red"}, \code{"darkred"}, \code{"lightred"}, \code{"orange"},
+#' \code{"beige"}, \code{"green"}, \code{"darkgreen"}, \code{"lightgreen"}, \code{"blue"},
+#' \code{"darkblue"}, \code{"lightblue"}, \code{"purple"}, \code{"darkpurple"}, \code{"pink"},
+#' \code{"cadetblue"}, \code{"white"}, \code{"gray"}, \code{"lightgray"}, \code{"black"}
 #' @param iconColor The color to use for the icon itself. Use any CSS-valid
 #'   color (hex, rgba, etc.) or a named web color.
 #' @param spin If \code{TRUE}, make the icon spin (only works when \code{library
-#'   = 'fa'})
+#'   = "fa"})
 #' @param extraClasses Additional css classes to include on the icon.
 #' @return A list of awesome-icon data that can be passed to the \code{icon}
 #' @param squareMarker Whether to use a square marker.
@@ -190,7 +190,7 @@ awesomeIcons <- function(
   extraClasses = NULL,
   squareMarker = FALSE,
   iconRotate = 0,
-  fontFamily = 'monospace',
+  fontFamily = "monospace",
   text = NULL
 
 ) {
@@ -290,7 +290,7 @@ addAwesomeMarkers <- function(
 
   pts = derivePoints(data, lng, lat, missing(lng), missing(lat), "addAwesomeMarkers")
   invokeMethod(
-    map, data, 'addAwesomeMarkers', pts$lat, pts$lng, icon, layerId,
+    map, data, "addAwesomeMarkers", pts$lat, pts$lng, icon, layerId,
     group, options, popup, popupOptions,
     clusterOptions, clusterId, safeLabel(label, data), labelOptions,
     getCrosstalkOptions(data)

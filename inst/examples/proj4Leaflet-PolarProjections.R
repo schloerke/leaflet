@@ -32,21 +32,21 @@ maxZoom <- 18
 resolutions <- purrr::map_dbl(minZoom:maxZoom, function(x) maxResolution / (2 ^ x))
 
 # 6 Projection EPSG Codes
-projections <- c('3571', '3572', '3573', '3574', '3575', '3576')
+projections <- c("3571", "3572", "3573", "3574", "3575", "3576")
 # Corresponding proj4defs codes for each projection
 proj4defs <- list(
-  '3571' = '+proj=laea +lat_0=90 +lon_0=180 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',
-  '3572' = '+proj=laea +lat_0=90 +lon_0=-150 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',
-  '3573' = '+proj=laea +lat_0=90 +lon_0=-100 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',
-  '3574' = '+proj=laea +lat_0=90 +lon_0=-40 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',
-  '3575' = '+proj=laea +lat_0=90 +lon_0=10 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',
-  '3576' = '+proj=laea +lat_0=90 +lon_0=90 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs'
+  "3571" = "+proj=laea +lat_0=90 +lon_0=180 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs",
+  "3572" = "+proj=laea +lat_0=90 +lon_0=-150 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs",
+  "3573" = "+proj=laea +lat_0=90 +lon_0=-100 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs",
+  "3574" = "+proj=laea +lat_0=90 +lon_0=-40 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs",
+  "3575" = "+proj=laea +lat_0=90 +lon_0=10 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs",
+  "3576" = "+proj=laea +lat_0=90 +lon_0=90 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
 )
 
 # create a CRS instance for each projection
 crses <- purrr::map(projections, function(code) {
   leafletCRS(
-    crsClass = 'L.Proj.CRS',
+    crsClass = "L.Proj.CRS",
     code = sprintf("EPSG:%s", code),
     proj4def = proj4defs[[code]],
     origin = origin,
@@ -57,7 +57,7 @@ crses <- purrr::map(projections, function(code) {
 
 # Tile URL Template for each projection
 tileURLtemplates <- purrr::map(projections, function(code) {
-  sprintf('http://{s}.tiles.arcticconnect.org/osm_%s/{z}/{x}/{y}.png',
+  sprintf("http://{s}.tiles.arcticconnect.org/osm_%s/{z}/{x}/{y}.png",
           code)
 })
 
@@ -103,13 +103,13 @@ resolutions <- c(8192, 4096, 2048, 1024, 512, 256)
 zoom <- 0
 maxZoom <- 5
 
-border <- geojsonio::geojson_read(system.file('examples/Seamask_medium_res_polygon.kml', package = 'leaflet'), what = 'sp')
-points <-  geojsonio::geojson_read(system.file('examples/Historic_sites_and_monuments_point.kml', package = 'leaflet'), what = 'sp')
+border <- geojsonio::geojson_read(system.file("examples/Seamask_medium_res_polygon.kml", package = "leaflet"), what = "sp")
+points <-  geojsonio::geojson_read(system.file("examples/Historic_sites_and_monuments_point.kml", package = "leaflet"), what = "sp")
 
 crsAntartica <-  leafletCRS(
-  crsClass = 'L.Proj.CRS',
-  code = 'EPSG:3031',
-  proj4def = '+proj=stere +lat_0=-90 +lat_ts=-71 +lon_0=0 +k=1 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs',
+  crsClass = "L.Proj.CRS",
+  code = "EPSG:3031",
+  proj4def = "+proj=stere +lat_0=-90 +lat_ts=-71 +lon_0=0 +k=1 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",
   resolutions = resolutions,
   origin = c(-4194304, 4194304),
   bounds =  list( c(-4194304, -4194304), c(4194304, 4194304) )
@@ -120,7 +120,7 @@ antarticaTilesURL <- "//map1{s}.vis.earthdata.nasa.gov/wmts-antarctic/MODIS_Aqua
 leaflet(options = leafletOptions(
   crs = crsAntartica, minZoom = zoom, maxZoom = maxZoom, worldCopyJump = FALSE)) %>%
   setView(0, -90, 0) %>%
-  addPolygons(data = border, color = '#ff0000', weight = 2, fill = FALSE) %>%
+  addPolygons(data = border, color = "#ff0000", weight = 2, fill = FALSE) %>%
   addCircleMarkers(data = points, label = ~Name) %>%
   addTiles(urlTemplate = antarticaTilesURL,
            layerId = "antartica_tiles",

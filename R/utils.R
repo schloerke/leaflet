@@ -255,7 +255,7 @@ invokeRemote <- function(map, method, args = list()) {
 makeListFun <- function(list) {
   if (is.function(list)) list = formals(list)
   nms = names(list)
-  cat(sprintf('list(%s)\n', paste(nms, nms, sep = ' = ', collapse = ', ')))
+  cat(sprintf("list(%s)\n", paste(nms, nms, sep = " = ", collapse = ", ")))
 }
 
 "%||%" <- function(a, b) {

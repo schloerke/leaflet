@@ -25,7 +25,7 @@ createLeafletMap <- function(session, outputId) {
     opts = options(digits = 22)
     on.exit(options(opts))
 
-    session$sendCustomMessage('leaflet', list(
+    session$sendCustomMessage("leaflet", list(
       mapId = outputId,
       method = method,
       args = msg
@@ -93,14 +93,14 @@ createLeafletMap <- function(session, outputId) {
 #' @export
 leafletMap <- function(
   outputId, width, height,
-  initialTileLayer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  initialTileLayer = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   initialTileLayerAttribution = NULL,
   options = NULL) {
 
   if (missing(initialTileLayer) && is.null(initialTileLayerAttribution))
     initialTileLayerAttribution = paste(
-      '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
-      'contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+      "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a>",
+      "contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>"
     )
 
   shiny::addResourcePath("leaflet-legacy", system.file("legacy/www", package = "leaflet"))

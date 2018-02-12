@@ -41,7 +41,7 @@ addTerminator <- function(
   invokeMethod(
     map,
     getMapData(map),
-    'addTerminator',
+    "addTerminator",
     resolution,
     time,
     layerId,

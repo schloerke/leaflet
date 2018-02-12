@@ -21,7 +21,7 @@
 #' length.
 #'
 #' By default, \code{labFormat} is basically \code{format(scientific = FALSE,
-#' big.mark = ',')} for the numeric palette, \code{as.character()} for the
+#' big.mark = ",")} for the numeric palette, \code{as.character()} for the
 #' factor palette, and a function to return labels of the form \samp{x[i] - x[i
 #' + 1]} for bin and quantile palettes (in the case of quantile palettes,
 #' \code{x} is the probabilities instead of the values of breaks).
@@ -59,13 +59,13 @@
 #' @example inst/examples/legend.R
 #' @export
 addLegend <- function(
-  map, position = c('topright', 'bottomright', 'bottomleft', 'topleft'),
-  pal, values, na.label = 'NA', bins = 7, colors, opacity = 0.5, labels = NULL,
+  map, position = c("topright", "bottomright", "bottomleft", "topleft"),
+  pal, values, na.label = "NA", bins = 7, colors, opacity = 0.5, labels = NULL,
   labFormat = labelFormat(), title = NULL, className = "info legend",
   layerId = NULL, group = NULL, data = getMapData(map)
 ) {
   position = match.arg(position)
-  type = 'unknown'; na.color = NULL
+  type = "unknown"; na.color = NULL
   extra = NULL  # only used for numeric palettes to store extra info
 
   if (!missing(pal)) {
@@ -73,20 +73,20 @@ addLegend <- function(
       stop("You must provide either 'pal' or 'colors' (not both)")
 
     # a better default title when values is formula
-    if (missing(title) && inherits(values, 'formula')) title = deparse(values[[2]])
+    if (missing(title) && inherits(values, "formula")) title = deparse(values[[2]])
     values = evalFormula(values, data)
 
-    type = attr(pal, 'colorType', exact = TRUE)
-    args = attr(pal, 'colorArgs', exact = TRUE)
+    type = attr(pal, "colorType", exact = TRUE)
+    args = attr(pal, "colorArgs", exact = TRUE)
     na.color = args$na.color
     # If na.color is transparent, don't show it on the legend
     if (!is.null(na.color) && col2rgb(na.color, alpha = TRUE)[[4]] == 0) {
       na.color = NULL
     }
-    if (type != 'numeric' && !missing(bins))
+    if (type != "numeric" && !missing(bins))
       warning("'bins' is ignored because the palette type is not numeric")
 
-    if (type == 'numeric') {
+    if (type == "numeric") {
 
       # choose pretty cut points to draw tick-marks on the color gradient if
       # 'bins' is the number of bins, otherwise 'bins' is just the breaks
@@ -112,21 +112,21 @@ addLegend <- function(
       extra = list(p_1 = p[1], p_n = p[n])
       # syntax for the color gradient: linear-gradient(start-color, color1 p1%,
       # color2 p2%, ..., colorn pn%, end-color])
-      p = c('', paste0(100 * p, '%'), '')
+      p = c("", paste0(100 * p, "%"), "")
       colors = pal(c(r[1], cuts, r[2]))
-      colors = paste(colors, p, sep = ' ', collapse = ', ')
-      labels = labFormat(type = 'numeric', cuts)
+      colors = paste(colors, p, sep = " ", collapse = ", ")
+      labels = labFormat(type = "numeric", cuts)
 
-    } else if (type == 'bin') {
+    } else if (type == "bin") {
 
       cuts = args$bins
       n = length(cuts)
       # use middle points to represent intervals
       mids = (cuts[-1] + cuts[-n]) / 2
       colors = pal(mids)
-      labels = labFormat(type = 'bin', cuts)
+      labels = labFormat(type = "bin", cuts)
 
-    } else if (type == 'quantile') {
+    } else if (type == "quantile") {
 
       p = args$probs
       n = length(p)
@@ -134,15 +134,15 @@ addLegend <- function(
       cuts = quantile(values, probs = p, na.rm = TRUE)
       mids = quantile(values, probs = (p[-1] + p[-n]) / 2, na.rm = TRUE)
       colors = pal(mids)
-      labels = labFormat(type = 'quantile', cuts, p)
+      labels = labFormat(type = "quantile", cuts, p)
 
-    } else if (type == 'factor') {
+    } else if (type == "factor") {
 
       v = sort(unique(na.omit(values)))
       colors = pal(v)
-      labels = labFormat(type = 'factor', v)
+      labels = labFormat(type = "factor", v)
 
-    } else stop('Palette function not supported')
+    } else stop("Palette function not supported")
 
     if (!any(is.na(values))) na.color = NULL
   } else {
@@ -169,7 +169,7 @@ addLegend <- function(
 #' @rdname addLegend
 #' @export
 labelFormat <- function(
-  prefix = '', suffix = '', between = ' &ndash; ', digits = 3, big.mark = ',',
+  prefix = "", suffix = "", between = " &ndash; ", digits = 3, big.mark = ",",
   transform = identity
 ) {
 
@@ -192,12 +192,12 @@ labelFormat <- function(
       })(...),
       quantile = (function(cuts, p) {
         n = length(cuts)
-        p = paste0(round(p * 100), '%')
+        p = paste0(round(p * 100), "%")
         cuts = paste0(formatNum(cuts[-n]), between, formatNum(cuts[-1]))
         # mouse over the legend labels to see the values (quantiles)
         paste0(
-          '<span title="', cuts, '">', prefix, p[-n], between, p[-1], suffix,
-          '</span>'
+          "<span title=\"", cuts, "\">", prefix, p[-n], between, p[-1], suffix,
+          "</span>"
         )
       })(...),
       factor = (function(cuts) {

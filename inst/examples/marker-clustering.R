@@ -3,7 +3,7 @@ library(leaflet)
 #' Add a Level factor to quakes
 quakes <- quakes %>%
   dplyr::mutate(mag.level = cut(mag, c(3, 4, 5, 6),
-                                labels = c('>3 & <=4', '>4 & <=5', '>5 & <=6')))
+                                labels = c(">3 & <=4", ">4 & <=5", ">5 & <=6")))
 
 l <- leaflet() %>% addTiles()
 
@@ -25,7 +25,7 @@ l %>%
                       label = ~as.character(mag),
                       clusterOptions = markerClusterOptions(),
                       labelOptions = labelOptions(noHide = T,
-                                                  direction = 'auto'))
+                                                  direction = "auto"))
 #' <br/><br/>
 #' Clustering + Layers
 quakes.df <- split(quakes, quakes$mag.level)
@@ -41,7 +41,7 @@ names(quakes.df) %>%
                           group = df,
                           clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = F),
                           labelOptions = labelOptions(noHide = T,
-                                                       direction = 'auto'))
+                                                       direction = "auto"))
   })
 
 l2 %>%

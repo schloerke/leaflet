@@ -88,7 +88,7 @@ leaflet() %>% addTiles() %>% addPolygons(data = spgons)
 leaflet() %>% addPolygons(data = spgonsdf)
 leaflet() %>% addPolygons(data = SpP)
 leaflet() %>% addPolygons(data = SpP, color = topo.colors(3, NULL), stroke = FALSE) %>%
-  addPolygons(data = spgonsdf, color = 'blue', stroke = FALSE, fillOpacity = 0.5)
+  addPolygons(data = spgonsdf, color = "blue", stroke = FALSE, fillOpacity = 0.5)
 leaflet() %>% addPolylines(data = SpP)
 
 leaflet(data = map("state", fill = TRUE, plot = FALSE)) %>% addTiles() %>%

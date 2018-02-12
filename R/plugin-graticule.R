@@ -31,7 +31,7 @@ addGraticule <- function(
   map,
   interval = 20,
   sphere = FALSE,
-  style = list(color = '#333', weight = 1),
+  style = list(color = "#333", weight = 1),
   layerId = NULL,
   group = NULL,
   options = pathOptions(pointerEvents = "none", clickable = FALSE) # Default unclickable
@@ -40,7 +40,7 @@ addGraticule <- function(
   invokeMethod(
     map,
     getMapData(map),
-    'addGraticule',
+    "addGraticule",
     interval,
     sphere,
     style,

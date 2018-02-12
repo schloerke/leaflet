@@ -7,7 +7,7 @@ l %>% addGraticule()
 
 #' <br/>
 #' Custom Params
-l %>% addGraticule(interval = 40, style = list(color = '#FF0000', weight = 1))
+l %>% addGraticule(interval = 40, style = list(color = "#FF0000", weight = 1))
 
 #' <br/>
 #' on a toggleable Layer

@@ -20,14 +20,14 @@ bindEvent <- function(eventExpr, callback, env = parent.frame(), quoted = FALSE)
 
 shinyServer(function(input, output, session) {
 
-  makeReactiveBinding('selectedCity')
+  makeReactiveBinding("selectedCity")
 
   # Define some reactives for accessing the data
 
   # Retrieve the name of the column that contains the selected year's
   # population
   popCol <- reactive({
-    paste('Pop', input$year, sep = '')
+    paste("Pop", input$year, sep = "")
   })
 
   popSeries <- function(city) {
@@ -69,7 +69,7 @@ shinyServer(function(input, output, session) {
 
   # Create the map; this is not the "real" map, but rather a proxy
   # object that lets us control the leaflet map on the page.
-  map <- createLeafletMap(session, 'map')
+  map <- createLeafletMap(session, "map")
 
   observe({
     if (is.null(input$map_click))
@@ -93,7 +93,7 @@ shinyServer(function(input, output, session) {
       list(
         weight = 1.2,
         fill = TRUE,
-        color = '#4A9'
+        color = "#4A9"
       )
     )
   })
@@ -113,7 +113,7 @@ shinyServer(function(input, output, session) {
         tags$br(),
         sprintf("Estimated population, %s:", input$year),
         tags$br(),
-        prettyNum(city[[popCol()]], big.mark = ',')
+        prettyNum(city[[popCol()]], big.mark = ",")
       ))
       map$showPopup(event$lat, event$lng, content, event$id)
     })
@@ -142,13 +142,13 @@ shinyServer(function(input, output, session) {
 
   output$cityTimeSeriesLabel <- renderText({
     if (is.null(selectedCity)) {
-      'Total population of visible cities'
+      "Total population of visible cities"
     } else {
-      paste('Population of ',
+      paste("Population of ",
             selectedCity$City,
-            ', ',
+            ", ",
             selectedCity$State,
-            sep = '')
+            sep = "")
     }
   })
 
@@ -163,7 +163,7 @@ shinyServer(function(input, output, session) {
     df <- data.frame(year = c(2000:2010), pop = popData)
     p <- ggplot(df, aes(x = year, y = pop)) + geom_line()
     p <- p + ylim(c(0, max(popData)))
-    p <- p + ylab('Population (thousands)')
+    p <- p + ylab("Population (thousands)")
     p <- p + scale_x_continuous(breaks = seq(2000, 2010, 2))
     print(p)
   })
