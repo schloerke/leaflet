@@ -5,14 +5,14 @@
 #' <br/>
 library(leaflet)
 
-m <- leaflet() %>% setView(0,0,1)
+m <- leaflet() %>% setView(0, 0, 1)
 
 # Take out ESRI provided tiles
 esri <- providers %>%
-  purrr::keep(~ grepl('^Esri',.))
+  purrr::keep(~ grepl('^Esri', .))
 
 esri %>%
-  purrr::walk(function(x) m <<- m %>% addProviderTiles(x,group=x))
+  purrr::walk(function(x) m <<- m %>% addProviderTiles(x, group=x))
 
 m %>%
   addLayersControl(
@@ -29,7 +29,7 @@ mapbox.tileIds <- list(Satellite='mapbox.satellite',
                        Comic='bhaskarvk.1cm89o4e',
                        'High Contrast'='bhaskarvk.1biainl5')
 
-m <- leaflet() %>% setView(0,0,1)
+m <- leaflet() %>% setView(0, 0, 1)
 
 names(mapbox.tileIds) %>%
   purrr::walk(function(x) {
@@ -38,7 +38,7 @@ names(mapbox.tileIds) %>%
                        options = providerTileOptions(
                          detectRetina = TRUE,
                          # id and accessToken are Mapbox specific options
-                         id = mapbox.tileIds[[x]] ,
+                         id = mapbox.tileIds[[x]],
                          accessToken = Sys.getenv('MAPBOX_ACCESS_TOKEN')
                        ))
                  })

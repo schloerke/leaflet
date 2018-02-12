@@ -291,17 +291,17 @@ validateCoords <- function(lng, lat, funcName, warn=TRUE,
   if (mode == "point") {
     incomplete <- is.na(lat) | is.na(lng)
     if(any(incomplete)) {
-      warning(sprintf("Data contains %s rows with either missing or invalid lat/lon values and will be ignored",sum(incomplete)))
+      warning(sprintf("Data contains %s rows with either missing or invalid lat/lon values and will be ignored", sum(incomplete)))
     }
   } else if (mode == "polygon") {
     incomplete <- is.na(lat) != is.na(lng)
     if(any(incomplete)) {
-      warning(sprintf("Data contains %s rows with either missing or invalid lat/lon values and will be ignored",sum(incomplete)))
+      warning(sprintf("Data contains %s rows with either missing or invalid lat/lon values and will be ignored", sum(incomplete)))
     }
     lng <- lng[!incomplete]
     lat <- lat[!incomplete]
   }
 
-  data.frame(lng=lng,lat=lat)
+  data.frame(lng = lng, lat = lat)
 
 }

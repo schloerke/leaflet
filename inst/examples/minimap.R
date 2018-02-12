@@ -1,6 +1,6 @@
 library(leaflet)
 
-l <- leaflet() %>% setView(0,0,3)
+l <- leaflet() %>% setView(0, 0, 3)
 
 #' Default Minimap
 l %>% addTiles() %>% addMiniMap()
@@ -19,10 +19,10 @@ l %>% addProviderTiles(providers$Esri.WorldStreetMap) %>%
 #' But not for one's added with addTiles using a URL schema.
 m <- l
 esri <- providers %>%
-  purrr::keep(~ grepl('^Esri',.))
+  purrr::keep(~ grepl('^Esri', .))
 
 esri %>%
-  purrr::walk(function(x) m <<- m %>% addProviderTiles(x,group=x))
+  purrr::walk(function(x) m <<- m %>% addProviderTiles(x, group=x))
 
 m %>%
   addLayersControl(
@@ -65,7 +65,7 @@ icons <- awesomeIconList(
 leaflet() %>% addTiles() %>%
   setView(10.758276373601069, 59.92448055859924, 13) %>%
   addAwesomeMarkers(data=spdf,
-             label=~stringr::str_c(amenity,': ', name),
+             label=~stringr::str_c(amenity, ': ', name),
              icon = ~icons[amenity],
              options = markerOptions(riseOnHover = TRUE, opacity = 0.75),
              group = 'pubs') %>%
@@ -90,11 +90,11 @@ leaflet() %>% addTiles() %>%
 #' Minimap w/ changable layers and circle markers.
 m <- leaflet()
 esri %>%
-  purrr::walk(function(x) m <<- m %>% addProviderTiles(x,group=x))
+  purrr::walk(function(x) m <<- m %>% addProviderTiles(x, group=x))
 m %>%
   setView(10.758276373601069, 59.92448055859924, 13) %>%
   addAwesomeMarkers(data=spdf,
-             label=~stringr::str_c(amenity,': ', name),
+             label=~stringr::str_c(amenity, ': ', name),
              icon = ~icons[amenity],
              options = markerOptions(riseOnHover = TRUE, opacity = 0.75),
              group = 'pubs') %>%

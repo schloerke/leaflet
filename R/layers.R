@@ -499,7 +499,7 @@ safeLabel <- function(label, data) {
 
   label <- evalFormula(label, data)
   if(! (inherits(label, "html") ||
-                    sum(sapply(label,function(x){!inherits(x,'html')})) == 0)) {
+                    sum(sapply(label, function(x){!inherits(x, 'html')})) == 0)) {
     label <- htmltools::htmlEscape(label)
   }
   label
@@ -517,7 +517,7 @@ labelOptions <- function(
   permanent = FALSE,
   className = '',
   direction = 'auto',
-  offset = c(0,0),
+  offset = c(0, 0),
   opacity = 1,
   textsize = "10px",
   textOnly = FALSE,
@@ -971,7 +971,7 @@ pathOptions <- function(
   # use old (Leaflet 0.7.x) clickable if provided
   if(!is.null(clickable) && interactive != clickable) interactive <- clickable
   filterNULL(list(
-    lineCap = lineCap, lineJoin = lineJoin, interactive = interactive ,
+    lineCap = lineCap, lineJoin = lineJoin, interactive = interactive,
     pointerEvents = pointerEvents, className = className, ...
   ))
 }
@@ -1113,7 +1113,7 @@ addRectangles <- function(
   df1 <- validateCoords(lng1, lat1, "addRectangles")
   df2 <- validateCoords(lng2, lat2, "addRectangles")
 
-  invokeMethod(map, data, 'addRectangles',df1$lat, df1$lng, df2$lat, df2$lng, layerId, group, options, popup, popupOptions, safeLabel(label, data), labelOptions, highlightOptions) %>%
+  invokeMethod(map, data, 'addRectangles', df1$lat, df1$lng, df2$lat, df2$lng, layerId, group, options, popup, popupOptions, safeLabel(label, data), labelOptions, highlightOptions) %>%
     expandLimits(c(lat1, lat2), c(lng1, lng2))
 }
 

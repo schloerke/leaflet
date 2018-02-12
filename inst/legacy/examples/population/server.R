@@ -49,7 +49,7 @@ shinyServer(function(input, output, session) {
   # The cities that are within the visible bounds of the map
   citiesInBounds <- reactive({
     if (is.null(input$map_bounds))
-      return(uspop2000[FALSE,])
+      return(uspop2000[FALSE, ])
     bounds <- input$map_bounds
     latRng <- range(bounds$north, bounds$south)
     lngRng <- range(bounds$east, bounds$west)
@@ -63,7 +63,7 @@ shinyServer(function(input, output, session) {
   # of the map
   topCitiesInBounds <- reactive({
     cities <- citiesInBounds()
-    cities <- head(cities[order(cities[[popCol()]], decreasing=TRUE),],
+    cities <- head(cities[order(cities[[popCol()]], decreasing=TRUE), ],
                    as.numeric(input$maxCities))
   })
 
@@ -106,7 +106,7 @@ shinyServer(function(input, output, session) {
 
     isolate({
       cities <- topCitiesInBounds()
-      city <- cities[row.names(cities) == event$id,]
+      city <- cities[row.names(cities) == event$id, ]
       selectedCity <<- city
       content <- as.character(tagList(
         tags$strong(paste(city$City, city$State)),

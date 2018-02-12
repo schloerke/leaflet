@@ -72,7 +72,7 @@ addMeasure <- function(
   secondaryAreaUnit = NULL,
   activeColor = "#ABE67E",
   completedColor ="#C8F2BE",
-  popupOptions = list( className =  'leaflet-measure-resultpopup', autoPanPadding =  c(10,10) ),
+  popupOptions = list( className =  'leaflet-measure-resultpopup', autoPanPadding =  c(10, 10) ),
   captureZIndex = 10000,
   localization = 'en',
   decPoint = '.',

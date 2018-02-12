@@ -1,6 +1,6 @@
 library(leaflet)
 # Default
-l <- leaflet() %>% addTiles() %>% setView(0,0,2)
+l <- leaflet() %>% addTiles() %>% setView(0, 0, 2)
 
 #' Default Graticule
 l %>% addGraticule()

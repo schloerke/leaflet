@@ -311,7 +311,7 @@ brewer_pal <- function(palette, n = NULL) {
   if (n == 1) {
     colors[1]
   } else if (n == 2) {
-    colors[c(1,3)]
+    colors[c(1, 3)]
   } else {
     colors
   }
@@ -321,7 +321,7 @@ brewer_pal <- function(palette, n = NULL) {
 # of an RColorBrewer palette that is marked as qualitative
 toPaletteFunc.character <- function(pal, alpha, nlevels) {
   if (length(pal) == 1 && pal %in% row.names(RColorBrewer::brewer.pal.info)) {
-    paletteInfo <- RColorBrewer::brewer.pal.info[pal,]
+    paletteInfo <- RColorBrewer::brewer.pal.info[pal, ]
     if (!is.null(nlevels)) {
       colors <- brewer_pal(pal, abs(nlevels))
     } else {

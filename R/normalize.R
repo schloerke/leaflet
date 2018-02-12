@@ -148,7 +148,7 @@ polygonData.matrix <- function(obj) {
   # Split into polygons wherever there is a row of NA
   missing <- !stats::complete.cases(df)
   group <- cumsum(missing)
-  polys <- split(df[!missing, , drop = FALSE], group[!missing])
+  polys <- split(df[!missing, , drop = FALSE], group[!missing]) # nolint
 
   structure(
     lapply(unname(polys), function(x) list(list(x))),

@@ -35,18 +35,18 @@ leaflet() %>% addTiles() %>%
     lng=-118.456554, lat=34.079979, radius = 5,
     label='On the Top',
     labelOptions = labelOptions(noHide = T, direction = 'top',
-                                offset=c(0,-15))
+                                offset=c(0, -15))
   )%>%
   addCircleMarkers(
     lng=-118.456554, lat=34.076279, radius = 5,
     label='On the Bottom',
     labelOptions = labelOptions(noHide = T, direction = 'bottom',
-                                offset=c(0,15)))
+                                offset=c(0, 15)))
 #' <br/><br/>
 
 
 # Change Text Size and text Only and also a custom CSS
-leaflet() %>% addTiles() %>% setView(-118.456554,34.09,13) %>%
+leaflet() %>% addTiles() %>% setView(-118.456554, 34.09, 13) %>%
   addMarkers(
     lng=-118.456554, lat=34.07,
     label='Default Label',
@@ -127,7 +127,7 @@ leaflet(cities) %>% addTiles() %>%
              label = ~City,
              labelOptions = lapply(1:nrow(cities), function(x) {
                labelOptions(opacity=1, noHide = T,
-                            direction = 'auto', offset=c(20,-15))
+                            direction = 'auto', offset=c(20, -15))
              }))
 #' <br/><br/>
 

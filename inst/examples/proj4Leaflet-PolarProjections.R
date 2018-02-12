@@ -26,10 +26,10 @@ extent <- 11000000 + 9036842.762 + 667
 origin = c(-extent, extent)
 maxResolution <- ((extent - -extent) / 256)
 defZoom <- 4
-bounds <- list(c(-extent, extent),c(extent, -extent))
+bounds <- list(c(-extent, extent), c(extent, -extent))
 minZoom <- 0
 maxZoom <- 18
-resolutions <- purrr::map_dbl(minZoom:maxZoom,function(x) maxResolution/(2^x))
+resolutions <- purrr::map_dbl(minZoom:maxZoom, function(x) maxResolution/(2^x))
 
 # 6 Projection EPSG Codes
 projections <- c('3571', '3572', '3573', '3574', '3575', '3576')
@@ -47,7 +47,7 @@ proj4defs <- list(
 crses <- purrr::map(projections, function(code) {
   leafletCRS(
     crsClass = 'L.Proj.CRS',
-    code = sprintf("EPSG:%s",code),
+    code = sprintf("EPSG:%s", code),
     proj4def = proj4defs[[code]],
     origin = origin,
     resolutions = resolutions,

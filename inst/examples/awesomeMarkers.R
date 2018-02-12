@@ -48,7 +48,7 @@ Providence,41.8236,-71.4222,177994
 "))
 
 library(dplyr)
-cities <- cities %>% mutate(PopCat=ifelse(Pop <500000,'blue','red'))
+cities <- cities %>% mutate(PopCat = ifelse(Pop < 500000, 'blue', 'red'))
 
 
 leaflet(cities) %>% addTiles() %>%
@@ -57,7 +57,7 @@ leaflet(cities) %>% addTiles() %>%
              icon = icon.ion)
 
 icon.pop <- awesomeIcons(icon = 'users',
-                           markerColor = ifelse(cities$Pop <500000,'blue','red'),
+                           markerColor = ifelse(cities$Pop < 500000, 'blue', 'red'),
                            library = 'fa',
                            iconColor = 'black')
 
@@ -75,5 +75,5 @@ popIcons <- awesomeIconList(
 leaflet(cities) %>% addProviderTiles(providers$CartoDB.DarkMatter) %>%
   addAwesomeMarkers(lng = ~Long, lat = ~Lat,
              label = ~City,
-             labelOptions = rep(labelOptions(noHide = T),nrow(cities)),
+             labelOptions = rep(labelOptions(noHide = T), nrow(cities)),
              icon = ~popIcons[PopCat] )

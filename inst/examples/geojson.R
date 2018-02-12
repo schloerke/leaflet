@@ -22,7 +22,7 @@ icons <- awesomeIconList(
 leaflet() %>% addTiles() %>%
   setView(10.758276373601069, 59.92448055859924, 13) %>%
   addAwesomeMarkers(data=spdf,
-             label=~stringr::str_c(amenity,': ', name),
+             label=~stringr::str_c(amenity, ': ', name),
              icon = ~icons[amenity],
              options = markerOptions(riseOnHover = TRUE, opacity = 0.75),
              group = 'pubs')
@@ -34,7 +34,7 @@ url <- 'http://www.partners-popdev.org/wp-content/themes/original-child/vendor/G
 
 mhSPDF <- geojsonio::geojson_read(url, what="sp")
 
-cols <- colorFactor(topo.colors(nrow(mhSPDF)),mhSPDF$NAME_2)
+cols <- colorFactor(topo.colors(nrow(mhSPDF)), mhSPDF$NAME_2)
 
 leaflet() %>% addProviderTiles(providers$Stamen.TonerLite) %>%
   setView(75.7139, 19.7515, 6) %>%

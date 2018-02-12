@@ -31,7 +31,7 @@ leaflet(
   addTiles(
     urlTemplate = 'http://api.geosition.com/tile/osm-bright-3006/{z}/{x}/{y}.png',
     attribution = 'Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, Imagery &copy; 2013 <a href="http://www.kartena.se/">Kartena</a>',
-    options = tileOptions(minZoom=0,maxZoom=14)) %>%
+    options = tileOptions(minZoom=0, maxZoom=14)) %>%
   setView(11.965, 57.704, 13)
 
 #' <br/><br/>
@@ -59,7 +59,7 @@ leaflet(options =
 #' <br/><br/>L.CRS.Simple example.
 #' For now the image is specified via onRender and native JS call
 #' because we haven't coded the L.ImageLayer part yet.
-bounds <- c(-26.5,-25, 1021.5,1023)
+bounds <- c(-26.5, -25, 1021.5, 1023)
 leaflet(options= leafletOptions(
   crs=leafletCRS(crsClass='L.CRS.Simple'),
   minZoom= -5,
@@ -89,7 +89,7 @@ pal <- colorNumeric(
   domain = spdf@data$pop_2014
 )
 
-bounds <- c(-125, 24 ,-75, 45)
+bounds <- c(-125, 24, -75, 45)
 
 leaflet(
   options=
@@ -99,14 +99,14 @@ leaflet(
         crsClass="L.Proj.CRS",
         code='EPSG:2163',
         proj4def='+proj=laea +lat_0=45 +lon_0=-100 +x_0=0 +y_0=0 +a=6370997 +b=6370997 +units=m +no_defs',
-        resolutions = c(65536, 32768, 16384, 8192, 4096, 2048,1024, 512, 256, 128)
+        resolutions = c(65536, 32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128)
       ))) %>%
   fitBounds(bounds[1], bounds[2], bounds[3], bounds[4]) %>%
   setMaxBounds(bounds[1], bounds[2], bounds[3], bounds[4]) %>%
   addPolygons(data=spdf, weight = 1, color = "#000000",
               fillColor=~pal(pop_2014),
               fillOpacity=0.7,
-              label=~stringr::str_c(name,' ', pop_2014),
+              label=~stringr::str_c(name, ' ', pop_2014),
               labelOptions= labelOptions(direction = 'auto'),
               highlightOptions = highlightOptions(
                 color='#00ff00', opacity = 1, weight = 2, fillOpacity = 1,

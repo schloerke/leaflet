@@ -1,7 +1,7 @@
 library(leaflet)
 
 shinyUI(fluidPage(
-  
+
   # Add a little CSS to make the map background pure white
   tags$head(tags$style("
     #showcase-code-position-toggle, #showcase-sxs-code { display: none; }
@@ -19,14 +19,14 @@ shinyUI(fluidPage(
       maxBounds = list(list(17, -180), list(59, 180))
     )
   ),
-  
+
   absolutePanel(
     right = 30, top = 10, width = 200, class = "floater",
-    
+
     h4("US Population Density"),
     uiOutput("stateInfo")
   ),
-  
+
   absolutePanel(
     right = 30, top = 280, style = "", class = "floater",
     tags$table(
