@@ -37,9 +37,9 @@ addScaleBar <- function(map,
 #' on \code{moveend}.
 #' @export
 scaleBarOptions <- function(maxWidth = 100, metric = TRUE, imperial = TRUE,
-	updateWhenIdle = TRUE) {
-	list(maxWidth=maxWidth, metric=metric, imperial=imperial,
-		updateWhenIdle=updateWhenIdle)
+  updateWhenIdle = TRUE) {
+    list(maxWidth = maxWidth, metric = metric, imperial = imperial,
+      updateWhenIdle = updateWhenIdle)
 }
 
 #' @rdname addScaleBar

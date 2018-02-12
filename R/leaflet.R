@@ -219,4 +219,3 @@ leafletCRS <- function(
       class = 'leaflet_crs'
   )
 }
-

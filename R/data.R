@@ -56,4 +56,3 @@ NULL
 #' "The Geography of Beer, sustainability in the food industry"
 #' @format \code{sp::SpatialPointsDataFrame}
 NULL
-

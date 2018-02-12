@@ -70,7 +70,7 @@ leaflet(options= leafletOptions(
   function(el, t) {
     var myMap = this;
     var bounds = myMap.getBounds();
-  	var image = new L.ImageOverlay(
+    var image = new L.ImageOverlay(
                       'http://leafletjs.com/examples/crs-simple/uqm_map_full.png',
                       bounds);
     image.addTo(myMap);

@@ -31,4 +31,3 @@ removeControl <- function(map, layerId) {
 clearControls <- function(map) {
     invokeMethod(map, NULL, 'clearControls')
 }
-

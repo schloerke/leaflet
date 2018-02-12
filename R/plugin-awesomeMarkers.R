@@ -296,4 +296,3 @@ addAwesomeMarkers <- function(
     getCrosstalkOptions(data)
   ) %>% expandLimits(pts$lat, pts$lng)
 }
-
