@@ -6,10 +6,9 @@ linters: with_defaults(
     line_length_linter = NULL, # 168
     commas_linter = NULL, # 164
     spaces_left_parentheses_linter = NULL, # 41
-    trailing_whitespace_linter = NULL, # 40
     commented_code_linter = NULL, # 30
-    closed_curly_linter = NULL, # 25
+    closed_curly_linter = NULL,
     object_usage_linter = NULL, # 18
-    open_curly_linter = NULL, # 15
+    open_curly_linter = NULL,
     NULL
   )
