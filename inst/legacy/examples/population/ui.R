@@ -21,7 +21,8 @@ shinyUI(fluidPage(
         HTML(paste(
           'The map is centered at <span id="lat"></span>, <span id="lng"></span>',
           'with a zoom level of <span id="zoom"></span>.<br/>',
-          'Top <span id="shownCities"></span> out of <span id="totalCities"></span> visible cities are displayed.'
+          'Top <span id="shownCities"></span> out of <span id="totalCities"></span> visible ',
+          'cities are displayed.'
         ))
       )
     )

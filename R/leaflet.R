@@ -180,7 +180,7 @@ leafletCRS <- function(
     warning("projectedBounds argument is deprecated and has no effect, use the bounds argument.")
   }
   if(!missing(tileSize)) {
-    warning("tileSize argument is deprecated and has no effect, use the tileOptions() function to pass the tileSize argument to the addTiles() function")
+    warning("tileSize argument is deprecated and has no effect, use the tileOptions() function to pass the tileSize argument to the addTiles() function") # nolint
   }
   if(crsClass == 'L.Proj.CRS.TMS') {
     warning("L.Proj.CRS.TMS is deprecated and will behave exactly like L.Proj.CRS.")

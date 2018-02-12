@@ -113,7 +113,11 @@ leafletMap <- function(
   htmltools::tagList(
     htmltools::singleton(
       htmltools::tags$head(
-        htmltools::tags$link(rel = "stylesheet", type = "text/css", href = "leaflet-legacy/leaflet.css"),
+        htmltools::tags$link(
+          rel = "stylesheet",
+          type = "text/css",
+          href = "leaflet-legacy/leaflet.css"
+        ),
         htmltools::tags$script(src = "leaflet-legacy/leaflet.js"),
         htmltools::tags$script(src = "leaflet-legacy/binding.js")
       )

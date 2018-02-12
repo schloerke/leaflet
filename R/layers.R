@@ -170,7 +170,7 @@ addTiles <- function(
 }
 
 epsg4326 <- "+proj=longlat +datum=WGS84 +no_defs"
-epsg3857 <- "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs"
+epsg3857 <- "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs" # nolint
 
 #' Add a raster image as a layer
 #'
@@ -251,7 +251,12 @@ addRasterImage <- function(
   } else {
     projected <- x
   }
-  bounds <- raster::extent(raster::projectExtent(raster::projectExtent(x, crs = sp::CRS(epsg3857)), crs = sp::CRS(epsg4326)))
+  bounds <- raster::extent(
+    raster::projectExtent(
+      raster::projectExtent(x, crs = sp::CRS(epsg3857)),
+      crs = sp::CRS(epsg4326)
+    )
+  )
 
   if (!is.function(colors)) {
     colors <- colorNumeric(colors, domain = NULL, na.color = "#00000000", alpha = TRUE)
@@ -261,7 +266,10 @@ addRasterImage <- function(
   dim(tileData) <- c(4, ncol(projected), nrow(projected))
   pngData <- png::writePNG(tileData)
   if (length(pngData) > maxBytes) {
-    stop("Raster image too large; ", length(pngData), " bytes is greater than maximum ", maxBytes, " bytes")
+    stop(
+      "Raster image too large; ", length(pngData), " bytes is greater than maximum ",
+      maxBytes, " bytes"
+    )
   }
   encoded <- base64enc::base64encode(pngData)
   uri <- paste0("data:image/png;base64,", encoded)
@@ -272,7 +280,10 @@ addRasterImage <- function(
   )
 
   invokeMethod(map, data, "addRasterImage", uri, latlng, opacity, attribution, layerId, group) %>%
-    expandLimits(c(raster::ymin(bounds), raster::ymax(bounds)), c(raster::xmin(bounds), raster::xmax(bounds)))
+    expandLimits(
+      c(raster::ymin(bounds), raster::ymax(bounds)),
+      c(raster::xmin(bounds), raster::xmax(bounds))
+    )
 }
 
 #' @rdname addRasterImage
@@ -642,7 +653,11 @@ markerClusterDependencies <- function() {
       'leaflet-markercluster',
       '1.0.5',
       system.file('htmlwidgets/plugins/Leaflet.markercluster', package = 'leaflet'),
-      script = c('leaflet.markercluster.js', 'leaflet.markercluster.freezable.js', 'leaflet.markercluster.layersupport.js'),
+      script = c(
+        'leaflet.markercluster.js',
+        'leaflet.markercluster.freezable.js',
+        'leaflet.markercluster.layersupport.js'
+      ),
       stylesheet = c('MarkerCluster.css', 'MarkerCluster.Default.css')
     )
   )
@@ -1113,7 +1128,10 @@ addRectangles <- function(
   df1 <- validateCoords(lng1, lat1, "addRectangles")
   df2 <- validateCoords(lng2, lat2, "addRectangles")
 
-  invokeMethod(map, data, 'addRectangles', df1$lat, df1$lng, df2$lat, df2$lng, layerId, group, options, popup, popupOptions, safeLabel(label, data), labelOptions, highlightOptions) %>%
+  invokeMethod(
+    map, data, 'addRectangles', df1$lat, df1$lng, df2$lat, df2$lng, layerId, group,
+    options, popup, popupOptions, safeLabel(label, data), labelOptions, highlightOptions
+  ) %>%
     expandLimits(c(lat1, lat2), c(lng1, lng2))
 }
 
@@ -1145,7 +1163,10 @@ addPolygons <- function(
     dashArray = dashArray, smoothFactor = smoothFactor, noClip = noClip
   )))
   pgons = derivePolygons(data, lng, lat, missing(lng), missing(lat), "addPolygons")
-  invokeMethod(map, data, 'addPolygons', pgons, layerId, group, options, popup, popupOptions, safeLabel(label, data), labelOptions, highlightOptions) %>%
+  invokeMethod(
+    map, data, 'addPolygons', pgons, layerId, group,
+    options, popup, popupOptions, safeLabel(label, data), labelOptions, highlightOptions
+  ) %>%
     expandLimitsBbox(pgons)
 }
 

@@ -84,7 +84,7 @@ awesomeIconList <- function(...) {
   )
   cls = unlist(lapply(res, inherits, 'leaflet_awesome_icon'))
   if (any(!cls))
-    stop('Arguments passed to awesomeIconList() must be icon objects returned from makeAwesomeIcon()')
+    stop('Arguments passed to awesomeIconList() must be icon objects returned from makeAwesomeIcon()') # nolint
   res
 }
 

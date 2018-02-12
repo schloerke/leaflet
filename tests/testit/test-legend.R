@@ -29,7 +29,7 @@ getLastLegend = function(map) {
 m1 = addLegend(map, pal = pal1, values = ~x1)
 l1 = getLastLegend(m1)
 assert(
-  l1$colors == "#67001F , #67001F 0%, #E68367 25%, #F7F7F7 50%, #6EACD1 75%, #053061 100%, #053061 ",
+  l1$colors == "#67001F , #67001F 0%, #E68367 25%, #F7F7F7 50%, #6EACD1 75%, #053061 100%, #053061 ", # nolint
   l1$labels == c('1.0', '1.5', '2.0', '2.5', '3.0'),
   l1$type == 'numeric'
 )

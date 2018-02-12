@@ -152,7 +152,11 @@ leafletProxy <- function(mapId, session = shiny::getDefaultReactiveDomain(),
   # This won't be necessary in future versions of Shiny, as session$ns (and
   # other forms of ns()) will be smart enough to only namespace un-namespaced
   # IDs.
-  if (!is.null(session$ns) && nzchar(session$ns(NULL)) && substring(mapId, 1, nchar(session$ns(""))) != session$ns("")) {
+  if (
+    !is.null(session$ns) &&
+    nzchar(session$ns(NULL)) &&
+    substring(mapId, 1, nchar(session$ns(""))) != session$ns("")
+  ) {
     mapId <- session$ns(mapId)
   }
 
@@ -291,12 +295,12 @@ validateCoords <- function(lng, lat, funcName, warn = TRUE,
   if (mode == "point") {
     incomplete <- is.na(lat) | is.na(lng)
     if(any(incomplete)) {
-      warning(sprintf("Data contains %s rows with either missing or invalid lat/lon values and will be ignored", sum(incomplete)))
+      warning(sprintf("Data contains %s rows with either missing or invalid lat/lon values and will be ignored", sum(incomplete))) # nolint
     }
   } else if (mode == "polygon") {
     incomplete <- is.na(lat) != is.na(lng)
     if(any(incomplete)) {
-      warning(sprintf("Data contains %s rows with either missing or invalid lat/lon values and will be ignored", sum(incomplete)))
+      warning(sprintf("Data contains %s rows with either missing or invalid lat/lon values and will be ignored", sum(incomplete))) # nolint
     }
     lng <- lng[!incomplete]
     lat <- lat[!incomplete]

@@ -2,11 +2,42 @@ linters: with_defaults(
     camel_case_linter = NULL,
     single_quotes_linter = NULL, # 541
     assignment_linter = NULL, # 266
-    line_length_linter = NULL, # 168
+    line_length_linter(100),
     spaces_left_parentheses_linter = NULL, # 41
     commented_code_linter = NULL, # 30
     closed_curly_linter = NULL,
     object_usage_linter = NULL, # 18
     open_curly_linter = NULL,
     NULL
+  )
+exclusions: list(
+    "inst/examples/awesomeMarkers.R",
+    "inst/examples/easyButton.R",
+    "inst/examples/emptyData.R",
+    "inst/examples/geojson.R",
+    "inst/examples/graticule.R",
+    "inst/examples/groupOptions.R",
+    "inst/examples/highlight-polygons.R",
+    "inst/examples/Historic_sites_and_monuments_point.kml",
+    "inst/examples/icons.R",
+    "inst/examples/labels.R",
+    "inst/examples/leaflet-measure.R",
+    "inst/examples/leaflet.R",
+    "inst/examples/legend.R",
+    "inst/examples/marker-clustering.R",
+    "inst/examples/minimap.R",
+    "inst/examples/normalize.R",
+    "inst/examples/polygon-colors.R",
+    "inst/examples/proj4Leaflet-PolarProjections.R",
+    "inst/examples/proj4Leaflet-TMS.R",
+    "inst/examples/proj4Leaflet.R",
+    "inst/examples/providers-digitalglobe.R",
+    "inst/examples/providers-shiny.R",
+    "inst/examples/providers.R",
+    "inst/examples/Seamask_medium_res_polygon.kml",
+    "inst/examples/shiny-markercluster.R",
+    "inst/examples/shiny.R",
+    "inst/examples/simpleGraticule.R",
+    "inst/examples/terminator.R",
+    "inst/examples/test.json"
   )

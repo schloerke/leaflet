@@ -5,7 +5,8 @@ shinyUI(fluidPage(
   # Add a little CSS to make the map background pure white
   tags$head(tags$style("
     #showcase-code-position-toggle, #showcase-sxs-code { display: none; }
-    .floater { background-color: white; padding: 8px; opacity: 0.7; border-radius: 6px; box-shadow: 0 0 15px rgba(0,0,0,0.2); }
+    .floater { background-color: white; padding: 8px; opacity: 0.7;
+      border-radius: 6px; box-shadow: 0 0 15px rgba(0,0,0,0.2); }
   ")),
 
   leafletMap(
