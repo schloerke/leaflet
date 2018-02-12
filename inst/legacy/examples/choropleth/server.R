@@ -9,14 +9,14 @@ shinyServer(function(input, output, session) {
 
   # Draw the given states, with or without highlighting
   drawStates <- function(stateNames, highlight = FALSE) {
-    states <- map("state", stateNames, plot=FALSE, fill=TRUE)
+    states <- map("state", stateNames, plot = FALSE, fill = TRUE)
     map$addPolygon(I(states$y), I(states$x), I(states$names),
       I(lapply(states$names, function(x) {
         x <- strsplit(x, ":")[[1]][1]
         list(fillColor = colors[[x]])
       })),
-      I(list(fill=TRUE, fillOpacity=0.7,
-        stroke=TRUE, opacity=1, color="white", weight=ifelse(highlight, 4, 1)
+      I(list(fill = TRUE, fillOpacity = 0.7,
+        stroke = TRUE, opacity = 1, color = "white", weight = ifelse(highlight, 4, 1)
       ))
     )
   }

@@ -19,7 +19,7 @@
 #'   be consistent; if consistency is needed, you must provide a non-\code{NULL}
 #'   domain.
 #' @param na.color The color to return for \code{NA} values. Note that
-#'   \code{na.color=NA} is valid.
+#'   \code{na.color = NA} is valid.
 #' @param alpha Whether alpha channels should be respected or ignored. If
 #'   \code{TRUE} then colors without explicit alpha information will be treated
 #'   as fully opaque.
@@ -31,7 +31,7 @@
 #' @return A function that takes a single parameter \code{x}; when called with a
 #'   vector of numbers (except for \code{colorFactor}, which expects
 #'   factors/characters), #RRGGBB color strings are returned (unless
-#'   \code{alpha=TRUE} in which case #RRGGBBAA may also be possible).
+#'   \code{alpha = TRUE} in which case #RRGGBBAA may also be possible).
 #'
 #' @export
 colorNumeric <- function(palette, domain, na.color = "#808080", alpha = FALSE, reverse = FALSE) {
@@ -250,7 +250,7 @@ colorFactor <- function(palette, domain, levels = NULL, ordered = FALSE,
 #'   \item{A character vector of RGB or named colors. Examples: \code{palette()}, \code{c("#000000", "#0000FF", "#FFFFFF")}, \code{topo.colors(10)}}
 #'   \item{The name of an RColorBrewer palette, e.g. \code{"BuPu"} or \code{"Greens"}.}
 #'   \item{The full name of a viridis palette: \code{"viridis"}, \code{"magma"}, \code{"inferno"}, or \code{"plasma"}.}
-#'   \item{A function that receives a single value between 0 and 1 and returns a color. Examples: \code{colorRamp(c("#000000", "#FFFFFF"), interpolate="spline")}.}
+#'   \item{A function that receives a single value between 0 and 1 and returns a color. Examples: \code{colorRamp(c("#000000", "#FFFFFF"), interpolate = "spline")}.}
 #' }
 #' @examples
 #' pal = colorBin("Greens", domain = 0:100)
@@ -267,7 +267,7 @@ colorFactor <- function(palette, domain, levels = NULL, ordered = FALSE,
 #' # Categorical data; by default, the values being colored span the gamut...
 #' previewColors(colorFactor("RdYlBu", domain = NULL), LETTERS[1:5])
 #' # ...unless the data is a factor, without droplevels...
-#' previewColors(colorFactor("RdYlBu", domain = NULL), factor(LETTERS[1:5], levels=LETTERS))
+#' previewColors(colorFactor("RdYlBu", domain = NULL), factor(LETTERS[1:5], levels = LETTERS))
 #' # ...or the domain is stated explicitly.
 #' previewColors(colorFactor("RdYlBu", levels = LETTERS), LETTERS[1:5])
 #' }
@@ -277,7 +277,7 @@ NULL
 
 
 safePaletteFunc <- function(pal, na.color, alpha, nlevels = NULL) {
-  toPaletteFunc(pal, alpha=alpha, nlevels = nlevels) %>%
+  toPaletteFunc(pal, alpha = alpha, nlevels = nlevels) %>%
     filterRGB() %>%
     filterZeroLength() %>%
     filterNA(na.color) %>%

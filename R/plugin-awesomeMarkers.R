@@ -72,8 +72,8 @@ addIonIcon <- function(map) {
 #' @examples
 #'
 #' iconSet = awesomeIconList(
-#'   home = makeAwesomeIcon(icon='Home', library='fa'),
-#'   flag = makeAwesomeIcon(icon='Flag', library='fa')
+#'   home = makeAwesomeIcon(icon = 'Home', library = 'fa'),
+#'   flag = makeAwesomeIcon(icon = 'Flag', library = 'fa')
 #' )
 #'
 #' iconSet[c('home', 'flag')]

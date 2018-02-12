@@ -18,7 +18,7 @@ data = data.frame(Longitude = lng, Latitude = lat, X = 1:20)
 dataWeird = data.frame(LngCol = lng, LatCol = lat, X = 1:20)
 # SpatialDataFrame with weird col names turned to coords
 datacoord = dataWeird
-coordinates(datacoord) = ~LngCol+LatCol # nolint
+coordinates(datacoord) = ~LngCol + LatCol # nolint
 
 # Make some circles, without formulas
 leaflet() %>% addCircles(lng, lat)
@@ -59,9 +59,9 @@ plng = c(rawpolys$lng[[1]], NA, rawpolys$lng[[2]], NA, rawpolys$lng[[3]])
 plat = c(rawpolys$lat[[1]], NA, rawpolys$lat[[2]], NA, rawpolys$lat[[3]])
 pdata = data.frame(Latitude = I(plat), Longitude = I(plng))
 pgons = list(
-  Polygons(list(Polygon(cbind(rawpolys$lng[[1]], rawpolys$lat[[1]]))), ID="A"),
-  Polygons(list(Polygon(cbind(rawpolys$lng[[2]], rawpolys$lat[[2]]))), ID="B"),
-  Polygons(list(Polygon(cbind(rawpolys$lng[[3]], rawpolys$lat[[3]]))), ID="C")
+  Polygons(list(Polygon(cbind(rawpolys$lng[[1]], rawpolys$lat[[1]]))), ID = "A"),
+  Polygons(list(Polygon(cbind(rawpolys$lng[[2]], rawpolys$lat[[2]]))), ID = "B"),
+  Polygons(list(Polygon(cbind(rawpolys$lng[[3]], rawpolys$lat[[3]]))), ID = "C")
 )
 spgons = SpatialPolygons(pgons)
 spgonsdf = SpatialPolygonsDataFrame(spgons, data.frame(Category = as.factor(1:3)), FALSE)

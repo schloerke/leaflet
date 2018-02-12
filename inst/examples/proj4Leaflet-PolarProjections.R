@@ -29,7 +29,7 @@ defZoom <- 4
 bounds <- list(c(-extent, extent), c(extent, -extent))
 minZoom <- 0
 maxZoom <- 18
-resolutions <- purrr::map_dbl(minZoom:maxZoom, function(x) maxResolution/(2^x))
+resolutions <- purrr::map_dbl(minZoom:maxZoom, function(x) maxResolution / (2 ^ x))
 
 # 6 Projection EPSG Codes
 projections <- c('3571', '3572', '3573', '3574', '3575', '3576')
@@ -67,8 +67,8 @@ tileURLtemplates <- purrr::map(projections, function(code) {
 # So we create 6 maps.
 polarmaps <- purrr::map2(crses, tileURLtemplates,
     function(crs, tileURLTemplate) {
-      leaflet(options= leafletOptions(
-        crs=crs, minZoom = minZoom, maxZoom = maxZoom)) %>%
+      leaflet(options = leafletOptions(
+        crs = crs, minZoom = minZoom, maxZoom = maxZoom)) %>%
         setView(0, 90, defZoom) %>%
         addTiles(urlTemplate = tileURLTemplate,
           attribution = "Map © ArcticConnect. Data © OpenStreetMap contributors",
@@ -103,8 +103,8 @@ resolutions <- c(8192, 4096, 2048, 1024, 512, 256)
 zoom <- 0
 maxZoom <- 5
 
-border <- geojsonio::geojson_read(system.file('examples/Seamask_medium_res_polygon.kml', package = 'leaflet'), what='sp')
-points <-  geojsonio::geojson_read(system.file('examples/Historic_sites_and_monuments_point.kml', package='leaflet'), what='sp')
+border <- geojsonio::geojson_read(system.file('examples/Seamask_medium_res_polygon.kml', package = 'leaflet'), what = 'sp')
+points <-  geojsonio::geojson_read(system.file('examples/Historic_sites_and_monuments_point.kml', package = 'leaflet'), what = 'sp')
 
 crsAntartica <-  leafletCRS(
   crsClass = 'L.Proj.CRS',
@@ -117,16 +117,16 @@ crsAntartica <-  leafletCRS(
 
 antarticaTilesURL <- "//map1{s}.vis.earthdata.nasa.gov/wmts-antarctic/MODIS_Aqua_CorrectedReflectance_TrueColor/default/2014-12-01/EPSG3031_250m/{z}/{y}/{x}.jpg"
 
-leaflet(options= leafletOptions(
-  crs=crsAntartica, minZoom = zoom, maxZoom=maxZoom, worldCopyJump = FALSE)) %>%
+leaflet(options = leafletOptions(
+  crs = crsAntartica, minZoom = zoom, maxZoom = maxZoom, worldCopyJump = FALSE)) %>%
   setView(0, -90, 0) %>%
-  addPolygons(data=border, color = '#ff0000', weight = 2, fill = FALSE) %>%
-  addCircleMarkers(data=points, label=~Name) %>%
+  addPolygons(data = border, color = '#ff0000', weight = 2, fill = FALSE) %>%
+  addCircleMarkers(data = points, label = ~Name) %>%
   addTiles(urlTemplate = antarticaTilesURL,
            layerId = "antartica_tiles",
            attribution = "<a href='https://earthdata.nasa.gov/gibs'> NASA EOSDIS GIBS</a>&nbsp;&nbsp;&nbsp; <a href='https://github.com/nasa-gibs/web-examples/blob/release/leaflet/js/antarctic-epsg3031.js'> View Source </a>",
            options = tileOptions(
-             tileSize =512,
+             tileSize = 512,
              subdomains = "abc",
              noWrap = TRUE,
              continuousWorld = TRUE,

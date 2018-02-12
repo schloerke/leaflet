@@ -1,38 +1,38 @@
 library(leaflet)
 
-icon.glyphicon <- makeAwesomeIcon(icon= 'flag', markerColor = 'blue',
+icon.glyphicon <- makeAwesomeIcon(icon = 'flag', markerColor = 'blue',
                                   iconColor = 'black', library = 'glyphicon',
                                   squareMarker =  TRUE)
-icon.fa <- makeAwesomeIcon(icon = 'flag', markerColor = 'red', library='fa',
+icon.fa <- makeAwesomeIcon(icon = 'flag', markerColor = 'red', library = 'fa',
                            iconColor = 'black')
 icon.ion <- makeAwesomeIcon(icon = 'home', markerColor = 'green',
-                            library='ion')
+                            library = 'ion')
 
 
 # Marker + Label
 leaflet() %>% addTiles() %>%
   addAwesomeMarkers(
-    lng=-118.456554, lat=34.078039,
-    label='This is a label',
+    lng = -118.456554, lat = 34.078039,
+    label = 'This is a label',
     icon = icon.glyphicon)
 
 leaflet() %>% addTiles() %>%
   addAwesomeMarkers(
-    lng=-118.456554, lat=34.078039,
-    label='This is a label',
+    lng = -118.456554, lat = 34.078039,
+    label = 'This is a label',
     icon = icon.fa)
 
 leaflet() %>% addTiles() %>%
   addAwesomeMarkers(
-    lng=-118.456554, lat=34.078039,
-    label='This is a label',
+    lng = -118.456554, lat = 34.078039,
+    label = 'This is a label',
     icon = icon.ion)
 
 # Marker + Static Label using custom label options
 leaflet() %>% addTiles() %>%
   addAwesomeMarkers(
-    lng=-118.456554, lat=34.078039,
-    label='This is a static label',
+    lng = -118.456554, lat = 34.078039,
+    label = 'This is a static label',
     labelOptions = labelOptions(noHide = T),
     icon = icon.fa)
 
@@ -69,8 +69,8 @@ leaflet(cities) %>% addTiles() %>%
 # Make a list of icons (from two different icon libraries).
 # We'll index into it based on name.
 popIcons <- awesomeIconList(
-  blue = makeAwesomeIcon(icon='user', library='glyphicon', markerColor = 'blue'),
-  red = makeAwesomeIcon(icon='users', library='fa', markerColor = 'red'))
+  blue = makeAwesomeIcon(icon = 'user', library = 'glyphicon', markerColor = 'blue'),
+  red = makeAwesomeIcon(icon = 'users', library = 'fa', markerColor = 'red'))
 
 leaflet(cities) %>% addProviderTiles(providers$CartoDB.DarkMatter) %>%
   addAwesomeMarkers(lng = ~Long, lat = ~Lat,

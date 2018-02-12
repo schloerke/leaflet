@@ -60,12 +60,12 @@ assert(
 
   identical(
     c("#000000", "#FFFFFF"),
-    colorBin(bw, NULL, bins=c(1, 1.5, 2))(c(1, 2))
+    colorBin(bw, NULL, bins = c(1, 1.5, 2))(c(1, 2))
   ),
 
   identical(
     c("#000000", "#FFFFFF"),
-    colorBin(bw, c(1, 2), bins=c(1, 1.5, 2))(c(1, 2))
+    colorBin(bw, c(1, 2), bins = c(1, 1.5, 2))(c(1, 2))
   ),
 
   TRUE

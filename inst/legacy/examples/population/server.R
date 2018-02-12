@@ -5,7 +5,7 @@ library(maps)
 data(uspop2000)
 
 # From a future version of Shiny
-bindEvent <- function(eventExpr, callback, env=parent.frame(), quoted=FALSE) {
+bindEvent <- function(eventExpr, callback, env = parent.frame(), quoted = FALSE) {
   eventFunc <- exprToFunction(eventExpr, env, quoted)
 
   initialized <- FALSE
@@ -27,7 +27,7 @@ shinyServer(function(input, output, session) {
   # Retrieve the name of the column that contains the selected year's
   # population
   popCol <- reactive({
-    paste('Pop', input$year, sep='')
+    paste('Pop', input$year, sep = '')
   })
 
   popSeries <- function(city) {
@@ -63,7 +63,7 @@ shinyServer(function(input, output, session) {
   # of the map
   topCitiesInBounds <- reactive({
     cities <- citiesInBounds()
-    cities <- head(cities[order(cities[[popCol()]], decreasing=TRUE), ],
+    cities <- head(cities[order(cities[[popCol()]], decreasing = TRUE), ],
                    as.numeric(input$maxCities))
   })
 
@@ -88,12 +88,12 @@ shinyServer(function(input, output, session) {
     map$addCircle(
       cities$Lat,
       cities$Long,
-      sqrt(cities[[popCol()]]) * radiusFactor / max(5, input$map_zoom)^2,
+      sqrt(cities[[popCol()]]) * radiusFactor / max(5, input$map_zoom) ^ 2,
       row.names(cities),
       list(
-        weight=1.2,
-        fill=TRUE,
-        color='#4A9'
+        weight = 1.2,
+        fill = TRUE,
+        color = '#4A9'
       )
     )
   })
@@ -113,7 +113,7 @@ shinyServer(function(input, output, session) {
         tags$br(),
         sprintf("Estimated population, %s:", input$year),
         tags$br(),
-        prettyNum(city[[popCol()]], big.mark=',')
+        prettyNum(city[[popCol()]], big.mark = ',')
       ))
       map$showPopup(event$lat, event$lng, content, event$id)
     })
@@ -148,7 +148,7 @@ shinyServer(function(input, output, session) {
             selectedCity$City,
             ', ',
             selectedCity$State,
-            sep='')
+            sep = '')
     }
   })
 

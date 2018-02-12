@@ -22,7 +22,7 @@ esri <- providers %>%
   purrr::keep(~ grepl('^Esri', .))
 
 esri %>%
-  purrr::walk(function(x) m <<- m %>% addProviderTiles(x, group=x))
+  purrr::walk(function(x) m <<- m %>% addProviderTiles(x, group = x))
 
 m %>%
   addLayersControl(
@@ -58,14 +58,14 @@ geoJson <- geojsonio::as.json(v8$get('pubsGeoJSON'))
 spdf <- geojsonio::geojson_sp(geoJson)
 
 icons <- awesomeIconList(
-  pub = makeAwesomeIcon(icon='glass', library='fa', markerColor = 'red'),
-  restaurant = makeAwesomeIcon(icon='cutlery', library='fa', markerColor = 'blue')
+  pub = makeAwesomeIcon(icon = 'glass', library = 'fa', markerColor = 'red'),
+  restaurant = makeAwesomeIcon(icon = 'cutlery', library = 'fa', markerColor = 'blue')
 )
 
 leaflet() %>% addTiles() %>%
   setView(10.758276373601069, 59.92448055859924, 13) %>%
-  addAwesomeMarkers(data=spdf,
-             label=~stringr::str_c(amenity, ': ', name),
+  addAwesomeMarkers(data = spdf,
+             label = ~stringr::str_c(amenity, ': ', name),
              icon = ~icons[amenity],
              options = markerOptions(riseOnHover = TRUE, opacity = 0.75),
              group = 'pubs') %>%
@@ -90,11 +90,11 @@ leaflet() %>% addTiles() %>%
 #' Minimap w/ changable layers and circle markers.
 m <- leaflet()
 esri %>%
-  purrr::walk(function(x) m <<- m %>% addProviderTiles(x, group=x))
+  purrr::walk(function(x) m <<- m %>% addProviderTiles(x, group = x))
 m %>%
   setView(10.758276373601069, 59.92448055859924, 13) %>%
-  addAwesomeMarkers(data=spdf,
-             label=~stringr::str_c(amenity, ': ', name),
+  addAwesomeMarkers(data = spdf,
+             label = ~stringr::str_c(amenity, ': ', name),
              icon = ~icons[amenity],
              options = markerOptions(riseOnHover = TRUE, opacity = 0.75),
              group = 'pubs') %>%

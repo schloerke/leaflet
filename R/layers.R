@@ -195,7 +195,7 @@ epsg3857 <- "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y
 #' versions. If you are repeatedly adding a particular raster to your Leaflet
 #' maps, you can perform the projection ahead of time using
 #' \code{projectRasterForLeaflet()}, and call \code{addRasterImage} with
-#' \code{project=FALSE}.
+#' \code{project = FALSE}.
 #'
 #' @param map a map widget object
 #' @param x a \code{RasterLayer} object--see \code{\link[raster]{raster}}
@@ -223,9 +223,9 @@ epsg3857 <- "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y
 #' @examples
 #' library(raster)
 #'
-#' r <- raster(xmn=-2.8, xmx=-2.79, ymn=54.04, ymx=54.05, nrows=30, ncols=30)
+#' r <- raster(xmn = -2.8, xmx = -2.79, ymn = 54.04, ymx = 54.05, nrows = 30, ncols = 30)
 #' values(r) <- matrix(1:900, nrow(r), ncol(r), byrow = TRUE)
-#' crs(r) <- CRS("+init=epsg:4326")
+#' crs(r) <- CRS("+init = epsg:4326")
 #'
 #' leaflet() %>% addTiles() %>%
 #'   addRasterImage(r, colors = "Spectral", opacity = 0.8)
@@ -240,7 +240,7 @@ addRasterImage <- function(
   group = NULL,
   project = TRUE,
   method = c("bilinear", "ngb"),
-  maxBytes = 4*1024*1024,
+  maxBytes = 4 * 1024 * 1024,
   data = getMapData(map)
 ) {
   stopifnot(inherits(x, "RasterLayer"))
@@ -624,7 +624,7 @@ addLabelOnlyMarkers <- function(
     map = map, lng = lng, lat = lat, layerId = layerId,
     group = group,
     icon = makeIcon(
-      iconUrl = system.file('htmlwidgets/lib/leaflet/images/1px.png', package='leaflet'),
+      iconUrl = system.file('htmlwidgets/lib/leaflet/images/1px.png', package = 'leaflet'),
       iconWidth = 1, iconHeight = 1),
       label = label,
       labelOptions = labelOptions,
@@ -655,8 +655,8 @@ markerClusterDependencies <- function() {
 #' @examples
 #'
 #' iconSet = iconList(
-#'   red = makeIcon("leaf-red.png", iconWidth=32, iconHeight=32),
-#'   green = makeIcon("leaf-green.png", iconWidth=32, iconHeight=32)
+#'   red = makeIcon("leaf-red.png", iconWidth = 32, iconHeight = 32),
+#'   green = makeIcon("leaf-green.png", iconWidth = 32, iconHeight = 32)
 #' )
 #'
 #' iconSet[c('red', 'green', 'red')]
@@ -852,7 +852,7 @@ markerOptions <- function(
 markerClusterOptions <- function(
   showCoverageOnHover = TRUE, zoomToBoundsOnClick = TRUE,
   spiderfyOnMaxZoom = TRUE, removeOutsideVisibleBounds = TRUE,
-  spiderLegPolylineOptions = list(weight= 1.5, color= '#222', opacity= 0.5),
+  spiderLegPolylineOptions = list(weight = 1.5, color = '#222', opacity = 0.5),
   freezeAtZoom = FALSE,
   ...
 ) {

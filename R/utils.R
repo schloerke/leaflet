@@ -267,7 +267,7 @@ makeListFun <- function(list) {
 #'   if \code{"polygon"} then \code{NA} values are expected to be used as
 #'   polygon delimiters
 #' @export
-validateCoords <- function(lng, lat, funcName, warn=TRUE,
+validateCoords <- function(lng, lat, funcName, warn = TRUE,
   mode = c("point", "polygon")) {
 
   mode <- match.arg(mode)

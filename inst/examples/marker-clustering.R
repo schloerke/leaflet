@@ -10,19 +10,19 @@ l <- leaflet() %>% addTiles()
 #' <br/><br/>
 #' Default Clustering
 l %>%
-  addMarkers(data=quakes, clusterOptions = markerClusterOptions())
+  addMarkers(data = quakes, clusterOptions = markerClusterOptions())
 
 #' <br/><br/>
 #' Clustering Frozen at level 5
 l %>%
-  addMarkers(data=quakes, clusterOptions = markerClusterOptions(freezeAtZoom=6))
+  addMarkers(data = quakes, clusterOptions = markerClusterOptions(freezeAtZoom = 6))
 
 #' <br/><br/>
 #' Clustering of Label Only Clusters
 l %>%
-  addLabelOnlyMarkers(data=quakes,
-                      lng=~long, lat=~lat,
-                      label=~as.character(mag),
+  addLabelOnlyMarkers(data = quakes,
+                      lng = ~long, lat = ~lat,
+                      label = ~as.character(mag),
                       clusterOptions = markerClusterOptions(),
                       labelOptions = labelOptions(noHide = T,
                                                   direction = 'auto'))
@@ -34,10 +34,10 @@ l2 <- l
 names(quakes.df) %>%
   purrr::walk( function(df) {
     l2 <<- l2 %>%
-      addMarkers(data=quakes.df[[df]],
-                          lng=~long, lat=~lat,
-                          label=~as.character(mag),
-                          popup=~as.character(mag),
+      addMarkers(data = quakes.df[[df]],
+                          lng = ~long, lat = ~lat,
+                          label = ~as.character(mag),
+                          popup = ~as.character(mag),
                           group = df,
                           clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = F),
                           labelOptions = labelOptions(noHide = T,

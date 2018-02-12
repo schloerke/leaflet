@@ -8,7 +8,7 @@ proj4def.4326 <- "+proj=longlat +datum=WGS84 +no_defs"
 proj4def.28992 <- '+proj=sterea +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.9999079 +x_0=155000 +y_0=463000 +ellps=bessel +units=m +towgs84=565.2369,50.0087,465.658,-0.406857330322398,0.350732676542563,-1.8703473836068,4.0812 +no_defs'
 
 data(meuse)
-coordinates(meuse) <- ~x+y
+coordinates(meuse) <- ~x + y
 proj4string(meuse) <- proj4def.28992
 meuse.4326 <- spTransform(meuse, proj4def.4326)
 
@@ -16,7 +16,7 @@ meuse.4326 <- spTransform(meuse, proj4def.4326)
 #' ### Map + Markers in the Default Spherical Mercator
 #' Just to verify that everything is correct in 4326
 leaflet() %>% addTiles() %>%
-  addCircleMarkers(data=meuse.4326)
+  addCircleMarkers(data = meuse.4326)
 
 
 #' ### Now in EPSG:28992
@@ -36,7 +36,7 @@ crs.epsg28992 <- leafletCRS(crsClass = 'L.Proj.CRS', code = 'EPSG:28992',
 leaflet(options = leafletOptions(
   crs = crs.epsg28992, minZoom = 0, maxZoom = 13)) %>%
   addTiles('http://geodata.nationaalgeoregister.nl/tms/1.0.0/brtachtergrondkaart/{z}/{x}/{y}.png',
-           options = tileOptions(tms=TRUE,
+           options = tileOptions(tms = TRUE,
                                  errorTileUrl = 'http://www.webmapper.net/theme/img/missing-tile.png'),
            attribution = 'Map data: <a href="http://www.kadaster.nl">Kadaster</a>') %>%
   addCircleMarkers(data = meuse.4326, popup = popupTable(meuse))
@@ -48,7 +48,7 @@ leaflet(options = leafletOptions(
 #' Just to verify that everything is correct in 4326
 leaflet() %>%
   addTiles() %>%
-  addMarkers(126.615810, 35.925937, label='Gunsan Airpoirt',
+  addMarkers(126.615810, 35.925937, label = 'Gunsan Airpoirt',
              labelOptions = labelOptions(noHide = TRUE))
 
 #' ### Now with EPSG 5181 Projection
@@ -80,5 +80,5 @@ map %>%
     continuousWorld = TRUE,
     tms = TRUE
   )) %>%
-  addMarkers(126.615810, 35.925937, label='Gunsan Airpoirt',
+  addMarkers(126.615810, 35.925937, label = 'Gunsan Airpoirt',
              labelOptions = labelOptions(noHide = TRUE))

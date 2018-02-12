@@ -7,7 +7,7 @@ Map <- R6Class(
   portable = FALSE,
   public = list(
     initialize = function() {
-      private$env <- new.env(parent=emptyenv())
+      private$env <- new.env(parent = emptyenv())
     },
     get = function(key) {
       env[[key]]
@@ -35,21 +35,21 @@ Map <- R6Class(
         return(NULL)
 
       result <- env[[key]]
-      rm(list=key, envir=env, inherits=FALSE)
+      rm(list = key, envir = env, inherits = FALSE)
       result
     },
     containsKey = function(key) {
-      exists(key, envir=env, inherits=FALSE)
+      exists(key, envir = env, inherits = FALSE)
     },
     keys = function() {
       # Sadly, this is much faster than ls(), because it doesn't sort the keys.
-      names(as.list(env, all.names=TRUE))
+      names(as.list(env, all.names = TRUE))
     },
     values = function() {
-      as.list(env, all.names=TRUE)
+      as.list(env, all.names = TRUE)
     },
     clear = function() {
-      private$env <- new.env(parent=emptyenv())
+      private$env <- new.env(parent = emptyenv())
       invisible(NULL)
     },
     size = function() {
@@ -84,7 +84,7 @@ Callbacks <- R6Class(
         .callbacks$remove(id)
       })
     },
-    invoke = function(..., onError=NULL) {
+    invoke = function(..., onError = NULL) {
       # Ensure that calls are invoked in the order that they were registered
       keys <- as.character(sort(as.integer(.callbacks$keys()), decreasing = TRUE))
       callbacks <- .callbacks$mget(keys)
@@ -142,7 +142,7 @@ local <- leaflet()
 mockSession <- MockSession$new()
 remote <- leafletProxy("map", mockSession)
 
-remote %>% addPolygons(lng=1:5, lat=1:5)
+remote %>% addPolygons(lng = 1:5, lat = 1:5)
 
 # Check that remote functions only get invoked after flush, by default
 assert(
@@ -161,7 +161,7 @@ mockSession$.calls <- list()
 
 # Create another remote map which doesn't wait until flush
 remote2 <- leafletProxy("map", mockSession,
-  data.frame(lat=10:1, lng=10:1),
+  data.frame(lat = 10:1, lng = 10:1),
   deferUntilFlush = FALSE
 )
 # Check that addMarkers() takes effect immediately, no flush required
@@ -178,7 +178,7 @@ assert(identical(mockSession$.calls, expected2))
 mockSession$.calls <- list()
 
 remote3 <- leafletProxy("map", mockSession,
-  data.frame(lat=10:1, lng=10:1)
+  data.frame(lat = 10:1, lng = 10:1)
 )
 remote3 %>% clearShapes() %>% addMarkers()
 assert(identical(mockSession$.calls, list()))

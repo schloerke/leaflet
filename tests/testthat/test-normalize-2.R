@@ -76,8 +76,8 @@ expect_maps_equal(p4, p6)
 
 ### lines -----------------------------------------------------------------
 create_square <- function(width = 2, lng = 0, lat = 0, hole = FALSE, type = Polygon) {
-  lngs <- c(lng-width/2, lng+width/2, lng+width/2, lng-width/2)
-  lats <- c(lat+width/2, lat+width/2, lat-width/2, lat-width/2)
+  lngs <- c(lng - width / 2, lng + width / 2, lng + width / 2, lng - width / 2)
+  lats <- c(lat + width / 2, lat + width / 2, lat - width / 2, lat - width / 2)
 
   if (hole) {
     lngs <- rev(lngs)

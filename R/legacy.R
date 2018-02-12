@@ -95,7 +95,7 @@ leafletMap <- function(
   outputId, width, height,
   initialTileLayer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   initialTileLayerAttribution = NULL,
-  options=NULL) {
+  options = NULL) {
 
   if (missing(initialTileLayer) && is.null(initialTileLayerAttribution))
     initialTileLayerAttribution = paste(
@@ -103,7 +103,7 @@ leafletMap <- function(
       'contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
     )
 
-  shiny::addResourcePath("leaflet-legacy", system.file("legacy/www", package="leaflet"))
+  shiny::addResourcePath("leaflet-legacy", system.file("legacy/www", package = "leaflet"))
 
   if (is.numeric(width))
     width <- sprintf("%dpx", width)
@@ -113,9 +113,9 @@ leafletMap <- function(
   htmltools::tagList(
     htmltools::singleton(
       htmltools::tags$head(
-        htmltools::tags$link(rel="stylesheet", type="text/css", href="leaflet-legacy/leaflet.css"),
-        htmltools::tags$script(src="leaflet-legacy/leaflet.js"),
-        htmltools::tags$script(src="leaflet-legacy/binding.js")
+        htmltools::tags$link(rel = "stylesheet", type = "text/css", href = "leaflet-legacy/leaflet.css"),
+        htmltools::tags$script(src = "leaflet-legacy/leaflet.js"),
+        htmltools::tags$script(src = "leaflet-legacy/binding.js")
       )
     ),
     htmltools::tags$div(
@@ -125,7 +125,7 @@ leafletMap <- function(
       `data-initial-tile-layer-attrib` = initialTileLayerAttribution,
 
       htmltools::tags$script(
-        type="application/json", class="leaflet-options",
+        type = "application/json", class = "leaflet-options",
         ifelse(is.null(options), "{}", RJSONIO::toJSON(options))
       )
     )

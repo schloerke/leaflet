@@ -122,9 +122,9 @@ pointData.matrix <- function(obj) {
   data.frame(lng = obj[, 1], lat = obj[, 2])
 }
 
-# A simple polygon is a list(lng=numeric(), lat=numeric()). A compound polygon
+# A simple polygon is a list(lng = numeric(), lat = numeric()). A compound polygon
 # is a list of simple polygons. This function returns a list of compound
-# polygons, so list(list(list(lng=..., lat=...))). There is also a bbox
+# polygons, so list(list(list(lng = ..., lat = ...))). There is also a bbox
 # attribute attached that gives the bounding box, same as sp::bbox().
 polygonData <- function(obj) {
   UseMethod("polygonData")

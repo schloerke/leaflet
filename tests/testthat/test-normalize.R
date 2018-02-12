@@ -4,7 +4,7 @@ context("normalize")
 
 test_that("can get point data from SpatialPointsDataFrame", {
   data("meuse", package = "sp", envir = environment())
-  sp::coordinates(meuse) <- ~x+y
+  sp::coordinates(meuse) <- ~x + y
 
   points <- derivePoints(meuse)
   expect_named(points, c("lng", "lat"))
@@ -15,7 +15,7 @@ test_that("derivePolygons works with sf classes", {
   skip_if_not_installed("sf")
 
   data("meuse", package = "sp", envir = environment())
-  sp::coordinates(meuse) <- ~x+y
+  sp::coordinates(meuse) <- ~x + y
   meuse <- sf::st_as_sf(meuse)
 
   points <- derivePoints(meuse)

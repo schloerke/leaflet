@@ -13,7 +13,7 @@ shinyUI(fluidPage(
     # By default OpenStreetMap tiles are used; we want nothing in this case
     #initialTileLayer = NULL,
     #initialTileLayerAttribution = NULL,
-    options=list(
+    options = list(
       center = c(40, -98.85),
       zoom = 4,
       maxBounds = list(list(17, -180), list(59, 180))
@@ -37,7 +37,7 @@ shinyUI(fluidPage(
           )),
           tags$td(from, "-", to)
         )
-      }, densityRanges$from, densityRanges$to, palette, SIMPLIFY=FALSE)
+      }, densityRanges$from, densityRanges$to, palette, SIMPLIFY = FALSE)
     )
   )
 ))

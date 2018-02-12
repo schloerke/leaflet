@@ -72,7 +72,7 @@ shinyServer(function(input, output, session) {
 
   map <- createLeafletMap(session, "map")
 
-  session$onFlushed(once=TRUE, function() {
+  session$onFlushed(once = TRUE, function() {
     map$addGeoJSON(seattle_geojson)
   })
 

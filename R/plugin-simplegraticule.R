@@ -38,7 +38,7 @@ addSimpleGraticule <- function(
   hidden = FALSE,
   zoomIntervals = list(),
   layerId = NULL,
-  group=NULL
+  group = NULL
 ) {
   map$dependencies <- c(map$dependencies, leafletSimpleGraticuleDependencies())
   invokeMethod(

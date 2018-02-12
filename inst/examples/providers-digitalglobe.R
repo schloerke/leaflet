@@ -1,8 +1,8 @@
 library(leaflet)
-mapbox.tileIds <- list('Recent Imagery with Streets'='digitalglobe.nal0mpda',
-                       'Recent Imagery'='digitalglobe.nal0g75k',
-                       'Street Map'='digitalglobe.nako6329',
-                       'Terrain Map'='digitalglobe.nako1fhg')
+mapbox.tileIds <- list('Recent Imagery with Streets' = 'digitalglobe.nal0mpda',
+                       'Recent Imagery' = 'digitalglobe.nal0g75k',
+                       'Street Map' = 'digitalglobe.nako6329',
+                       'Terrain Map' = 'digitalglobe.nako1fhg')
 
 m <- leaflet() %>% setView(0, 0, 1)
 

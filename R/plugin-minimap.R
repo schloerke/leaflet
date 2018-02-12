@@ -77,10 +77,10 @@ addMiniMap <- function(
   toggleDisplay = FALSE,
   autoToggleDisplay = FALSE,
   minimized = FALSE,
-  aimingRectOptions = list(color= '#ff7800', weight= 1, clickable= FALSE),
-  shadowRectOptions = list(color= '#000000', weight= 1, clickable= FALSE,
-                           opacity= 0, fillOpacity= 0),
-  strings = list(hideText= 'Hide MiniMap', showText= 'Show MiniMap'),
+  aimingRectOptions = list(color = '#ff7800', weight = 1, clickable = FALSE),
+  shadowRectOptions = list(color = '#000000', weight = 1, clickable = FALSE,
+                           opacity = 0, fillOpacity = 0),
+  strings = list(hideText = 'Hide MiniMap', showText = 'Show MiniMap'),
   tiles = NULL,
   mapOptions = list()
 ) {
