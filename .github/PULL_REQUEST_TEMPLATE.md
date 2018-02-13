@@ -1,4 +1,4 @@
-## How to make changes
+## Pull Request
 
 Before you submit a pull request, please do the following:
 
