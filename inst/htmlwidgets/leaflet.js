@@ -785,7 +785,7 @@ var LayerManager = function () {
       var hasId = typeof layerId === "string";
       var grouped = typeof group === "string";
 
-      var stamp = _leaflet2.default.Util.stamp(layer);
+      var stamp = _leaflet2.default.Util.stamp(layer) + "";
 
       // This will be the default layer group to add the layer to.
       // We may overwrite this let before using it (i.e. if a group is assigned).
@@ -1120,7 +1120,7 @@ var LayerManager = function () {
       if (layerInfo.ctGroup) {
         var ctGroup = this._byCrosstalkGroup[layerInfo.ctGroup];
         var layersForKey = ctGroup[layerInfo.ctKey];
-        var idx = layersForKey ? layersForKey.indexOf(+stamp) : -1;
+        var idx = layersForKey ? layersForKey.indexOf(stamp) : -1;
         if (idx >= 0) {
           if (layersForKey.length === 1) {
             delete ctGroup[layerInfo.ctKey];
