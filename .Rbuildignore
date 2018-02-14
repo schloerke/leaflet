@@ -23,7 +23,7 @@
 ^inst/htmlwidgets/plugins/Leaflet.markercluster/leaflet.markercluster.freezable-src.js$
 ^inst/htmlwidgets/plugins/Leaflet.markercluster/leaflet.markercluster.layersupport-src.js$
 ^inst/htmlwidgets/plugins/Leaflet.markercluster/leaflet.markercluster-src.js$
-^inst/htmlwidgets/lib/leaflet-measure/leaflet-measure.js$
+^inst/htmlwidgets/plugins/leaflet-measure/leaflet-measure.js$
 ^revdep/
 ^\.lintr$
 ^\.github/
