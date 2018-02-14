@@ -34,5 +34,6 @@ Brief description of the solution
 ```
 
 PR task list:
-- [ ] Updated NEWS
-- [ ] Added tests (if appropriate)
+- [ ] Update NEWS
+- [ ] Add tests (if appropriate)
+- [ ] Update documentation with `devtools::document()`
