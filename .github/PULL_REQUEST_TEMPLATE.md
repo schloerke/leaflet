@@ -34,5 +34,5 @@ Brief description of the solution
 ```
 
 PR task list:
-[ ] Updated NEWS
-[ ] Added tests (if appropriate)
+- [ ] Updated NEWS
+- [ ] Added tests (if appropriate)
