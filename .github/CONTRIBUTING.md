@@ -15,7 +15,7 @@ We generally do not merge pull requests that update included web libraries (such
 
 Before you submit a pull request, please do the following:
 
-* Add an entry to NEWS.md concisely describing what you changed.
+* Add an entry to NEWS concisely describing what you changed.
 
 * If appropriate, add unit tests in the tests/ directory.
 
