@@ -32,3 +32,7 @@ Brief description of the solution
 ```r
 # insert reprex here
 ```
+
+PR task list:
+[ ] Updated NEWS
+[ ] Added tests (if appropriate)
