@@ -127,7 +127,7 @@ hideGroup <- function(map, group) {
 #'
 #' @export
 groupOptions <- function(map, group, zoomLevels = NULL) {
-  if(is.null(zoomLevels)) # Default to TRUE if nothing specified.
+ if (is.null(zoomLevels)) # Default to TRUE if nothing specified.
     zoomLevels <- TRUE
   invokeMethod(map, getMapData(map), "setGroupOptions", group,
     list(zoomLevels = zoomLevels)
@@ -417,7 +417,7 @@ addWMSTiles <- function(
   options = WMSTileOptions(), attribution = NULL, layers = "",
   data = getMapData(map)
 ) {
-  if(identical(layers, "")) {
+ if (identical(layers, "")) {
     stop("layers is a required argument with comma-separated list of WMS layers to show")
   }
   options$attribution <- attribution
@@ -532,7 +532,7 @@ safeLabel <- function(label, data) {
   }
 
   label <- evalFormula(label, data)
-  if(
+ if (
     ! (
       inherits(label, "html") ||
       sum(sapply(label, function(x) {!inherits(x, "html")})) == 0 # nolint
@@ -564,9 +564,9 @@ labelOptions <- function(
   ...
 ) {
   # use old (Leaflet 0.7.x) clickable if provided
-  if(!is.null(clickable) && interactive != clickable) interactive <- clickable
+ if (!is.null(clickable) && interactive != clickable) interactive <- clickable
   # use old noHide if provided
-  if(!is.null(noHide) && permanent != noHide) permanent <- noHide
+ if (!is.null(noHide) && permanent != noHide) permanent <- noHide
 
   filterNULL(list(
     interactive = interactive, permanent = permanent, direction = direction,
@@ -869,7 +869,7 @@ markerOptions <- function(
   ...
 ) {
   # use old (Leaflet 0.7.x) clickable if provided
-  if(!is.null(clickable) && interactive != clickable) interactive <- clickable
+ if (!is.null(clickable) && interactive != clickable) interactive <- clickable
 
   filterNULL(list(
     interactive = interactive, draggable = draggable, keyboard = keyboard,
@@ -1011,7 +1011,7 @@ pathOptions <- function(
   ...
 ) {
   # use old (Leaflet 0.7.x) clickable if provided
-  if(!is.null(clickable) && interactive != clickable) interactive <- clickable
+ if (!is.null(clickable) && interactive != clickable) interactive <- clickable
   filterNULL(list(
     lineCap = lineCap, lineJoin = lineJoin, interactive = interactive,
     pointerEvents = pointerEvents, className = className, ...

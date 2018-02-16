@@ -32,7 +32,7 @@ leaflet <- function(data = NULL, width = NULL, height = NULL,
                    elementId = NULL) {
 
   # Validate the CRS if specified
-  if(!is.null(options[["crs"]]) &&
+ if (!is.null(options[["crs"]]) &&
      !inherits(options[["crs"]], "leaflet_crs")) {
     stop("CRS in mapOptions should be a return value of leafletCRS() function")
   }
@@ -176,28 +176,28 @@ leafletCRS <- function(
 ) {
 
   # Deprecated since Leaflet JS 1.x
-  if(!missing(projectedBounds)) {
+ if (!missing(projectedBounds)) {
     warning("projectedBounds argument is deprecated and has no effect, use the bounds argument.")
   }
-  if(!missing(tileSize)) {
+ if (!missing(tileSize)) {
     warning("tileSize argument is deprecated and has no effect, use the tileOptions() function to pass the tileSize argument to the addTiles() function") # nolint
   }
-  if(crsClass == "L.Proj.CRS.TMS") {
+ if (crsClass == "L.Proj.CRS.TMS") {
     warning("L.Proj.CRS.TMS is deprecated and will behave exactly like L.Proj.CRS.")
   }
 
-  if(!crsClass %in% crsClasses) {
+ if (!crsClass %in% crsClasses) {
     stop(sprintf("crsClass argument must be one of %s",
                  paste0(crsClasses, collapse = ", ")))
   }
 
 
 
-  if(crsClass %in% c("L.Proj.CRS", "L.Proj.CRS.TMS") &&
+ if (crsClass %in% c("L.Proj.CRS", "L.Proj.CRS.TMS") &&
     !is.null(scales) && !is.null(resolutions)) {
     stop(sprintf("Either specify scales or resolutions"))
   }
-  if(crsClass %in% c("L.Proj.CRS", "L.Proj.CRS.TMS") &&
+ if (crsClass %in% c("L.Proj.CRS", "L.Proj.CRS.TMS") &&
     is.null(scales) && is.null(resolutions)) {
     stop(sprintf("Specify either scales or resolutions, not both"))
   }

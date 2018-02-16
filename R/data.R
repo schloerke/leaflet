@@ -15,7 +15,7 @@
 #' p = (p - min(p))/(max(p) - min(p))
 #' plot(Lat ~ Long, data = uspop2000, cex = sqrt(p), asp = 1, col = rgb(1, 0, 0, .3))
 
-if(FALSE){
+if (FALSE) {
 uspop2000 <- NULL
 if (file.exists("inst/csv/uspop2000.csv")) {
   uspop2000 <- read.csv(
