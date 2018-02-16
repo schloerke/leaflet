@@ -27,7 +27,7 @@ addTopoJSON <- function(map, topojson, layerId = NULL, group = NULL,
   options = pathOptions()
 ) {
   map$dependencies <- c(map$dependencies, leafletOmnivoreDependencies())
-  options = c(options, list(
+  options <- c(options, list(
     stroke = stroke, color = color, weight = weight, opacity = opacity,
     fill = fill, fillColor = fillColor, fillOpacity = fillOpacity,
     dashArray = dashArray, smoothFactor = smoothFactor, noClip = noClip

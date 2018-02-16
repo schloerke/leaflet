@@ -35,24 +35,24 @@
 #'
 #' @export
 colorNumeric <- function(palette, domain, na.color = "#808080", alpha = FALSE, reverse = FALSE) {
-  rng = NULL
+  rng <- NULL
   if (length(domain) > 0) {
-    rng = range(domain, na.rm = TRUE)
+    rng <- range(domain, na.rm = TRUE)
     if (!all(is.finite(rng))) {
       stop("Wasn't able to determine range of domain")
     }
   }
 
-  pf = safePaletteFunc(palette, na.color, alpha)
+  pf <- safePaletteFunc(palette, na.color, alpha)
 
   withColorAttr("numeric", list(na.color = na.color), function(x) {
     if (length(x) == 0 || all(is.na(x))) {
       return(pf(x))
     }
 
-    if (is.null(rng)) rng = range(x, na.rm = TRUE)
+    if (is.null(rng)) rng <- range(x, na.rm = TRUE)
 
-    rescaled = scales::rescale(x, from = rng)
+    rescaled <- scales::rescale(x, from = rng)
     if (any(rescaled < 0 | rescaled > 1, na.rm = TRUE))
       warning("Some values were outside the color scale and will be treated as NA")
 
@@ -88,7 +88,7 @@ getBins <- function(domain, x, bins, pretty) {
   if (pretty) {
     base::pretty(domain %||% x, n = bins)
   } else {
-    rng = range(domain %||% x, na.rm = TRUE)
+    rng <- range(domain %||% x, na.rm = TRUE)
     seq(rng[1], rng[2], length.out = bins + 1)
   }
 }
@@ -111,22 +111,22 @@ colorBin <- function(palette, domain, bins = 7, pretty = TRUE,
   # domain usually needs to be explicitly provided (even if NULL) but not if
   # breaks are specified
   if (missing(domain) && length(bins) > 1) {
-    domain = NULL
+    domain <- NULL
   }
-  autobin = is.null(domain) && length(bins) == 1
+  autobin <- is.null(domain) && length(bins) == 1
   if (!is.null(domain))
-    bins = getBins(domain, NULL, bins, pretty)
-  numColors = if (length(bins) == 1) bins else length(bins) - 1
-  colorFunc = colorFactor(palette, domain = if (!autobin) 1:numColors,
+    bins <- getBins(domain, NULL, bins, pretty)
+  numColors <- if (length(bins) == 1) bins else length(bins) - 1
+  colorFunc <- colorFactor(palette, domain = if (!autobin) 1:numColors,
     na.color = na.color, alpha = alpha, reverse = reverse)
-  pf = safePaletteFunc(palette, na.color, alpha)
+  pf <- safePaletteFunc(palette, na.color, alpha)
 
   withColorAttr("bin", list(bins = bins, na.color = na.color), function(x) {
     if (length(x) == 0 || all(is.na(x))) {
       return(pf(x))
     }
-    binsToUse = getBins(domain, x, bins, pretty)
-    ints = cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = FALSE)
+    binsToUse <- getBins(domain, x, bins, pretty)
+    ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = FALSE)
     if (any(is.na(x) != is.na(ints)))
       warning("Some values were outside the color scale and will be treated as NA")
     colorFunc(ints)
@@ -146,7 +146,7 @@ colorQuantile <- function(palette, domain, n = 4,
   reverse = FALSE) {
 
   if (!is.null(domain)) {
-    bins = quantile(domain, probs, na.rm = TRUE, names = FALSE)
+    bins <- quantile(domain, probs, na.rm = TRUE, names = FALSE)
     return(withColorAttr(
       "quantile", list(probs = probs, na.color = na.color),
       colorBin(palette, domain = NULL, bins = bins, na.color = na.color,
@@ -157,12 +157,12 @@ colorQuantile <- function(palette, domain, n = 4,
   # I don't have a precise understanding of how quantiles are meant to map to colors.
   # If you say probs = seq(0, 1, 0.25), which has length 5, does that map to 4 colors
   # or 5? 4, right?
-  colorFunc = colorFactor(palette, domain = 1:(length(probs) - 1),
+  colorFunc <- colorFactor(palette, domain = 1:(length(probs) - 1),
     na.color = na.color, alpha = alpha, reverse = reverse)
 
   withColorAttr("quantile", list(probs = probs, na.color = na.color), function(x) {
-    binsToUse = quantile(x, probs, na.rm = TRUE, names = FALSE)
-    ints = cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = FALSE)
+    binsToUse <- quantile(x, probs, na.rm = TRUE, names = FALSE)
+    ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = FALSE)
     if (any(is.na(x) != is.na(ints)))
       warning("Some values were outside the color scale and will be treated as NA")
     colorFunc(ints)
@@ -211,14 +211,14 @@ colorFactor <- function(palette, domain, levels = NULL, ordered = FALSE,
   # domain usually needs to be explicitly provided (even if NULL) but not if
   # levels are specified
   if (missing(domain) && !is.null(levels)) {
-    domain = NULL
+    domain <- NULL
   }
 
   if (!is.null(levels) && anyDuplicated(levels)) {
     warning("Duplicate levels detected")
-    levels = unique(levels)
+    levels <- unique(levels)
   }
-  lvls = getLevels(domain, NULL, levels, ordered)
+  lvls <- getLevels(domain, NULL, levels, ordered)
 
   force(palette) # palette loses scope
   withColorAttr("factor", list(na.color = na.color), function(x) {
@@ -226,16 +226,16 @@ colorFactor <- function(palette, domain, levels = NULL, ordered = FALSE,
       return(rep.int(na.color, length(x)))
     }
 
-    lvls = getLevels(domain, x, lvls, ordered)
-    pf = safePaletteFunc(palette, na.color, alpha, nlevels = length(lvls) * ifelse(reverse, -1, 1))
+    lvls <- getLevels(domain, x, lvls, ordered)
+    pf <- safePaletteFunc(palette, na.color, alpha, nlevels = length(lvls) * ifelse(reverse, -1, 1))
 
-    origNa = is.na(x)
-    x = match(as.character(x), lvls)
+    origNa <- is.na(x)
+    x <- match(as.character(x), lvls)
     if (any(is.na(x) != origNa)) {
       warning("Some values were outside the color scale and will be treated as NA")
     }
 
-    scaled = scales::rescale(as.integer(x), from = c(1, length(lvls)))
+    scaled <- scales::rescale(as.integer(x), from = c(1, length(lvls)))
     if (any(scaled < 0 | scaled > 1, na.rm = TRUE)) {
       warning("Some values were outside the color scale and will be treated as NA")
     }
@@ -254,7 +254,7 @@ colorFactor <- function(palette, domain, levels = NULL, ordered = FALSE,
 #'   \item{A function that receives a single value between 0 and 1 and returns a color. Examples: \code{colorRamp(c("#000000", "#FFFFFF"), interpolate = "spline")}.}
 #' }
 #' @examples
-#' pal = colorBin("Greens", domain = 0:100)
+#' pal <- colorBin("Greens", domain = 0:100)
 #' pal(runif(10, 60, 100))
 #'
 #' \donttest{
@@ -354,8 +354,8 @@ toPaletteFunc.function <- function(pal, alpha, nlevels) {
 #' @return An HTML-based list of the colors and values
 #' @export
 previewColors <- function(pal, values) {
-  heading = htmltools::tags$code(deparse(substitute(pal)))
-  subheading = htmltools::tags$code(deparse(substitute(values)))
+  heading <- htmltools::tags$code(deparse(substitute(pal)))
+  subheading <- htmltools::tags$code(deparse(substitute(values)))
 
   htmltools::browsable(
     with(htmltools::tags, htmltools::tagList(
@@ -398,10 +398,10 @@ filterZeroLength <- function(f) {
 filterNA <- function(f, na.color) {
   force(f)
   function(x) {
-    results = character(length(x))
-    nas = is.na(x)
-    results[nas] = na.color
-    results[!nas] = f(x[!nas])
+    results <- character(length(x))
+    nas <- is.na(x)
+    results[nas] <- na.color
+    results[!nas] <- f(x[!nas])
     results
   }
 }
@@ -410,7 +410,7 @@ filterNA <- function(f, na.color) {
 filterRGB <- function(f) {
   force(f)
   function(x) {
-    results = f(x)
+    results <- f(x)
     if (is.character(results)) {
       results
     } else if (is.matrix(results)) {
@@ -424,7 +424,7 @@ filterRGB <- function(f) {
 filterRange <- function(f) {
   force(f)
   function(x) {
-    x[x < 0 | x > 1] = NA
+    x[x < 0 | x > 1] <- NA
     f(x)
   }
 }

@@ -19,10 +19,10 @@ createLeafletMap <- function(session, outputId) {
   # client side function args.
   send <- function(method, func, msg) {
 
-    msg = msg[names(formals(func))]
-    names(msg) = NULL
+    msg <- msg[names(formals(func))]
+    names(msg) <- NULL
 
-    opts = options(digits = 22)
+    opts <- options(digits = 22)
     on.exit(options(opts))
 
     session$sendCustomMessage("leaflet", list(
@@ -44,29 +44,29 @@ createLeafletMap <- function(session, outputId) {
   #     })
   stub <- function(p) {
     # The function name is the first element
-    name = as.character(p[[1]])
+    name <- as.character(p[[1]])
 
     # Get textual representation of the expression; change name to "function"
     # and add a NULL function body
-    txt = paste(deparse(p), collapse = "\n")
-    txt = sub(name, "function", txt, fixed = TRUE)
-    txt = paste0(txt, "NULL")
+    txt <- paste(deparse(p), collapse = "\n")
+    txt <- sub(name, "function", txt, fixed = TRUE)
+    txt <- paste0(txt, "NULL")
 
     # Create the function
-    func = eval(parse(text = txt))
+    func <- eval(parse(text = txt))
 
     # Replace the function body
-    body(func) = substituteDirect(
+    body(func) <- substituteDirect(
       quote(send(name, sys.function(), as.list(environment()))),
       list(name = name)
     )
-    environment(func) = environment(send)
+    environment(func) <- environment(send)
 
     # Return as list
     structure(list(func), names = name)
   }
 
-  obj = lapply(expression(
+  obj <- lapply(expression(
     setView(lat, lng, zoom, forceReset = FALSE),
     addMarker(lat, lng, layerId = NULL, options = list(), eachOptions = list()),
     addCircleMarker(lat, lng, radius, layerId = NULL, options = list(), eachOptions = list()),
@@ -98,7 +98,7 @@ leafletMap <- function(
   options = NULL) {
 
   if (missing(initialTileLayer) && is.null(initialTileLayerAttribution))
-    initialTileLayerAttribution = paste(
+    initialTileLayerAttribution <- paste(
       "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a>",
       "contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>"
     )

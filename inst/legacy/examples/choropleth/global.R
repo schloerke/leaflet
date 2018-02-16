@@ -1,4 +1,4 @@
-density = c(
+density <- c(
   "Alabama" = 94.65,
   "Arizona" = 57.05,
   "Arkansas" = 56.43,

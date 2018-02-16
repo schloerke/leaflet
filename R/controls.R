@@ -11,12 +11,12 @@ addControl <- function(
   layerId = NULL, className = "info legend", data = getMapData(map)
 ) {
 
-    position = match.arg(position)
+    position <- match.arg(position)
 
-    deps = htmltools::resolveDependencies(htmltools::findDependencies(html))
-    html = as.character(html)
+    deps <- htmltools::resolveDependencies(htmltools::findDependencies(html))
+    html <- as.character(html)
 
-    map$dependencies = c(map$dependencies, deps)
+    map$dependencies <- c(map$dependencies, deps)
     invokeMethod(map, data, "addControl", html, position, layerId, className)
 }
 

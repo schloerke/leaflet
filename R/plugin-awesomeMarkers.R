@@ -71,18 +71,18 @@ addIonIcon <- function(map) {
 #' @export
 #' @examples
 #'
-#' iconSet = awesomeIconList(
+#' iconSet <- awesomeIconList(
 #'   home = makeAwesomeIcon(icon = "Home", library = "fa"),
 #'   flag = makeAwesomeIcon(icon = "Flag", library = "fa")
 #' )
 #'
 #' iconSet[c("home", "flag")]
 awesomeIconList <- function(...) {
-  res = structure(
+  res <- structure(
     list(...),
     class = "leaflet_awesome_icon_set"
   )
-  cls = unlist(lapply(res, inherits, "leaflet_awesome_icon"))
+  cls <- unlist(lapply(res, inherits, "leaflet_awesome_icon"))
   if (any(!cls))
     stop("Arguments passed to awesomeIconList() must be icon objects returned from makeAwesomeIcon()") # nolint
   res
@@ -91,7 +91,7 @@ awesomeIconList <- function(...) {
 #' @export
 `[.leaflet_awesome_icon_set` <- function(x, i) {
   if (is.factor(i)) {
-    i = as.character(i)
+    i <- as.character(i)
   }
 
   if (!is.character(i) && !is.numeric(i) && !is.integer(i)) {
@@ -103,15 +103,15 @@ awesomeIconList <- function(...) {
 
 awesomeIconSetToAwesomeIcons <- function(x) {
   # c("icon", "library", ...)
-  cols = names(formals(makeAwesomeIcon))
+  cols <- names(formals(makeAwesomeIcon))
   # list(icon = "icon", library = "library", ...)
-  cols = structure(as.list(cols), names = cols)
+  cols <- structure(as.list(cols), names = cols)
 
   # Construct an equivalent output to awesomeIcons().
   filterNULL(lapply(cols, function(col) {
     # Pluck the `col` member off of each item in awesomeIconObjs and put them in an
     # unnamed list (or vector if possible).
-    colVals = unname(sapply(x, `[[`, col))
+    colVals <- unname(sapply(x, `[[`, col))
 
     # If this is the common case where there's lots of values but they're all
     # actually the same exact thing, then just return one value; this will be
@@ -145,7 +145,7 @@ makeAwesomeIcon <- function(
     verifyIconLibrary(library)
   }
 
-  icon = filterNULL(list(
+  icon <- filterNULL(list(
     icon = icon, library = library, markerColor = markerColor,
     iconColor = iconColor, spin = spin, extraClasses = extraClasses,
     squareMarker = squareMarker, iconRotate = iconRotate,
@@ -265,12 +265,12 @@ addAwesomeMarkers <- function(
   if (!is.null(icon)) {
     # If formulas are present, they must be evaluated first so we can pack the
     # resulting values
-    icon = evalFormula(list(icon), data)[[1]]
+    icon <- evalFormula(list(icon), data)[[1]]
 
     if (inherits(icon, "leaflet_awesome_icon_set")) {
-      icon = awesomeIconSetToAwesomeIcons(icon)
+      icon <- awesomeIconSetToAwesomeIcons(icon)
     }
-    icon = filterNULL(icon)
+    icon <- filterNULL(icon)
     verifyIconLibrary(icon$library)
     lapply(unique(icon$library), function(lib) {
       libFunc <- switch(lib,
@@ -281,14 +281,14 @@ addAwesomeMarkers <- function(
       )
       map <<- libFunc(map)
     })
-    icon$prefix = icon$library
-    icon$library = NULL
+    icon$prefix <- icon$library
+    icon$library <- NULL
   }
 
   if (!is.null(clusterOptions))
-    map$dependencies = c(map$dependencies, markerClusterDependencies())
+    map$dependencies <- c(map$dependencies, markerClusterDependencies())
 
-  pts = derivePoints(data, lng, lat, missing(lng), missing(lat), "addAwesomeMarkers")
+  pts <- derivePoints(data, lng, lat, missing(lng), missing(lat), "addAwesomeMarkers")
   invokeMethod(
     map, data, "addAwesomeMarkers", pts$lat, pts$lng, icon, layerId,
     group, options, popup, popupOptions,

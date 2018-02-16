@@ -1,22 +1,22 @@
 # !formatR
 library(leaflet)
-m = leaflet() %>% addTiles()
+m <- leaflet() %>% addTiles()
 m  # a map with the default OSM tile layer
 
 # set bounds
 m %>% fitBounds(0, 40, 10, 50)
 
 # move the center to Snedecor Hall
-m = m %>% setView(-93.65, 42.0285, zoom = 17)
+m <- m %>% setView(-93.65, 42.0285, zoom = 17)
 m
 
 # popup
 m %>% addPopups(-93.65, 42.0285, "Here is the <b>Department of Statistics</b>, ISU")
-rand_lng = function(n = 10) rnorm(n, -93.65, .01)
-rand_lat = function(n = 10) rnorm(n, 42.0285, .01)
+rand_lng <- function(n = 10) rnorm(n, -93.65, .01)
+rand_lat <- function(n = 10) rnorm(n, 42.0285, .01)
 
 # use automatic bounds derived from lng/lat data
-m = m %>% clearBounds()
+m <- m %>% clearBounds()
 
 # popup
 m %>% addPopups(rand_lng(), rand_lat(), "Random popups")
@@ -27,7 +27,7 @@ m %>% addMarkers(
   rand_lng(), rand_lat(), popup = paste("A random letter", sample(LETTERS, 10))
 )
 
-Rlogo = file.path(R.home("doc"), "html", "logo.jpg")
+Rlogo <- file.path(R.home("doc"), "html", "logo.jpg")
 m %>% addMarkers(
   174.7690922, -36.8523071, icon = list(
     iconUrl = Rlogo, iconSize = c(100, 76)
@@ -65,7 +65,7 @@ m %>% addPolylines(rand_lng(50), rand_lat(50))
 m %>% addPolygons(rand_lng(), rand_lat(), layerId = "foo")
 
 # geoJSON
-seattle_geojson = list(
+seattle_geojson <- list(
   type = "Feature",
   geometry = list(
     type = "MultiPolygon",
@@ -137,22 +137,22 @@ leaflet() %>% addTiles("http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.pn
 ) %>% setView(-122.36, 47.67, zoom = 10)
 
 # provide a data frame to leaflet()
-categories = LETTERS[1:10]
-df = data.frame(
+categories <- LETTERS[1:10]
+df <- data.frame(
   lat = rand_lat(100), lng = rand_lng(100), size = runif(100, 5, 20),
   category = factor(sample(categories, 100, replace = TRUE), levels = categories),
   value = rnorm(100)
 )
-m = leaflet(df) %>% addTiles()
+m <- leaflet(df) %>% addTiles()
 m %>% addCircleMarkers(~lng, ~lat, radius = ~size)
 m %>% addCircleMarkers(~lng, ~lat, radius = runif(100, 4, 10), color = c("red"))
 
 # Discrete colors using the "RdYlBu" colorbrewer palette, mapped to categories
-RdYlBu = colorFactor("RdYlBu", domain = categories)
+RdYlBu <- colorFactor("RdYlBu", domain = categories)
 m %>% addCircleMarkers(~lng, ~lat, radius = ~size,
   color = ~RdYlBu(category), fillOpacity = 0.5)
 
 # Continuous colors using the "Greens" colorbrewer palette, mapped to value
-greens = colorNumeric("Greens", domain = NULL)
+greens <- colorNumeric("Greens", domain = NULL)
 m %>% addCircleMarkers(~lng, ~lat, radius = ~size,
   color = ~greens(value), fillOpacity = 0.5)

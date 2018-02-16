@@ -1,6 +1,6 @@
 library(testit)
 
-res = evalFormula(structure(list(1, ~x, ~x + 1), class = "FOO"), data.frame(x = 2))
+res <- evalFormula(structure(list(1, ~x, ~x + 1), class = "FOO"), data.frame(x = 2))
 
 assert(
   "evalFormula() does not discard the class of a list",

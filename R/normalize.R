@@ -2,8 +2,8 @@
 # which columns represent latitude and longitude.
 guessLatLongCols <- function(names, stopOnFailure = TRUE) {
 
-  lats = names[grep("^(lat|latitude)$", names, ignore.case = TRUE)]
-  lngs = names[grep("^(lon|lng|long|longitude)$", names, ignore.case = TRUE)]
+  lats <- names[grep("^(lat|latitude)$", names, ignore.case = TRUE)]
+  lngs <- names[grep("^(lon|lng|long|longitude)$", names, ignore.case = TRUE)]
 
   if (length(lats) == 1 && length(lngs) == 1) {
     if (length(names) > 2) {
@@ -54,13 +54,13 @@ derivePoints <- function(data, lng = NULL, lat = NULL,
       stop("Point data not found; please provide ", funcName,
         " with data and/or lng/lat arguments")
     }
-    pts = pointData(data)
-    if (is.null(lng)) lng = pts$lng
-    if (is.null(lat)) lat = pts$lat
+    pts <- pointData(data)
+    if (is.null(lng)) lng <- pts$lng
+    if (is.null(lat)) lat <- pts$lat
   }
 
-  lng = resolveFormula(lng, data)
-  lat = resolveFormula(lat, data)
+  lng <- resolveFormula(lng, data)
+  lat <- resolveFormula(lat, data)
 
   validateCoords(lng, lat, funcName)
 }
@@ -89,8 +89,8 @@ derivePolygons <- function(data, lng = NULL, lat = NULL,
     }
     return(polygonData(data))
   }
-  lng = resolveFormula(lng, data)
-  lat = resolveFormula(lat, data)
+  lng <- resolveFormula(lng, data)
+  lat <- resolveFormula(lat, data)
 
   df <- validateCoords(lng, lat, funcName, mode = "polygon")
   polygonData(cbind(df$lng, df$lat))
@@ -109,7 +109,7 @@ pointData.default <- function(obj) {
 
 #' @export
 pointData.data.frame <- function(obj) {
-  cols = guessLatLongCols(names(obj))
+  cols <- guessLatLongCols(names(obj))
   data.frame(
     lng = obj[[cols$lng]],
     lat = obj[[cols$lat]]

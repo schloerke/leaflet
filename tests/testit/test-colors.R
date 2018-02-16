@@ -1,6 +1,6 @@
 library(testit)
 
-bw = c("black", "white")
+bw <- c("black", "white")
 
 # Do these cases make sense?
 assert(

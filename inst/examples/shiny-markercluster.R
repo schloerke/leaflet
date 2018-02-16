@@ -9,7 +9,7 @@ shinyApp(
     selectizeInput("remove1", "Remove markers", rownames(quakes), multiple = TRUE)
   ),
   server = function(input, output, session) {
-    output$map1 = renderLeaflet({
+    output$map1 <- renderLeaflet({
       leaflet() %>% addTiles() %>% setView(180, -24, 4)
     })
     observeEvent(input$add, {

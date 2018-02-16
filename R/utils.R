@@ -54,16 +54,16 @@ invokeMethod <- function(map, data, method, ...) {
     NULL
   }
 
-  args = evalFormula(list(...), data)
+  args <- evalFormula(list(...), data)
 
   dispatch(map,
     method,
     leaflet = {
-      x = map$x$calls
-      if (is.null(x)) x = list()
-      n = length(x)
-      x[[n + 1]] = list(method = method, args = args)
-      map$x$calls = x
+      x <- map$x$calls
+      if (is.null(x)) x <- list()
+      n <- length(x)
+      x[[n + 1]] <- list(method = method, args = args)
+      map$x$calls <- x
       map
     },
     leaflet_proxy = {
@@ -191,7 +191,7 @@ leafletProxy <- function(mapId, session = shiny::getDefaultReactiveDomain(),
 #
 # When Shiny >0.12.0 goes to CRAN, we should update our version
 # dependency and remove this entire mechanism.
-sessionFlushQueue = new.env(parent = emptyenv())
+sessionFlushQueue <- new.env(parent = emptyenv())
 
 invokeRemote <- function(map, method, args = list()) {
   if (!inherits(map, "leaflet_proxy"))
@@ -254,8 +254,8 @@ invokeRemote <- function(map, method, args = list()) {
 # A helper function to generate the body of function(x, y) list(x = x, y = y),
 # to save some typing efforts in writing tileOptions(), markerOptions(), ...
 makeListFun <- function(list) {
-  if (is.function(list)) list = formals(list)
-  nms = names(list)
+  if (is.function(list)) list <- formals(list)
+  nms <- names(list)
   cat(sprintf("list(%s)\n", paste(nms, nms, sep = " = ", collapse = ", ")))
 }
 

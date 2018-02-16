@@ -2,7 +2,7 @@ library(leaflet)
 
 # adapted from http://leafletjs.com/examples/custom-icons.html
 
-iconData = data.frame(
+iconData <- data.frame(
   lat = c(rnorm(10, 0), rnorm(10, 1), rnorm(10, 2)),
   lng = c(rnorm(10, 0), rnorm(10, 3), rnorm(10, 6)),
   group = rep(sort(c("green", "red", "orange")), each = 10),
@@ -22,31 +22,31 @@ leaflet() %>% addMarkers(
 
 
 # use point symbols from base R graphics as icons
-pchIcons = function(pch = 0:14, width = 30, height = 30, ...) {
-  n = length(pch)
-  files = character(n)
+pchIcons <- function(pch = 0:14, width = 30, height = 30, ...) {
+  n <- length(pch)
+  files <- character(n)
   # create a sequence of png images
   for (i in seq_len(n)) {
-    f = tempfile(fileext = ".png")
+    f <- tempfile(fileext = ".png")
     png(f, width = width, height = height, bg = "transparent")
     par(mar = c(0, 0, 0, 0))
     plot.new()
     points(.5, .5, pch = pch[i], cex = min(width, height) / 8, ...)
     dev.off()
-    files[i] = f
+    files[i] <- f
   }
   files
 }
 
-iconData = matrix(rnorm(500), ncol = 2)
-res = kmeans(iconData, 10)
-iconData = cbind(iconData, res$cluster)
-colnames(iconData) = c("lat", "lng", "group")
-iconData = as.data.frame(iconData)
+iconData <- matrix(rnorm(500), ncol = 2)
+res <- kmeans(iconData, 10)
+iconData <- cbind(iconData, res$cluster)
+colnames(iconData) <- c("lat", "lng", "group")
+iconData <- as.data.frame(iconData)
 
 # 10 random point shapes for the 10 clusters in iconData
-shapes = sample(0:14, 10)
-iconFiles = pchIcons(shapes, 40, 40, col = "steelblue", lwd = 2)
+shapes <- sample(0:14, 10)
+iconFiles <- pchIcons(shapes, 40, 40, col = "steelblue", lwd = 2)
 
 # note the data has 250 rows, and there are 10 icons in iconFiles; they are
 # connected by the `group` variable: the i-th row of iconData uses the

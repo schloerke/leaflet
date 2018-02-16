@@ -23,7 +23,7 @@ library(leaflet)
 #' - http://webmap.arcticconnect.org/usage.html
 #'
 extent <- 11000000 + 9036842.762 + 667
-origin = c(-extent, extent)
+origin <- c(-extent, extent)
 maxResolution <- ((extent - -extent) / 256)
 defZoom <- 4
 bounds <- list(c(-extent, extent), c(extent, -extent))
