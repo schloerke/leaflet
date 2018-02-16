@@ -132,13 +132,15 @@ shinyServer(function(input, output, session) {
   })
 
   output$data <- renderTable({
-    if (nrow(topCitiesInBounds()) == 0)
-      return(NULL)
+      if (nrow(topCitiesInBounds()) == 0)
+        return(NULL)
 
-    data.frame(
-      City = paste(topCitiesInBounds()$City, topCitiesInBounds()$State),
-      Population = topCitiesInBounds()[[popCol()]])
-  }, include.rownames = FALSE)
+      data.frame(
+        City = paste(topCitiesInBounds()$City, topCitiesInBounds()$State),
+        Population = topCitiesInBounds()[[popCol()]])
+    },
+    include.rownames = FALSE
+  )
 
   output$cityTimeSeriesLabel <- renderText({
     if (is.null(selectedCity)) {

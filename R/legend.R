@@ -185,11 +185,11 @@ labelFormat <- function(
       type,
       numeric = (function(cuts) {
         paste0(prefix, formatNum(cuts), suffix)
-      })(...),
+      })(...), # nolint
       bin = (function(cuts) {
         n <- length(cuts)
         paste0(prefix, formatNum(cuts[-n]), between, formatNum(cuts[-1]), suffix)
-      })(...),
+      })(...), # nolint
       quantile = (function(cuts, p) {
         n <- length(cuts)
         p <- paste0(round(p * 100), "%")
@@ -199,10 +199,10 @@ labelFormat <- function(
           "<span title=\"", cuts, "\">", prefix, p[-n], between, p[-1], suffix,
           "</span>"
         )
-      })(...),
+      })(...), # nolint
       factor = (function(cuts) {
         paste0(prefix, as.character(transform(cuts)), suffix)
-      })(...)
+      })(...) # nolint
     )
   }
 

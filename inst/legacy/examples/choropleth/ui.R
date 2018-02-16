@@ -31,14 +31,17 @@ shinyUI(fluidPage(
   absolutePanel(
     right = 30, top = 280, style = "", class = "floater",
     tags$table(
-      mapply(function(from, to, color) {
-        tags$tr(
-          tags$td(tags$div(
-            style = sprintf("width: 16px; height: 16px; background-color: %s;", color)
-          )),
-          tags$td(from, "-", to)
-        )
-      }, densityRanges$from, densityRanges$to, palette, SIMPLIFY = FALSE)
+      mapply(
+        function(from, to, color) {
+          tags$tr(
+            tags$td(tags$div(
+              style = sprintf("width: 16px; height: 16px; background-color: %s;", color)
+            )),
+            tags$td(from, "-", to)
+          )
+        },
+        densityRanges$from, densityRanges$to, palette, SIMPLIFY = FALSE
+      )
     )
   )
 ))

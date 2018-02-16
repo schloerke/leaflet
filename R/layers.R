@@ -532,8 +532,12 @@ safeLabel <- function(label, data) {
   }
 
   label <- evalFormula(label, data)
-  if(! (inherits(label, "html") ||
-                    sum(sapply(label, function(x){!inherits(x, "html")})) == 0)) {
+  if(
+    ! (
+      inherits(label, "html") ||
+      sum(sapply(label, function(x) {!inherits(x, "html")})) == 0 # nolint
+    )
+  ) {
     label <- htmltools::htmlEscape(label)
   }
   label
@@ -840,7 +844,7 @@ b64EncodePackedIcons <- function(packedIcons) {
     } else {
       icon
     }
-  }, USE.NAMES = FALSE)
+  }, USE.NAMES = FALSE) # nolint
   packedIcons
 }
 

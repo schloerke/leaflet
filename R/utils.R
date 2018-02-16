@@ -1,4 +1,4 @@
-# Given a local and/or remote operation and a map, execute one or the other
+u# Given a local and/or remote operation and a map, execute one or the other
 # depending on the type of the map object (regular or map proxy). If code was
 # not provided for the appropriate mode, an error will be raised.
 
@@ -233,7 +233,7 @@ invokeRemote <- function(map, method, args = list()) {
           for (msg in sessionFlushQueue[[sess$token]]) {
             sess$sendCustomMessage("leaflet-calls", msg)
           }
-        }, once = TRUE)
+        }, once = TRUE) # nolint
       }
 
       # Append the current value to the apporpriate sessionFlushQueue entry,
@@ -243,7 +243,7 @@ invokeRemote <- function(map, method, args = list()) {
     } else {
       sess$onFlushed(function() {
         sess$sendCustomMessage("leaflet-calls", msg)
-      }, once = TRUE)
+      }, once = TRUE) # nolint
     }
   } else {
     sess$sendCustomMessage("leaflet-calls", msg)

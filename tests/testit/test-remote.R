@@ -123,7 +123,9 @@ MockSession <- R6Class("MockSession",
       })
     },
     onSessionEnded = function(func) {
-      function() {}
+      function() {
+        # nothing
+      }
     },
     token = 0,
     .flush = function() {

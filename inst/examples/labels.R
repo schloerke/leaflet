@@ -135,8 +135,10 @@ leaflet(cities) %>% addTiles() %>%
 library(htmltools)
 leaflet(cities) %>% addTiles() %>%
   addMarkers(lng = ~Long, lat = ~Lat,
-             label = mapply(function(x, y) {
-               HTML(sprintf("<em>%s:</em> %s", htmlEscape(x), htmlEscape(y)))},
+             label = mapply(
+               function(x, y) {
+                 HTML(sprintf("<em>%s:</em> %s", htmlEscape(x), htmlEscape(y)))
+               },
                cities$City, cities$Pop, SIMPLIFY = F),
              labelOptions = lapply(1:nrow(cities), function(x) {
                labelOptions(direction = "auto")
