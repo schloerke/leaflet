@@ -225,7 +225,7 @@ epsg3857 <- "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y
 #'
 #' r <- raster(xmn = -2.8, xmx = -2.79, ymn = 54.04, ymx = 54.05, nrows = 30, ncols = 30)
 #' values(r) <- matrix(1:900, nrow(r), ncol(r), byrow = TRUE)
-#' crs(r) <- CRS("+init = epsg:4326")
+#' crs(r) <- CRS("+init=epsg:4326")
 #'
 #' leaflet() %>% addTiles() %>%
 #'   addRasterImage(r, colors = "Spectral", opacity = 0.8)

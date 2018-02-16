@@ -7,8 +7,8 @@ guessLatLongCols <- function(names, stopOnFailure = TRUE) {
 
   if (length(lats) == 1 && length(lngs) == 1) {
     if (length(names) > 2) {
-      message("Assuming '", lngs, "' and '", lats,
-        "' are longitude and latitude, respectively")
+      message("Assuming \"", lngs, "\" and \"", lats,
+        "\" are longitude and latitude, respectively")
     }
     return(list(lng = lngs, lat = lats))
   }
