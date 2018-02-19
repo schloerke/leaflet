@@ -1,0 +1,21 @@
+
+Use the current system for now as supposedly all plugins work with leaflet >= v1.0.0
+in a next release, upgrade to use npm and webpack.  (not random files and grunt/browserify)
+  npm can manage the files and versions while not keeping the raw distributions and never ending 'ignores' in the code base
+  webpack can bundle each js and css distribution for each module to be sourced by htmlwidgets
+
+use the bower setup to load the npm packages and save to dev
+
+
+
+
+
+
+
+upgrade awesome markers to 2.0.3
+add bootstrap with awesome marker
+add font.awesome with awesome marker
+add ionicons.min.css with awesome marker
+
+
+finish changing all of the system files to not use /lib and /plugin, but /bower /bindings

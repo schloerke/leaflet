@@ -3,7 +3,7 @@ leafletAwesomeMarkersDependencies <- function() {
     htmltools::htmlDependency(
       "leaflet-awesomemarkers",
       "2.0.3",
-      system.file("htmlwidgets/plugins/Leaflet.awesome-markers", package = "leaflet"),
+      system.file("htmlwidgets/bower/Leaflet.awesome-markers/dist", package = "leaflet"),
       script = c("leaflet.awesome-markers.min.js"),
       stylesheet = c("leaflet.awesome-markers.css")
     )

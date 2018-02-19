@@ -662,7 +662,7 @@ addLabelOnlyMarkers <- function(
     map = map, lng = lng, lat = lat, layerId = layerId,
     group = group,
     icon = makeIcon(
-      iconUrl = system.file("htmlwidgets/lib/leaflet/images/1px.png", package = "leaflet"),
+      iconUrl = system.file("htmlwidgets/images/1px.png", package = "leaflet"),
       iconWidth = 1, iconHeight = 1),
       label = label,
       labelOptions = labelOptions,
@@ -677,14 +677,33 @@ addLabelOnlyMarkers <- function(
 markerClusterDependencies <- function() {
   list(
     htmltools::htmlDependency(
-      "leaflet-markercluster",
-      "1.0.5",
-      system.file("htmlwidgets/plugins/Leaflet.markercluster", package = "leaflet"),
+      "leaflet.marketcluster",
+      "1.3.0",
+      system.file("htmlwidgets/bower/leaflet.markercluster/dist", package = "leaflet"),
       script = c(
-        "leaflet.markercluster.js",
-        "leaflet.markercluster.freezable.js",
-        "leaflet.markercluster.layersupport.js"
-      ),
+        "leaflet.markercluster.js"
+      )
+    ),
+    htmltools::htmlDependency(
+      "Leaflet.MarkerCluster.Freezable",
+      "0982f5d08543142fbe2f2b8acc2d6f7caf188c3a",
+      system.file("htmlwidgets/bower/Leaflet.MarkerCluster.Freezable/src", package = "leaflet"),
+      script = c(
+        "freezable.js"
+      )
+    ),
+    htmltools::htmlDependency(
+      "leaflet.markercluster.layersupport",
+      "0982f5d08543142fbe2f2b8acc2d6f7caf188c3a",
+      system.file("htmlwidgets/bower/leaflet.markercluster.layersupport/src", package = "leaflet"),
+      script = c(
+        "layersupport.js"
+      )
+    ),
+    htmltools::htmlDependency(
+      "leaflet.markercluster.custom-css",
+      "1.3.1",
+      system.file("htmlwidgets/bindings/markercluster", package = "leaflet"),
       stylesheet = c("MarkerCluster.css", "MarkerCluster.Default.css")
     )
   )

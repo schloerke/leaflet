@@ -1,10 +1,17 @@
 leafletGraticuleDependencies <- function() {
   list(
     htmltools::htmlDependency(
-      "leaflet-graticule",
-      "0.1.0",
-      system.file("htmlwidgets/plugins/Leaflet.Graticule", package = "leaflet"),
-      script = c("L.Graticule.js", "Graticule-binding.js")
+      "leaflet.Graticule",
+      # "0.1.0",
+      "0cc4e4d07149b2dc111f48628c1a2e742bc0d70d",
+      system.file("htmlwidgets/bower/Leaflet.Graticule/src", package = "leaflet"),
+      script = c("L.Graticule.js")
+    ),
+    htmltools::htmlDependency(
+      "leaflet.Graticule-binding",
+      "1.3.1",
+      system.file("htmlwidgets/bindings", package = "leaflet"),
+      script = c("graticule-binding.js")
     )
   )
 }
