@@ -2,10 +2,16 @@ leafletEasyButtonDependencies <- function() {
   list(
     htmltools::htmlDependency(
       "leaflet-easybutton",
-      "1.3.1",
-      system.file("htmlwidgets/plugins/Leaflet.EasyButton", package = "leaflet"),
-      script = c("easy-button.js", "EasyButton-binding.js"),
+      "2.3.0",
+      system.file("htmlwidgets/bower/Leaflet.EasyButton/src", package = "leaflet"),
+      script = c("easy-button.js"),
       stylesheet = c("easy-button.css")
+    ),
+    htmltools::htmlDependency(
+      "leaflet-easybutton-binding",
+      "1.3.1",
+      system.file("htmlwidgets/bindings/", package = "leaflet"),
+      script = c("EasyButton-binding.js")
     )
   )
 }
