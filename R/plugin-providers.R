@@ -3,7 +3,7 @@ leafletProviderDependencies <- function() {
     htmltools::htmlDependency(
       "leaflet-providers",
       "1.1.17",
-      system.file("htmlwidgets/lib/leaflet-providers", package = "leaflet"),
+      system.file("htmlwidgets/plugins/leaflet-providers", package = "leaflet"),
       script = "leaflet-providers.js"
     ),
     htmltools::htmlDependency(

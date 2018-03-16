@@ -3,7 +3,7 @@ leafletMeasureDependencies <- function() {
     htmltools::htmlDependency(
       "leaflet-measure",
       "2.1.7",
-      system.file("htmlwidgets/lib/leaflet-measure", package = "leaflet"),
+      system.file("htmlwidgets/plugins/leaflet-measure", package = "leaflet"),
       script = "leaflet-measure.min.js",
       stylesheet = "leaflet-measure.css"
     )
