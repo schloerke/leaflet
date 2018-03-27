@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -26,8 +26,6 @@
 <link href="libs/leaflet/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet/leaflet.js"></script>
 <link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
-<link href="libs/leaflet-label/leaflet.label.css" rel="stylesheet" />
-<script src="libs/leaflet-label/leaflet.label.js"></script>
 <script src="libs/Proj4Leaflet/proj4-compressed.js"></script>
 <script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
 <script src="libs/leaflet-binding/leaflet.js"></script>
@@ -39,10 +37,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -213,7 +213,7 @@ $(document).ready(function () {
 states &lt;- readOGR(&quot;shp/cb_2013_us_state_20m.shp&quot;,
   layer = &quot;cb_2013_us_state_20m&quot;, GDAL1_integer64_policy = TRUE)</code></pre>
 <pre><code>## OGR data source with driver: ESRI Shapefile 
-## Source: &quot;shp/cb_2013_us_state_20m.shp&quot;, layer: &quot;cb_2013_us_state_20m&quot;
+## Source: &quot;/Users/barret/odrive/AmazonCloudDrive/git/rstudio/leaflet/leaflet/docs/shp/cb_2013_us_state_20m.shp&quot;, layer: &quot;cb_2013_us_state_20m&quot;
 ## with 52 features
 ## It has 9 fields
 ## Integer64 fields read as doubles:  ALAND AWATER</code></pre>
@@ -542,10 +542,7 @@ leaflet(neStates) %&gt;%
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "#444444",
@@ -554,7 +551,6 @@ leaflet(neStates) %&gt;%
             "fill": true,
             "fillColor": ["#FFFFB2", "#FECC5C", "#FECC5C", "#E31A1C", "#E31A1C", "#E31A1C", "#FFFFB2", "#FD8D3C", "#FD8D3C"],
             "fillOpacity": 0.5,
-            "dashArray": null,
             "smoothFactor": 0.5,
             "noClip": false
           },
@@ -587,12 +583,12 @@ leaflet(neStates) %&gt;%
 <p>Very detailed (i.e. large) shape data can present a problem for Leafet, since it is all eventually passed into the browser and rendered as SVG, which is very expressive and convenient but has scalability limits. In these cases, consider using <code>rmapshaper::ms_simplify</code>, which does topology-preserving simplification conveniently from R.</p>
 <pre class="r"><code>library(albersusa)
 
-fullsize &lt;- usa_composite()
+fullsize &lt;- usa_sf()
 object.size(fullsize)</code></pre>
-<pre><code>## 1265256 bytes</code></pre>
+<pre><code>## 922816 bytes</code></pre>
 <pre class="r"><code>simplified &lt;- rmapshaper::ms_simplify(fullsize)
 object.size(simplified)</code></pre>
-<pre><code>## 262608 bytes</code></pre>
+<pre><code>## 114216 bytes</code></pre>
 </div>
 </div>
 <div id="circles" class="section level3">
@@ -629,28 +625,23 @@ leaflet(cities) %&gt;% addTiles() %&gt;%
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           null,
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       },
@@ -663,10 +654,7 @@ leaflet(cities) %&gt;% addTiles() %&gt;%
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "#03F",
@@ -674,8 +662,7 @@ leaflet(cities) %&gt;% addTiles() %&gt;%
             "opacity": 0.5,
             "fill": true,
             "fillColor": "#03F",
-            "fillOpacity": 0.2,
-            "dashArray": null
+            "fillOpacity": 0.2
           },
           ["Boston", "Hartford", "New York City", "Philadelphia", "Pittsburgh", "Providence"],
           null,
@@ -720,28 +707,23 @@ leaflet(cities) %&gt;% addTiles() %&gt;%
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           null,
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       },
@@ -755,10 +737,7 @@ leaflet(cities) %&gt;% addTiles() %&gt;%
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "#03F",
@@ -767,7 +746,6 @@ leaflet(cities) %&gt;% addTiles() %&gt;%
             "fill": true,
             "fillColor": "transparent",
             "fillOpacity": 0.2,
-            "dashArray": null,
             "smoothFactor": 1,
             "noClip": false
           },
@@ -824,7 +802,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

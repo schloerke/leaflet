@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -26,8 +26,6 @@
 <link href="libs/leaflet/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet/leaflet.js"></script>
 <link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
-<link href="libs/leaflet-label/leaflet.label.css" rel="stylesheet" />
-<script src="libs/leaflet-label/leaflet.label.js"></script>
 <script src="libs/Proj4Leaflet/proj4-compressed.js"></script>
 <script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
 <script src="libs/leaflet-binding/leaflet.js"></script>
@@ -41,10 +39,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -225,28 +225,23 @@ m %&gt;% addTiles()</code></pre>
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           null,
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       }
@@ -288,11 +283,7 @@ m %&gt;% addTiles()</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
-            "detectRetina": false,
-            "reuseTiles": false
+            "detectRetina": false
           }
         ]
       }
@@ -329,11 +320,7 @@ m %&gt;% addTiles()</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
-            "detectRetina": false,
-            "reuseTiles": false
+            "detectRetina": false
           }
         ]
       }
@@ -370,11 +357,7 @@ m %&gt;% addTiles()</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
-            "detectRetina": false,
-            "reuseTiles": false
+            "detectRetina": false
           }
         ]
       }
@@ -415,28 +398,23 @@ m %&gt;% addTiles()</code></pre>
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           null,
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       },
@@ -451,7 +429,6 @@ m %&gt;% addTiles()</code></pre>
             "format": "image/png",
             "transparent": true,
             "version": "1.1.1",
-            "crs": null,
             "attribution": "Weather data © 2012 IEM Nexrad",
             "layers": "nexrad-n0r-900913"
           }
@@ -502,11 +479,7 @@ m %&gt;% addTiles()</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
-            "detectRetina": false,
-            "reuseTiles": false
+            "detectRetina": false
           }
         ]
       },
@@ -519,12 +492,8 @@ m %&gt;% addTiles()</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
-            "detectRetina": false,
-            "reuseTiles": false,
-            "opacity": 0.35
+            "opacity": 0.35,
+            "detectRetina": false
           }
         ]
       },
@@ -537,11 +506,7 @@ m %&gt;% addTiles()</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
-            "detectRetina": false,
-            "reuseTiles": false
+            "detectRetina": false
           }
         ]
       }
@@ -587,7 +552,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -26,8 +26,6 @@
 <link href="libs/leaflet/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet/leaflet.js"></script>
 <link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
-<link href="libs/leaflet-label/leaflet.label.css" rel="stylesheet" />
-<script src="libs/leaflet-label/leaflet.label.js"></script>
 <script src="libs/Proj4Leaflet/proj4-compressed.js"></script>
 <script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
 <script src="libs/leaflet-binding/leaflet.js"></script>
@@ -39,10 +37,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -202,7 +202,7 @@ $(document).ready(function () {
 # From http://data.okfn.org/data/datasets/geo-boundaries-world-110m
 countries &lt;- readOGR(&quot;json/countries.geojson&quot;, &quot;OGRGeoJSON&quot;)</code></pre>
 <pre><code>## OGR data source with driver: GeoJSON 
-## Source: &quot;json/countries.geojson&quot;, layer: &quot;OGRGeoJSON&quot;
+## Source: &quot;/Users/barret/odrive/AmazonCloudDrive/git/rstudio/leaflet/leaflet/docs/json/countries.geojson&quot;, layer: &quot;OGRGeoJSON&quot;
 ## with 177 features
 ## It has 2 fields</code></pre>
 <pre class="r"><code>map &lt;- leaflet(countries) %&gt;% addTiles()</code></pre>
@@ -243,21 +243,16 @@ map %&gt;%
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
             "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
@@ -2344,10 +2339,7 @@ map %&gt;%
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": false,
             "color": ["#FFFFD9", "#FEFFD7", "#FFFFD9", "#FDFED5", "#FAFDCD", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#F8FCC8", "#FCFED2", "#FEFFD7", "#FFFFD9", "#FBFED1", "#FFFFD9", "#FFFFD9", "#FDFED4", "#FEFFD7", "#FFFFD9", "#FFFFD8", "#FEFFD7", "#FFFFD9", "#FFFFD8", "#EBF7B1", "#FFFFD9", "#FFFFD9", "#FFFFD8", "#FFFFD9", "#F3FABD", "#FCFED2", "#FDFED4", "#3BAEC3", "#FFFFD8", "#FFFFD8", "#FFFFD9", "#FFFFD9", "#FBFED1", "#FFFFD8", "#FEFFD7", "#FFFFD9", "#FFFFD9", "#FDFED3", "#D8F0B3", "#FFFFD9", "#FDFED5", "#FEFFD7", "#FDFED4", "#FEFFD7", "#FBFDD0", "#FFFFD9", "#F2FABB", "#FFFFD8", "#FEFFD8", "#FDFED5", "#FFFFD9", "#FFFFD9", "#E8F6B1", "#FFFFD9", "#EBF7B1", "#FFFFD9", "#FFFFD8", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FCFED2", "#FFFFD9", "#FEFFD8", "#FFFFD9", "#FFFFD8", "#FEFFD7", "#FFFFD9", "#FDFED5", "#F6FCC6", "#D1EDB3", "#FDFED5", "#F7FCC7", "#FEFFD7", "#FFFFD9", "#FDFED5", "#EEF8B2", "#FFFFD9", "#FFFFD8", "#B3E1B6", "#FDFED5", "#FEFFD8", "#FFFFD9", "#FFFFD8", "#F2FABD", "#FFFFD9", "#FEFED6", "#FFFFD9", "#FFFFD8", "#FFFFD9", "#FEFFD7", "#FEFFD7", "#FFFFD9", "#FEFFD8", "#FFFFD8", "#FFFFD8", "#FEFED6", "#FFFFD9", "#FFFFD9", "#F0F9B8", "#FFFFD9", "#FFFFD9", "#FEFFD8", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FBFED1", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FCFED2", "#FFFFD9", "#F9FDCB", "#FCFED3", "#FFFFD8", "#FEFFD7", "#FEFFD8", "#FBFDD0", "#FFFFD8", "#FDFED4", "#FCFED2", "#FFFFD9", "#F9FDCB", "#FEFFD8", "#FFFFD8", "#FDFED5", "#FFFFD8", "#FFFFD9", "#FEFFD7", "#FCFED3", "#E6F5B2", "#FFFFD9", "#FFFFD9", "#FAFDCD", "#FEFFD7", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FFFFD8", "#FFFFD9", "#FFFFD9", "#FEFFD7", "#FFFFD9", "#FEFFD6", "#FEFFD8", "#FCFED2", "#FFFFD9", "#FEFFD7", "#FFFFD9", "#FFFFD9", "#FAFDCD", "#FFFFD9", "#FFFFD8", "#FFFFD9", "#FFFFD8", "#FEFFD7", "#F7FCC6", "#F8FCCA", "#FFFFD8", "#FFFFD8", "#FCFED2", "#FFFFD8", "#081D58", "#FEFFD7", "#FCFED1", "#FDFED4", "#FFFFD9", "#FEFFD8", "#FAFDCF", "#FFFFD9", "#FFFFD9"],
@@ -2356,7 +2348,6 @@ map %&gt;%
             "fill": true,
             "fillColor": ["#FFFFD9", "#FEFFD7", "#FFFFD9", "#FDFED5", "#FAFDCD", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#F8FCC8", "#FCFED2", "#FEFFD7", "#FFFFD9", "#FBFED1", "#FFFFD9", "#FFFFD9", "#FDFED4", "#FEFFD7", "#FFFFD9", "#FFFFD8", "#FEFFD7", "#FFFFD9", "#FFFFD8", "#EBF7B1", "#FFFFD9", "#FFFFD9", "#FFFFD8", "#FFFFD9", "#F3FABD", "#FCFED2", "#FDFED4", "#3BAEC3", "#FFFFD8", "#FFFFD8", "#FFFFD9", "#FFFFD9", "#FBFED1", "#FFFFD8", "#FEFFD7", "#FFFFD9", "#FFFFD9", "#FDFED3", "#D8F0B3", "#FFFFD9", "#FDFED5", "#FEFFD7", "#FDFED4", "#FEFFD7", "#FBFDD0", "#FFFFD9", "#F2FABB", "#FFFFD8", "#FEFFD8", "#FDFED5", "#FFFFD9", "#FFFFD9", "#E8F6B1", "#FFFFD9", "#EBF7B1", "#FFFFD9", "#FFFFD8", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FCFED2", "#FFFFD9", "#FEFFD8", "#FFFFD9", "#FFFFD8", "#FEFFD7", "#FFFFD9", "#FDFED5", "#F6FCC6", "#D1EDB3", "#FDFED5", "#F7FCC7", "#FEFFD7", "#FFFFD9", "#FDFED5", "#EEF8B2", "#FFFFD9", "#FFFFD8", "#B3E1B6", "#FDFED5", "#FEFFD8", "#FFFFD9", "#FFFFD8", "#F2FABD", "#FFFFD9", "#FEFED6", "#FFFFD9", "#FFFFD8", "#FFFFD9", "#FEFFD7", "#FEFFD7", "#FFFFD9", "#FEFFD8", "#FFFFD8", "#FFFFD8", "#FEFED6", "#FFFFD9", "#FFFFD9", "#F0F9B8", "#FFFFD9", "#FFFFD9", "#FEFFD8", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FBFED1", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FCFED2", "#FFFFD9", "#F9FDCB", "#FCFED3", "#FFFFD8", "#FEFFD7", "#FEFFD8", "#FBFDD0", "#FFFFD8", "#FDFED4", "#FCFED2", "#FFFFD9", "#F9FDCB", "#FEFFD8", "#FFFFD8", "#FDFED5", "#FFFFD8", "#FFFFD9", "#FEFFD7", "#FCFED3", "#E6F5B2", "#FFFFD9", "#FFFFD9", "#FAFDCD", "#FEFFD7", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FFFFD9", "#FFFFD8", "#FFFFD9", "#FFFFD9", "#FEFFD7", "#FFFFD9", "#FEFFD6", "#FEFFD8", "#FCFED2", "#FFFFD9", "#FEFFD7", "#FFFFD9", "#FFFFD9", "#FAFDCD", "#FFFFD9", "#FFFFD8", "#FFFFD9", "#FFFFD8", "#FEFFD7", "#F7FCC6", "#F8FCCA", "#FFFFD8", "#FFFFD8", "#FCFED2", "#FFFFD8", "#081D58", "#FEFFD7", "#FCFED1", "#FDFED4", "#FFFFD9", "#FEFFD8", "#FAFDCF", "#FFFFD9", "#FFFFD9"],
             "fillOpacity": 1,
-            "dashArray": null,
             "smoothFactor": 0.2,
             "noClip": false
           },
@@ -2384,7 +2375,8 @@ map %&gt;%
               "p_n": 0.927521344599635
             },
             "layerId": null,
-            "className": "info legend"
+            "className": "info legend",
+            "group": null
           }
         ]
       }
@@ -2426,21 +2418,16 @@ map %&gt;%
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
             "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
@@ -4527,10 +4514,7 @@ map %&gt;%
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": false,
             "color": ["#FDAE61", "#ABD9E9", "#FDAE61", "#ABD9E9", "#2C7BB6", "#FDAE61", "#D7191C", "#D7191C", "#2C7BB6", "#2C7BB6", "#FFFFBF", "#D7191C", "#2C7BB6", "#FDAE61", "#FDAE61", "#ABD9E9", "#ABD9E9", "#D7191C", "#FFFFBF", "#ABD9E9", "#D7191C", "#FFFFBF", "#2C7BB6", "#FDAE61", "#D7191C", "#FDAE61", "#D7191C", "#2C7BB6", "#ABD9E9", "#ABD9E9", "#2C7BB6", "#FFFFBF", "#FFFFBF", "#FDAE61", "#FDAE61", "#2C7BB6", "#FFFFBF", "#ABD9E9", "#D7191C", "#FDAE61", "#ABD9E9", "#2C7BB6", "#D7191C", "#ABD9E9", "#FFFFBF", "#ABD9E9", "#ABD9E9", "#2C7BB6", "#D7191C", "#2C7BB6", "#FDAE61", "#FFFFBF", "#ABD9E9", "#D7191C", "#D7191C", "#2C7BB6", "#FDAE61", "#2C7BB6", "#FDAE61", "#FFFFBF", "#D7191C", "#D7191C", "#D7191C", "#FDAE61", "#2C7BB6", "#D7191C", "#FFFFBF", "#D7191C", "#FFFFBF", "#ABD9E9", "#FDAE61", "#ABD9E9", "#2C7BB6", "#2C7BB6", "#ABD9E9", "#2C7BB6", "#ABD9E9", "#FDAE61", "#ABD9E9", "#2C7BB6", "#FDAE61", "#FFFFBF", "#2C7BB6", "#ABD9E9", "#FFFFBF", "#FDAE61", "#FFFFBF", "#2C7BB6", "#D7191C", "#ABD9E9", "#FDAE61", "#FFFFBF", "#D7191C", "#ABD9E9", "#ABD9E9", "#D7191C", "#FFFFBF", "#FFFFBF", "#FFFFBF", "#ABD9E9", "#FDAE61", "#FDAE61", "#2C7BB6", "#FDAE61", "#FDAE61", "#FFFFBF", "#D7191C", "#D7191C", "#FDAE61", "#D7191C", "#FDAE61", "#2C7BB6", "#FDAE61", "#D7191C", "#D7191C", "#2C7BB6", "#FDAE61", "#2C7BB6", "#ABD9E9", "#FFFFBF", "#ABD9E9", "#FFFFBF", "#2C7BB6", "#FFFFBF", "#ABD9E9", "#ABD9E9", "#FDAE61", "#2C7BB6", "#FFFFBF", "#FFFFBF", "#ABD9E9", "#FFFFBF", "#FDAE61", "#ABD9E9", "#ABD9E9", "#2C7BB6", "#D7191C", "#D7191C", "#2C7BB6", "#ABD9E9", "#FDAE61", "#FDAE61", "#D7191C", "#D7191C", "#FFFFBF", "#FDAE61", "#D7191C", "#FFFFBF", "#D7191C", "#ABD9E9", "#FFFFBF", "#2C7BB6", "#D7191C", "#ABD9E9", "#FDAE61", "#D7191C", "#2C7BB6", "#FDAE61", "#FFFFBF", "#D7191C", "#FFFFBF", "#ABD9E9", "#2C7BB6", "#2C7BB6", "#FFFFBF", "#FFFFBF", "#2C7BB6", "#FFFFBF", "#2C7BB6", "#FFFFBF", "#2C7BB6", "#ABD9E9", "#D7191C", "#FFFFBF", "#2C7BB6", "#FDAE61", "#D7191C"],
@@ -4539,7 +4523,6 @@ map %&gt;%
             "fill": true,
             "fillColor": ["#FDAE61", "#ABD9E9", "#FDAE61", "#ABD9E9", "#2C7BB6", "#FDAE61", "#D7191C", "#D7191C", "#2C7BB6", "#2C7BB6", "#FFFFBF", "#D7191C", "#2C7BB6", "#FDAE61", "#FDAE61", "#ABD9E9", "#ABD9E9", "#D7191C", "#FFFFBF", "#ABD9E9", "#D7191C", "#FFFFBF", "#2C7BB6", "#FDAE61", "#D7191C", "#FDAE61", "#D7191C", "#2C7BB6", "#ABD9E9", "#ABD9E9", "#2C7BB6", "#FFFFBF", "#FFFFBF", "#FDAE61", "#FDAE61", "#2C7BB6", "#FFFFBF", "#ABD9E9", "#D7191C", "#FDAE61", "#ABD9E9", "#2C7BB6", "#D7191C", "#ABD9E9", "#FFFFBF", "#ABD9E9", "#ABD9E9", "#2C7BB6", "#D7191C", "#2C7BB6", "#FDAE61", "#FFFFBF", "#ABD9E9", "#D7191C", "#D7191C", "#2C7BB6", "#FDAE61", "#2C7BB6", "#FDAE61", "#FFFFBF", "#D7191C", "#D7191C", "#D7191C", "#FDAE61", "#2C7BB6", "#D7191C", "#FFFFBF", "#D7191C", "#FFFFBF", "#ABD9E9", "#FDAE61", "#ABD9E9", "#2C7BB6", "#2C7BB6", "#ABD9E9", "#2C7BB6", "#ABD9E9", "#FDAE61", "#ABD9E9", "#2C7BB6", "#FDAE61", "#FFFFBF", "#2C7BB6", "#ABD9E9", "#FFFFBF", "#FDAE61", "#FFFFBF", "#2C7BB6", "#D7191C", "#ABD9E9", "#FDAE61", "#FFFFBF", "#D7191C", "#ABD9E9", "#ABD9E9", "#D7191C", "#FFFFBF", "#FFFFBF", "#FFFFBF", "#ABD9E9", "#FDAE61", "#FDAE61", "#2C7BB6", "#FDAE61", "#FDAE61", "#FFFFBF", "#D7191C", "#D7191C", "#FDAE61", "#D7191C", "#FDAE61", "#2C7BB6", "#FDAE61", "#D7191C", "#D7191C", "#2C7BB6", "#FDAE61", "#2C7BB6", "#ABD9E9", "#FFFFBF", "#ABD9E9", "#FFFFBF", "#2C7BB6", "#FFFFBF", "#ABD9E9", "#ABD9E9", "#FDAE61", "#2C7BB6", "#FFFFBF", "#FFFFBF", "#ABD9E9", "#FFFFBF", "#FDAE61", "#ABD9E9", "#ABD9E9", "#2C7BB6", "#D7191C", "#D7191C", "#2C7BB6", "#ABD9E9", "#FDAE61", "#FDAE61", "#D7191C", "#D7191C", "#FFFFBF", "#FDAE61", "#D7191C", "#FFFFBF", "#D7191C", "#ABD9E9", "#FFFFBF", "#2C7BB6", "#D7191C", "#ABD9E9", "#FDAE61", "#D7191C", "#2C7BB6", "#FDAE61", "#FFFFBF", "#D7191C", "#FFFFBF", "#ABD9E9", "#2C7BB6", "#2C7BB6", "#FFFFBF", "#FFFFBF", "#2C7BB6", "#FFFFBF", "#2C7BB6", "#FFFFBF", "#2C7BB6", "#ABD9E9", "#D7191C", "#FFFFBF", "#2C7BB6", "#FDAE61", "#D7191C"],
             "fillOpacity": 1,
-            "dashArray": null,
             "smoothFactor": 0.2,
             "noClip": false
           },
@@ -4564,7 +4547,8 @@ map %&gt;%
             "title": "gdp_md_est",
             "extra": null,
             "layerId": null,
-            "className": "info legend"
+            "className": "info legend",
+            "group": null
           }
         ]
       }
@@ -4615,7 +4599,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

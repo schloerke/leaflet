@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -26,8 +26,6 @@
 <link href="libs/leaflet/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet/leaflet.js"></script>
 <link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
-<link href="libs/leaflet-label/leaflet.label.css" rel="stylesheet" />
-<script src="libs/leaflet-label/leaflet.label.js"></script>
 <script src="libs/Proj4Leaflet/proj4-compressed.js"></script>
 <script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
 <script src="libs/leaflet-binding/leaflet.js"></script>
@@ -41,10 +39,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -227,13 +227,9 @@ $(document).ready(function () {
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
             "detectRetina": false,
-            "reuseTiles": false,
             "id": "mapbox.light",
-            "accessToken": "pk.eyJ1IjoiamNoZW5nIiwiYSI6IkFKMlNFUmsifQ.1t642mhm3bbS9AcTQJFn8g"
+            "accessToken": ""
           }
         ]
       },
@@ -967,10 +963,7 @@ $(document).ready(function () {
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "white",
@@ -986,65 +979,65 @@ $(document).ready(function () {
           null,
           null,
           [
-            "<strong>Alabama\u003c/strong><br/>94.65 people / mi<sup>2\u003c/sup>",
-            "<strong>Alaska\u003c/strong><br/>1.264 people / mi<sup>2\u003c/sup>",
-            "<strong>Arizona\u003c/strong><br/>57.05 people / mi<sup>2\u003c/sup>",
-            "<strong>Arkansas\u003c/strong><br/>56.43 people / mi<sup>2\u003c/sup>",
-            "<strong>California\u003c/strong><br/>241.7 people / mi<sup>2\u003c/sup>",
-            "<strong>Colorado\u003c/strong><br/>49.33 people / mi<sup>2\u003c/sup>",
-            "<strong>Connecticut\u003c/strong><br/>739.1 people / mi<sup>2\u003c/sup>",
-            "<strong>Delaware\u003c/strong><br/>464.3 people / mi<sup>2\u003c/sup>",
-            "<strong>District of Columbia\u003c/strong><br/>10065 people / mi<sup>2\u003c/sup>",
-            "<strong>Florida\u003c/strong><br/>353.4 people / mi<sup>2\u003c/sup>",
-            "<strong>Georgia\u003c/strong><br/>169.5 people / mi<sup>2\u003c/sup>",
-            "<strong>Hawaii\u003c/strong><br/>214.1 people / mi<sup>2\u003c/sup>",
-            "<strong>Idaho\u003c/strong><br/>19.15 people / mi<sup>2\u003c/sup>",
-            "<strong>Illinois\u003c/strong><br/>231.5 people / mi<sup>2\u003c/sup>",
-            "<strong>Indiana\u003c/strong><br/>181.7 people / mi<sup>2\u003c/sup>",
-            "<strong>Iowa\u003c/strong><br/>54.81 people / mi<sup>2\u003c/sup>",
-            "<strong>Kansas\u003c/strong><br/>35.09 people / mi<sup>2\u003c/sup>",
-            "<strong>Kentucky\u003c/strong><br/>110 people / mi<sup>2\u003c/sup>",
-            "<strong>Louisiana\u003c/strong><br/>105 people / mi<sup>2\u003c/sup>",
-            "<strong>Maine\u003c/strong><br/>43.04 people / mi<sup>2\u003c/sup>",
-            "<strong>Maryland\u003c/strong><br/>596.3 people / mi<sup>2\u003c/sup>",
-            "<strong>Massachusetts\u003c/strong><br/>840.2 people / mi<sup>2\u003c/sup>",
-            "<strong>Michigan\u003c/strong><br/>173.9 people / mi<sup>2\u003c/sup>",
-            "<strong>Minnesota\u003c/strong><br/>67.14 people / mi<sup>2\u003c/sup>",
-            "<strong>Mississippi\u003c/strong><br/>63.5 people / mi<sup>2\u003c/sup>",
-            "<strong>Missouri\u003c/strong><br/>87.26 people / mi<sup>2\u003c/sup>",
-            "<strong>Montana\u003c/strong><br/>6.858 people / mi<sup>2\u003c/sup>",
-            "<strong>Nebraska\u003c/strong><br/>23.97 people / mi<sup>2\u003c/sup>",
-            "<strong>Nevada\u003c/strong><br/>24.8 people / mi<sup>2\u003c/sup>",
-            "<strong>New Hampshire\u003c/strong><br/>147 people / mi<sup>2\u003c/sup>",
-            "<strong>New Jersey\u003c/strong><br/>1189 people / mi<sup>2\u003c/sup>",
-            "<strong>New Mexico\u003c/strong><br/>17.16 people / mi<sup>2\u003c/sup>",
-            "<strong>New York\u003c/strong><br/>412.3 people / mi<sup>2\u003c/sup>",
-            "<strong>North Carolina\u003c/strong><br/>198.2 people / mi<sup>2\u003c/sup>",
-            "<strong>North Dakota\u003c/strong><br/>9.916 people / mi<sup>2\u003c/sup>",
-            "<strong>Ohio\u003c/strong><br/>281.9 people / mi<sup>2\u003c/sup>",
-            "<strong>Oklahoma\u003c/strong><br/>55.22 people / mi<sup>2\u003c/sup>",
-            "<strong>Oregon\u003c/strong><br/>40.33 people / mi<sup>2\u003c/sup>",
-            "<strong>Pennsylvania\u003c/strong><br/>284.3 people / mi<sup>2\u003c/sup>",
-            "<strong>Rhode Island\u003c/strong><br/>1006 people / mi<sup>2\u003c/sup>",
-            "<strong>South Carolina\u003c/strong><br/>155.4 people / mi<sup>2\u003c/sup>",
-            "<strong>South Dakota\u003c/strong><br/>98.07 people / mi<sup>2\u003c/sup>",
-            "<strong>Tennessee\u003c/strong><br/>88.08 people / mi<sup>2\u003c/sup>",
-            "<strong>Texas\u003c/strong><br/>98.07 people / mi<sup>2\u003c/sup>",
-            "<strong>Utah\u003c/strong><br/>34.3 people / mi<sup>2\u003c/sup>",
-            "<strong>Vermont\u003c/strong><br/>67.73 people / mi<sup>2\u003c/sup>",
-            "<strong>Virginia\u003c/strong><br/>204.5 people / mi<sup>2\u003c/sup>",
-            "<strong>Washington\u003c/strong><br/>102.6 people / mi<sup>2\u003c/sup>",
-            "<strong>West Virginia\u003c/strong><br/>77.06 people / mi<sup>2\u003c/sup>",
-            "<strong>Wisconsin\u003c/strong><br/>105.2 people / mi<sup>2\u003c/sup>",
-            "<strong>Wyoming\u003c/strong><br/>5.851 people / mi<sup>2\u003c/sup>",
-            "<strong>Puerto Rico\u003c/strong><br/>1082 people / mi<sup>2\u003c/sup>"
+            "<strong>Alabama<\/strong><br/>94.65 people / mi<sup>2<\/sup>",
+            "<strong>Alaska<\/strong><br/>1.264 people / mi<sup>2<\/sup>",
+            "<strong>Arizona<\/strong><br/>57.05 people / mi<sup>2<\/sup>",
+            "<strong>Arkansas<\/strong><br/>56.43 people / mi<sup>2<\/sup>",
+            "<strong>California<\/strong><br/>241.7 people / mi<sup>2<\/sup>",
+            "<strong>Colorado<\/strong><br/>49.33 people / mi<sup>2<\/sup>",
+            "<strong>Connecticut<\/strong><br/>739.1 people / mi<sup>2<\/sup>",
+            "<strong>Delaware<\/strong><br/>464.3 people / mi<sup>2<\/sup>",
+            "<strong>District of Columbia<\/strong><br/>10065 people / mi<sup>2<\/sup>",
+            "<strong>Florida<\/strong><br/>353.4 people / mi<sup>2<\/sup>",
+            "<strong>Georgia<\/strong><br/>169.5 people / mi<sup>2<\/sup>",
+            "<strong>Hawaii<\/strong><br/>214.1 people / mi<sup>2<\/sup>",
+            "<strong>Idaho<\/strong><br/>19.15 people / mi<sup>2<\/sup>",
+            "<strong>Illinois<\/strong><br/>231.5 people / mi<sup>2<\/sup>",
+            "<strong>Indiana<\/strong><br/>181.7 people / mi<sup>2<\/sup>",
+            "<strong>Iowa<\/strong><br/>54.81 people / mi<sup>2<\/sup>",
+            "<strong>Kansas<\/strong><br/>35.09 people / mi<sup>2<\/sup>",
+            "<strong>Kentucky<\/strong><br/>110 people / mi<sup>2<\/sup>",
+            "<strong>Louisiana<\/strong><br/>105 people / mi<sup>2<\/sup>",
+            "<strong>Maine<\/strong><br/>43.04 people / mi<sup>2<\/sup>",
+            "<strong>Maryland<\/strong><br/>596.3 people / mi<sup>2<\/sup>",
+            "<strong>Massachusetts<\/strong><br/>840.2 people / mi<sup>2<\/sup>",
+            "<strong>Michigan<\/strong><br/>173.9 people / mi<sup>2<\/sup>",
+            "<strong>Minnesota<\/strong><br/>67.14 people / mi<sup>2<\/sup>",
+            "<strong>Mississippi<\/strong><br/>63.5 people / mi<sup>2<\/sup>",
+            "<strong>Missouri<\/strong><br/>87.26 people / mi<sup>2<\/sup>",
+            "<strong>Montana<\/strong><br/>6.858 people / mi<sup>2<\/sup>",
+            "<strong>Nebraska<\/strong><br/>23.97 people / mi<sup>2<\/sup>",
+            "<strong>Nevada<\/strong><br/>24.8 people / mi<sup>2<\/sup>",
+            "<strong>New Hampshire<\/strong><br/>147 people / mi<sup>2<\/sup>",
+            "<strong>New Jersey<\/strong><br/>1189 people / mi<sup>2<\/sup>",
+            "<strong>New Mexico<\/strong><br/>17.16 people / mi<sup>2<\/sup>",
+            "<strong>New York<\/strong><br/>412.3 people / mi<sup>2<\/sup>",
+            "<strong>North Carolina<\/strong><br/>198.2 people / mi<sup>2<\/sup>",
+            "<strong>North Dakota<\/strong><br/>9.916 people / mi<sup>2<\/sup>",
+            "<strong>Ohio<\/strong><br/>281.9 people / mi<sup>2<\/sup>",
+            "<strong>Oklahoma<\/strong><br/>55.22 people / mi<sup>2<\/sup>",
+            "<strong>Oregon<\/strong><br/>40.33 people / mi<sup>2<\/sup>",
+            "<strong>Pennsylvania<\/strong><br/>284.3 people / mi<sup>2<\/sup>",
+            "<strong>Rhode Island<\/strong><br/>1006 people / mi<sup>2<\/sup>",
+            "<strong>South Carolina<\/strong><br/>155.4 people / mi<sup>2<\/sup>",
+            "<strong>South Dakota<\/strong><br/>98.07 people / mi<sup>2<\/sup>",
+            "<strong>Tennessee<\/strong><br/>88.08 people / mi<sup>2<\/sup>",
+            "<strong>Texas<\/strong><br/>98.07 people / mi<sup>2<\/sup>",
+            "<strong>Utah<\/strong><br/>34.3 people / mi<sup>2<\/sup>",
+            "<strong>Vermont<\/strong><br/>67.73 people / mi<sup>2<\/sup>",
+            "<strong>Virginia<\/strong><br/>204.5 people / mi<sup>2<\/sup>",
+            "<strong>Washington<\/strong><br/>102.6 people / mi<sup>2<\/sup>",
+            "<strong>West Virginia<\/strong><br/>77.06 people / mi<sup>2<\/sup>",
+            "<strong>Wisconsin<\/strong><br/>105.2 people / mi<sup>2<\/sup>",
+            "<strong>Wyoming<\/strong><br/>5.851 people / mi<sup>2<\/sup>",
+            "<strong>Puerto Rico<\/strong><br/>1082 people / mi<sup>2<\/sup>"
           ],
           {
-            "clickable": false,
-            "noHide": false,
+            "interactive": false,
+            "permanent": false,
             "direction": "auto",
             "opacity": 1,
-            "offset": [12, -15],
+            "offset": [0, 0],
             "textsize": "15px",
             "textOnly": false,
             "style": {
@@ -1077,7 +1070,8 @@ $(document).ready(function () {
             "title": null,
             "extra": null,
             "layerId": null,
-            "className": "info legend"
+            "className": "info legend",
+            "group": null
           }
         ]
       }
@@ -1141,13 +1135,9 @@ class(states)</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
             "detectRetina": false,
-            "reuseTiles": false,
             "id": "mapbox.light",
-            "accessToken": "pk.eyJ1IjoiamNoZW5nIiwiYSI6IkFKMlNFUmsifQ.1t642mhm3bbS9AcTQJFn8g"
+            "accessToken": ""
           }
         ]
       },
@@ -1881,10 +1871,7 @@ class(states)</code></pre>
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "#03F",
@@ -1893,7 +1880,6 @@ class(states)</code></pre>
             "fill": true,
             "fillColor": "#03F",
             "fillOpacity": 0.2,
-            "dashArray": null,
             "smoothFactor": 1,
             "noClip": false
           },
@@ -1957,13 +1943,9 @@ m %&gt;% addPolygons(
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
             "detectRetina": false,
-            "reuseTiles": false,
             "id": "mapbox.light",
-            "accessToken": "pk.eyJ1IjoiamNoZW5nIiwiYSI6IkFKMlNFUmsifQ.1t642mhm3bbS9AcTQJFn8g"
+            "accessToken": ""
           }
         ]
       },
@@ -2697,10 +2679,7 @@ m %&gt;% addPolygons(
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "white",
@@ -2773,13 +2752,9 @@ m %&gt;% addPolygons(
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
             "detectRetina": false,
-            "reuseTiles": false,
             "id": "mapbox.light",
-            "accessToken": "pk.eyJ1IjoiamNoZW5nIiwiYSI6IkFKMlNFUmsifQ.1t642mhm3bbS9AcTQJFn8g"
+            "accessToken": ""
           }
         ]
       },
@@ -3513,10 +3488,7 @@ m %&gt;% addPolygons(
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "white",
@@ -3609,13 +3581,9 @@ m</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
             "detectRetina": false,
-            "reuseTiles": false,
             "id": "mapbox.light",
-            "accessToken": "pk.eyJ1IjoiamNoZW5nIiwiYSI6IkFKMlNFUmsifQ.1t642mhm3bbS9AcTQJFn8g"
+            "accessToken": ""
           }
         ]
       },
@@ -4349,10 +4317,7 @@ m</code></pre>
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "white",
@@ -4368,65 +4333,65 @@ m</code></pre>
           null,
           null,
           [
-            "<strong>Alabama\u003c/strong><br/>94.65 people / mi<sup>2\u003c/sup>",
-            "<strong>Alaska\u003c/strong><br/>1.264 people / mi<sup>2\u003c/sup>",
-            "<strong>Arizona\u003c/strong><br/>57.05 people / mi<sup>2\u003c/sup>",
-            "<strong>Arkansas\u003c/strong><br/>56.43 people / mi<sup>2\u003c/sup>",
-            "<strong>California\u003c/strong><br/>241.7 people / mi<sup>2\u003c/sup>",
-            "<strong>Colorado\u003c/strong><br/>49.33 people / mi<sup>2\u003c/sup>",
-            "<strong>Connecticut\u003c/strong><br/>739.1 people / mi<sup>2\u003c/sup>",
-            "<strong>Delaware\u003c/strong><br/>464.3 people / mi<sup>2\u003c/sup>",
-            "<strong>District of Columbia\u003c/strong><br/>10065 people / mi<sup>2\u003c/sup>",
-            "<strong>Florida\u003c/strong><br/>353.4 people / mi<sup>2\u003c/sup>",
-            "<strong>Georgia\u003c/strong><br/>169.5 people / mi<sup>2\u003c/sup>",
-            "<strong>Hawaii\u003c/strong><br/>214.1 people / mi<sup>2\u003c/sup>",
-            "<strong>Idaho\u003c/strong><br/>19.15 people / mi<sup>2\u003c/sup>",
-            "<strong>Illinois\u003c/strong><br/>231.5 people / mi<sup>2\u003c/sup>",
-            "<strong>Indiana\u003c/strong><br/>181.7 people / mi<sup>2\u003c/sup>",
-            "<strong>Iowa\u003c/strong><br/>54.81 people / mi<sup>2\u003c/sup>",
-            "<strong>Kansas\u003c/strong><br/>35.09 people / mi<sup>2\u003c/sup>",
-            "<strong>Kentucky\u003c/strong><br/>110 people / mi<sup>2\u003c/sup>",
-            "<strong>Louisiana\u003c/strong><br/>105 people / mi<sup>2\u003c/sup>",
-            "<strong>Maine\u003c/strong><br/>43.04 people / mi<sup>2\u003c/sup>",
-            "<strong>Maryland\u003c/strong><br/>596.3 people / mi<sup>2\u003c/sup>",
-            "<strong>Massachusetts\u003c/strong><br/>840.2 people / mi<sup>2\u003c/sup>",
-            "<strong>Michigan\u003c/strong><br/>173.9 people / mi<sup>2\u003c/sup>",
-            "<strong>Minnesota\u003c/strong><br/>67.14 people / mi<sup>2\u003c/sup>",
-            "<strong>Mississippi\u003c/strong><br/>63.5 people / mi<sup>2\u003c/sup>",
-            "<strong>Missouri\u003c/strong><br/>87.26 people / mi<sup>2\u003c/sup>",
-            "<strong>Montana\u003c/strong><br/>6.858 people / mi<sup>2\u003c/sup>",
-            "<strong>Nebraska\u003c/strong><br/>23.97 people / mi<sup>2\u003c/sup>",
-            "<strong>Nevada\u003c/strong><br/>24.8 people / mi<sup>2\u003c/sup>",
-            "<strong>New Hampshire\u003c/strong><br/>147 people / mi<sup>2\u003c/sup>",
-            "<strong>New Jersey\u003c/strong><br/>1189 people / mi<sup>2\u003c/sup>",
-            "<strong>New Mexico\u003c/strong><br/>17.16 people / mi<sup>2\u003c/sup>",
-            "<strong>New York\u003c/strong><br/>412.3 people / mi<sup>2\u003c/sup>",
-            "<strong>North Carolina\u003c/strong><br/>198.2 people / mi<sup>2\u003c/sup>",
-            "<strong>North Dakota\u003c/strong><br/>9.916 people / mi<sup>2\u003c/sup>",
-            "<strong>Ohio\u003c/strong><br/>281.9 people / mi<sup>2\u003c/sup>",
-            "<strong>Oklahoma\u003c/strong><br/>55.22 people / mi<sup>2\u003c/sup>",
-            "<strong>Oregon\u003c/strong><br/>40.33 people / mi<sup>2\u003c/sup>",
-            "<strong>Pennsylvania\u003c/strong><br/>284.3 people / mi<sup>2\u003c/sup>",
-            "<strong>Rhode Island\u003c/strong><br/>1006 people / mi<sup>2\u003c/sup>",
-            "<strong>South Carolina\u003c/strong><br/>155.4 people / mi<sup>2\u003c/sup>",
-            "<strong>South Dakota\u003c/strong><br/>98.07 people / mi<sup>2\u003c/sup>",
-            "<strong>Tennessee\u003c/strong><br/>88.08 people / mi<sup>2\u003c/sup>",
-            "<strong>Texas\u003c/strong><br/>98.07 people / mi<sup>2\u003c/sup>",
-            "<strong>Utah\u003c/strong><br/>34.3 people / mi<sup>2\u003c/sup>",
-            "<strong>Vermont\u003c/strong><br/>67.73 people / mi<sup>2\u003c/sup>",
-            "<strong>Virginia\u003c/strong><br/>204.5 people / mi<sup>2\u003c/sup>",
-            "<strong>Washington\u003c/strong><br/>102.6 people / mi<sup>2\u003c/sup>",
-            "<strong>West Virginia\u003c/strong><br/>77.06 people / mi<sup>2\u003c/sup>",
-            "<strong>Wisconsin\u003c/strong><br/>105.2 people / mi<sup>2\u003c/sup>",
-            "<strong>Wyoming\u003c/strong><br/>5.851 people / mi<sup>2\u003c/sup>",
-            "<strong>Puerto Rico\u003c/strong><br/>1082 people / mi<sup>2\u003c/sup>"
+            "<strong>Alabama<\/strong><br/>94.65 people / mi<sup>2<\/sup>",
+            "<strong>Alaska<\/strong><br/>1.264 people / mi<sup>2<\/sup>",
+            "<strong>Arizona<\/strong><br/>57.05 people / mi<sup>2<\/sup>",
+            "<strong>Arkansas<\/strong><br/>56.43 people / mi<sup>2<\/sup>",
+            "<strong>California<\/strong><br/>241.7 people / mi<sup>2<\/sup>",
+            "<strong>Colorado<\/strong><br/>49.33 people / mi<sup>2<\/sup>",
+            "<strong>Connecticut<\/strong><br/>739.1 people / mi<sup>2<\/sup>",
+            "<strong>Delaware<\/strong><br/>464.3 people / mi<sup>2<\/sup>",
+            "<strong>District of Columbia<\/strong><br/>10065 people / mi<sup>2<\/sup>",
+            "<strong>Florida<\/strong><br/>353.4 people / mi<sup>2<\/sup>",
+            "<strong>Georgia<\/strong><br/>169.5 people / mi<sup>2<\/sup>",
+            "<strong>Hawaii<\/strong><br/>214.1 people / mi<sup>2<\/sup>",
+            "<strong>Idaho<\/strong><br/>19.15 people / mi<sup>2<\/sup>",
+            "<strong>Illinois<\/strong><br/>231.5 people / mi<sup>2<\/sup>",
+            "<strong>Indiana<\/strong><br/>181.7 people / mi<sup>2<\/sup>",
+            "<strong>Iowa<\/strong><br/>54.81 people / mi<sup>2<\/sup>",
+            "<strong>Kansas<\/strong><br/>35.09 people / mi<sup>2<\/sup>",
+            "<strong>Kentucky<\/strong><br/>110 people / mi<sup>2<\/sup>",
+            "<strong>Louisiana<\/strong><br/>105 people / mi<sup>2<\/sup>",
+            "<strong>Maine<\/strong><br/>43.04 people / mi<sup>2<\/sup>",
+            "<strong>Maryland<\/strong><br/>596.3 people / mi<sup>2<\/sup>",
+            "<strong>Massachusetts<\/strong><br/>840.2 people / mi<sup>2<\/sup>",
+            "<strong>Michigan<\/strong><br/>173.9 people / mi<sup>2<\/sup>",
+            "<strong>Minnesota<\/strong><br/>67.14 people / mi<sup>2<\/sup>",
+            "<strong>Mississippi<\/strong><br/>63.5 people / mi<sup>2<\/sup>",
+            "<strong>Missouri<\/strong><br/>87.26 people / mi<sup>2<\/sup>",
+            "<strong>Montana<\/strong><br/>6.858 people / mi<sup>2<\/sup>",
+            "<strong>Nebraska<\/strong><br/>23.97 people / mi<sup>2<\/sup>",
+            "<strong>Nevada<\/strong><br/>24.8 people / mi<sup>2<\/sup>",
+            "<strong>New Hampshire<\/strong><br/>147 people / mi<sup>2<\/sup>",
+            "<strong>New Jersey<\/strong><br/>1189 people / mi<sup>2<\/sup>",
+            "<strong>New Mexico<\/strong><br/>17.16 people / mi<sup>2<\/sup>",
+            "<strong>New York<\/strong><br/>412.3 people / mi<sup>2<\/sup>",
+            "<strong>North Carolina<\/strong><br/>198.2 people / mi<sup>2<\/sup>",
+            "<strong>North Dakota<\/strong><br/>9.916 people / mi<sup>2<\/sup>",
+            "<strong>Ohio<\/strong><br/>281.9 people / mi<sup>2<\/sup>",
+            "<strong>Oklahoma<\/strong><br/>55.22 people / mi<sup>2<\/sup>",
+            "<strong>Oregon<\/strong><br/>40.33 people / mi<sup>2<\/sup>",
+            "<strong>Pennsylvania<\/strong><br/>284.3 people / mi<sup>2<\/sup>",
+            "<strong>Rhode Island<\/strong><br/>1006 people / mi<sup>2<\/sup>",
+            "<strong>South Carolina<\/strong><br/>155.4 people / mi<sup>2<\/sup>",
+            "<strong>South Dakota<\/strong><br/>98.07 people / mi<sup>2<\/sup>",
+            "<strong>Tennessee<\/strong><br/>88.08 people / mi<sup>2<\/sup>",
+            "<strong>Texas<\/strong><br/>98.07 people / mi<sup>2<\/sup>",
+            "<strong>Utah<\/strong><br/>34.3 people / mi<sup>2<\/sup>",
+            "<strong>Vermont<\/strong><br/>67.73 people / mi<sup>2<\/sup>",
+            "<strong>Virginia<\/strong><br/>204.5 people / mi<sup>2<\/sup>",
+            "<strong>Washington<\/strong><br/>102.6 people / mi<sup>2<\/sup>",
+            "<strong>West Virginia<\/strong><br/>77.06 people / mi<sup>2<\/sup>",
+            "<strong>Wisconsin<\/strong><br/>105.2 people / mi<sup>2<\/sup>",
+            "<strong>Wyoming<\/strong><br/>5.851 people / mi<sup>2<\/sup>",
+            "<strong>Puerto Rico<\/strong><br/>1082 people / mi<sup>2<\/sup>"
           ],
           {
-            "clickable": false,
-            "noHide": false,
+            "interactive": false,
+            "permanent": false,
             "direction": "auto",
             "opacity": 1,
-            "offset": [12, -15],
+            "offset": [0, 0],
             "textsize": "15px",
             "textOnly": false,
             "style": {
@@ -4488,13 +4453,9 @@ m</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
             "detectRetina": false,
-            "reuseTiles": false,
             "id": "mapbox.light",
-            "accessToken": "pk.eyJ1IjoiamNoZW5nIiwiYSI6IkFKMlNFUmsifQ.1t642mhm3bbS9AcTQJFn8g"
+            "accessToken": ""
           }
         ]
       },
@@ -5228,10 +5189,7 @@ m</code></pre>
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "white",
@@ -5247,65 +5205,65 @@ m</code></pre>
           null,
           null,
           [
-            "<strong>Alabama\u003c/strong><br/>94.65 people / mi<sup>2\u003c/sup>",
-            "<strong>Alaska\u003c/strong><br/>1.264 people / mi<sup>2\u003c/sup>",
-            "<strong>Arizona\u003c/strong><br/>57.05 people / mi<sup>2\u003c/sup>",
-            "<strong>Arkansas\u003c/strong><br/>56.43 people / mi<sup>2\u003c/sup>",
-            "<strong>California\u003c/strong><br/>241.7 people / mi<sup>2\u003c/sup>",
-            "<strong>Colorado\u003c/strong><br/>49.33 people / mi<sup>2\u003c/sup>",
-            "<strong>Connecticut\u003c/strong><br/>739.1 people / mi<sup>2\u003c/sup>",
-            "<strong>Delaware\u003c/strong><br/>464.3 people / mi<sup>2\u003c/sup>",
-            "<strong>District of Columbia\u003c/strong><br/>10065 people / mi<sup>2\u003c/sup>",
-            "<strong>Florida\u003c/strong><br/>353.4 people / mi<sup>2\u003c/sup>",
-            "<strong>Georgia\u003c/strong><br/>169.5 people / mi<sup>2\u003c/sup>",
-            "<strong>Hawaii\u003c/strong><br/>214.1 people / mi<sup>2\u003c/sup>",
-            "<strong>Idaho\u003c/strong><br/>19.15 people / mi<sup>2\u003c/sup>",
-            "<strong>Illinois\u003c/strong><br/>231.5 people / mi<sup>2\u003c/sup>",
-            "<strong>Indiana\u003c/strong><br/>181.7 people / mi<sup>2\u003c/sup>",
-            "<strong>Iowa\u003c/strong><br/>54.81 people / mi<sup>2\u003c/sup>",
-            "<strong>Kansas\u003c/strong><br/>35.09 people / mi<sup>2\u003c/sup>",
-            "<strong>Kentucky\u003c/strong><br/>110 people / mi<sup>2\u003c/sup>",
-            "<strong>Louisiana\u003c/strong><br/>105 people / mi<sup>2\u003c/sup>",
-            "<strong>Maine\u003c/strong><br/>43.04 people / mi<sup>2\u003c/sup>",
-            "<strong>Maryland\u003c/strong><br/>596.3 people / mi<sup>2\u003c/sup>",
-            "<strong>Massachusetts\u003c/strong><br/>840.2 people / mi<sup>2\u003c/sup>",
-            "<strong>Michigan\u003c/strong><br/>173.9 people / mi<sup>2\u003c/sup>",
-            "<strong>Minnesota\u003c/strong><br/>67.14 people / mi<sup>2\u003c/sup>",
-            "<strong>Mississippi\u003c/strong><br/>63.5 people / mi<sup>2\u003c/sup>",
-            "<strong>Missouri\u003c/strong><br/>87.26 people / mi<sup>2\u003c/sup>",
-            "<strong>Montana\u003c/strong><br/>6.858 people / mi<sup>2\u003c/sup>",
-            "<strong>Nebraska\u003c/strong><br/>23.97 people / mi<sup>2\u003c/sup>",
-            "<strong>Nevada\u003c/strong><br/>24.8 people / mi<sup>2\u003c/sup>",
-            "<strong>New Hampshire\u003c/strong><br/>147 people / mi<sup>2\u003c/sup>",
-            "<strong>New Jersey\u003c/strong><br/>1189 people / mi<sup>2\u003c/sup>",
-            "<strong>New Mexico\u003c/strong><br/>17.16 people / mi<sup>2\u003c/sup>",
-            "<strong>New York\u003c/strong><br/>412.3 people / mi<sup>2\u003c/sup>",
-            "<strong>North Carolina\u003c/strong><br/>198.2 people / mi<sup>2\u003c/sup>",
-            "<strong>North Dakota\u003c/strong><br/>9.916 people / mi<sup>2\u003c/sup>",
-            "<strong>Ohio\u003c/strong><br/>281.9 people / mi<sup>2\u003c/sup>",
-            "<strong>Oklahoma\u003c/strong><br/>55.22 people / mi<sup>2\u003c/sup>",
-            "<strong>Oregon\u003c/strong><br/>40.33 people / mi<sup>2\u003c/sup>",
-            "<strong>Pennsylvania\u003c/strong><br/>284.3 people / mi<sup>2\u003c/sup>",
-            "<strong>Rhode Island\u003c/strong><br/>1006 people / mi<sup>2\u003c/sup>",
-            "<strong>South Carolina\u003c/strong><br/>155.4 people / mi<sup>2\u003c/sup>",
-            "<strong>South Dakota\u003c/strong><br/>98.07 people / mi<sup>2\u003c/sup>",
-            "<strong>Tennessee\u003c/strong><br/>88.08 people / mi<sup>2\u003c/sup>",
-            "<strong>Texas\u003c/strong><br/>98.07 people / mi<sup>2\u003c/sup>",
-            "<strong>Utah\u003c/strong><br/>34.3 people / mi<sup>2\u003c/sup>",
-            "<strong>Vermont\u003c/strong><br/>67.73 people / mi<sup>2\u003c/sup>",
-            "<strong>Virginia\u003c/strong><br/>204.5 people / mi<sup>2\u003c/sup>",
-            "<strong>Washington\u003c/strong><br/>102.6 people / mi<sup>2\u003c/sup>",
-            "<strong>West Virginia\u003c/strong><br/>77.06 people / mi<sup>2\u003c/sup>",
-            "<strong>Wisconsin\u003c/strong><br/>105.2 people / mi<sup>2\u003c/sup>",
-            "<strong>Wyoming\u003c/strong><br/>5.851 people / mi<sup>2\u003c/sup>",
-            "<strong>Puerto Rico\u003c/strong><br/>1082 people / mi<sup>2\u003c/sup>"
+            "<strong>Alabama<\/strong><br/>94.65 people / mi<sup>2<\/sup>",
+            "<strong>Alaska<\/strong><br/>1.264 people / mi<sup>2<\/sup>",
+            "<strong>Arizona<\/strong><br/>57.05 people / mi<sup>2<\/sup>",
+            "<strong>Arkansas<\/strong><br/>56.43 people / mi<sup>2<\/sup>",
+            "<strong>California<\/strong><br/>241.7 people / mi<sup>2<\/sup>",
+            "<strong>Colorado<\/strong><br/>49.33 people / mi<sup>2<\/sup>",
+            "<strong>Connecticut<\/strong><br/>739.1 people / mi<sup>2<\/sup>",
+            "<strong>Delaware<\/strong><br/>464.3 people / mi<sup>2<\/sup>",
+            "<strong>District of Columbia<\/strong><br/>10065 people / mi<sup>2<\/sup>",
+            "<strong>Florida<\/strong><br/>353.4 people / mi<sup>2<\/sup>",
+            "<strong>Georgia<\/strong><br/>169.5 people / mi<sup>2<\/sup>",
+            "<strong>Hawaii<\/strong><br/>214.1 people / mi<sup>2<\/sup>",
+            "<strong>Idaho<\/strong><br/>19.15 people / mi<sup>2<\/sup>",
+            "<strong>Illinois<\/strong><br/>231.5 people / mi<sup>2<\/sup>",
+            "<strong>Indiana<\/strong><br/>181.7 people / mi<sup>2<\/sup>",
+            "<strong>Iowa<\/strong><br/>54.81 people / mi<sup>2<\/sup>",
+            "<strong>Kansas<\/strong><br/>35.09 people / mi<sup>2<\/sup>",
+            "<strong>Kentucky<\/strong><br/>110 people / mi<sup>2<\/sup>",
+            "<strong>Louisiana<\/strong><br/>105 people / mi<sup>2<\/sup>",
+            "<strong>Maine<\/strong><br/>43.04 people / mi<sup>2<\/sup>",
+            "<strong>Maryland<\/strong><br/>596.3 people / mi<sup>2<\/sup>",
+            "<strong>Massachusetts<\/strong><br/>840.2 people / mi<sup>2<\/sup>",
+            "<strong>Michigan<\/strong><br/>173.9 people / mi<sup>2<\/sup>",
+            "<strong>Minnesota<\/strong><br/>67.14 people / mi<sup>2<\/sup>",
+            "<strong>Mississippi<\/strong><br/>63.5 people / mi<sup>2<\/sup>",
+            "<strong>Missouri<\/strong><br/>87.26 people / mi<sup>2<\/sup>",
+            "<strong>Montana<\/strong><br/>6.858 people / mi<sup>2<\/sup>",
+            "<strong>Nebraska<\/strong><br/>23.97 people / mi<sup>2<\/sup>",
+            "<strong>Nevada<\/strong><br/>24.8 people / mi<sup>2<\/sup>",
+            "<strong>New Hampshire<\/strong><br/>147 people / mi<sup>2<\/sup>",
+            "<strong>New Jersey<\/strong><br/>1189 people / mi<sup>2<\/sup>",
+            "<strong>New Mexico<\/strong><br/>17.16 people / mi<sup>2<\/sup>",
+            "<strong>New York<\/strong><br/>412.3 people / mi<sup>2<\/sup>",
+            "<strong>North Carolina<\/strong><br/>198.2 people / mi<sup>2<\/sup>",
+            "<strong>North Dakota<\/strong><br/>9.916 people / mi<sup>2<\/sup>",
+            "<strong>Ohio<\/strong><br/>281.9 people / mi<sup>2<\/sup>",
+            "<strong>Oklahoma<\/strong><br/>55.22 people / mi<sup>2<\/sup>",
+            "<strong>Oregon<\/strong><br/>40.33 people / mi<sup>2<\/sup>",
+            "<strong>Pennsylvania<\/strong><br/>284.3 people / mi<sup>2<\/sup>",
+            "<strong>Rhode Island<\/strong><br/>1006 people / mi<sup>2<\/sup>",
+            "<strong>South Carolina<\/strong><br/>155.4 people / mi<sup>2<\/sup>",
+            "<strong>South Dakota<\/strong><br/>98.07 people / mi<sup>2<\/sup>",
+            "<strong>Tennessee<\/strong><br/>88.08 people / mi<sup>2<\/sup>",
+            "<strong>Texas<\/strong><br/>98.07 people / mi<sup>2<\/sup>",
+            "<strong>Utah<\/strong><br/>34.3 people / mi<sup>2<\/sup>",
+            "<strong>Vermont<\/strong><br/>67.73 people / mi<sup>2<\/sup>",
+            "<strong>Virginia<\/strong><br/>204.5 people / mi<sup>2<\/sup>",
+            "<strong>Washington<\/strong><br/>102.6 people / mi<sup>2<\/sup>",
+            "<strong>West Virginia<\/strong><br/>77.06 people / mi<sup>2<\/sup>",
+            "<strong>Wisconsin<\/strong><br/>105.2 people / mi<sup>2<\/sup>",
+            "<strong>Wyoming<\/strong><br/>5.851 people / mi<sup>2<\/sup>",
+            "<strong>Puerto Rico<\/strong><br/>1082 people / mi<sup>2<\/sup>"
           ],
           {
-            "clickable": false,
-            "noHide": false,
+            "interactive": false,
+            "permanent": false,
             "direction": "auto",
             "opacity": 1,
-            "offset": [12, -15],
+            "offset": [0, 0],
             "textsize": "15px",
             "textOnly": false,
             "style": {
@@ -5338,7 +5296,8 @@ m</code></pre>
             "title": null,
             "extra": null,
             "layerId": null,
-            "className": "info legend"
+            "className": "info legend",
+            "group": null
           }
         ]
       }
@@ -5427,7 +5386,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

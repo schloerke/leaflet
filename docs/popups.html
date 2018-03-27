@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -26,8 +26,6 @@
 <link href="libs/leaflet/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet/leaflet.js"></script>
 <link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
-<link href="libs/leaflet-label/leaflet.label.css" rel="stylesheet" />
-<script src="libs/leaflet-label/leaflet.label.js"></script>
 <script src="libs/Proj4Leaflet/proj4-compressed.js"></script>
 <script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
 <script src="libs/leaflet-binding/leaflet.js"></script>
@@ -39,10 +37,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -224,28 +224,23 @@ leaflet() %&gt;% addTiles() %&gt;%
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           null,
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       },
@@ -254,18 +249,16 @@ leaflet() %&gt;% addTiles() %&gt;%
         "args": [
           47.597131,
           -122.327298,
-          "<b><a href='http://www.samurainoodle.com'>Samurai Noodle\u003c/a>\u003c/b><br/>606 5th Ave. S<br/>Seattle, WA 98138",
+          "<b><a href='http://www.samurainoodle.com'>Samurai Noodle<\/a><\/b><br/>606 5th Ave. S<br/>Seattle, WA 98138",
           null,
           null,
           {
             "maxWidth": 300,
             "minWidth": 50,
-            "maxHeight": null,
             "autoPan": true,
             "keepInView": false,
             "closeButton": false,
             "zoomAnimation": true,
-            "closeOnClick": null,
             "className": ""
           }
         ]
@@ -307,28 +300,23 @@ leaflet(df) %&gt;% addTiles() %&gt;%
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           null,
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       },
@@ -341,7 +329,7 @@ leaflet(df) %&gt;% addTiles() %&gt;%
           null,
           null,
           {
-            "clickable": true,
+            "interactive": true,
             "draggable": false,
             "keyboard": true,
             "title": "",
@@ -401,28 +389,23 @@ leaflet(df) %&gt;% addTiles() %&gt;%
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           null,
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       },
@@ -435,7 +418,7 @@ leaflet(df) %&gt;% addTiles() %&gt;%
           null,
           null,
           {
-            "clickable": true,
+            "interactive": true,
             "draggable": false,
             "keyboard": true,
             "title": "",
@@ -508,28 +491,23 @@ leaflet() %&gt;% addTiles() %&gt;% setView(-118.456554, 34.09, 13) %&gt;%
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           null,
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       },
@@ -542,7 +520,7 @@ leaflet() %&gt;% addTiles() %&gt;% setView(-118.456554, 34.09, 13) %&gt;%
           null,
           null,
           {
-            "clickable": true,
+            "interactive": true,
             "draggable": false,
             "keyboard": true,
             "title": "",
@@ -558,14 +536,13 @@ leaflet() %&gt;% addTiles() %&gt;% setView(-118.456554, 34.09, 13) %&gt;%
           null,
           "Default Label",
           {
-            "clickable": false,
-            "noHide": true,
-            "direction": "right",
+            "interactive": false,
+            "permanent": true,
+            "direction": "auto",
             "opacity": 1,
-            "offset": [12, -15],
+            "offset": [0, 0],
             "textsize": "10px",
             "textOnly": false,
-            "style": null,
             "zoomAnimation": true,
             "className": ""
           },
@@ -581,7 +558,7 @@ leaflet() %&gt;% addTiles() %&gt;% setView(-118.456554, 34.09, 13) %&gt;%
           null,
           null,
           {
-            "clickable": true,
+            "interactive": true,
             "draggable": false,
             "keyboard": true,
             "title": "",
@@ -597,14 +574,13 @@ leaflet() %&gt;% addTiles() %&gt;% setView(-118.456554, 34.09, 13) %&gt;%
           null,
           "Label w/o surrounding box",
           {
-            "clickable": false,
-            "noHide": true,
-            "direction": "right",
+            "interactive": false,
+            "permanent": true,
+            "direction": "auto",
             "opacity": 1,
-            "offset": [12, -15],
+            "offset": [0, 0],
             "textsize": "10px",
             "textOnly": true,
-            "style": null,
             "zoomAnimation": true,
             "className": ""
           },
@@ -620,7 +596,7 @@ leaflet() %&gt;% addTiles() %&gt;% setView(-118.456554, 34.09, 13) %&gt;%
           null,
           null,
           {
-            "clickable": true,
+            "interactive": true,
             "draggable": false,
             "keyboard": true,
             "title": "",
@@ -636,14 +612,13 @@ leaflet() %&gt;% addTiles() %&gt;% setView(-118.456554, 34.09, 13) %&gt;%
           null,
           "label w/ textsize 15px",
           {
-            "clickable": false,
-            "noHide": true,
-            "direction": "right",
+            "interactive": false,
+            "permanent": true,
+            "direction": "auto",
             "opacity": 1,
-            "offset": [12, -15],
+            "offset": [0, 0],
             "textsize": "15px",
             "textOnly": false,
-            "style": null,
             "zoomAnimation": true,
             "className": ""
           },
@@ -659,7 +634,7 @@ leaflet() %&gt;% addTiles() %&gt;% setView(-118.456554, 34.09, 13) %&gt;%
           null,
           null,
           {
-            "clickable": true,
+            "interactive": true,
             "draggable": false,
             "keyboard": true,
             "title": "",
@@ -675,11 +650,11 @@ leaflet() %&gt;% addTiles() %&gt;% setView(-118.456554, 34.09, 13) %&gt;%
           null,
           "Label w/ custom CSS style",
           {
-            "clickable": false,
-            "noHide": true,
+            "interactive": false,
+            "permanent": true,
             "direction": "bottom",
             "opacity": 1,
-            "offset": [12, -15],
+            "offset": [0, 0],
             "textsize": "10px",
             "textOnly": false,
             "style": {
@@ -751,7 +726,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

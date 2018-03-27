@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -26,8 +26,6 @@
 <link href="libs/leaflet/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet/leaflet.js"></script>
 <link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
-<link href="libs/leaflet-label/leaflet.label.css" rel="stylesheet" />
-<script src="libs/leaflet-label/leaflet.label.js"></script>
 <script src="libs/Proj4Leaflet/proj4-compressed.js"></script>
 <script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
 <script src="libs/leaflet-binding/leaflet.js"></script>
@@ -36,8 +34,8 @@
 <link href="libs/leaflet-markercluster/MarkerCluster.css" rel="stylesheet" />
 <link href="libs/leaflet-markercluster/MarkerCluster.Default.css" rel="stylesheet" />
 <script src="libs/leaflet-markercluster/leaflet.markercluster.js"></script>
-<script src="libs/leaflet-markercluster/leaflet.markercluster.layersupport-src.js"></script>
-<script src="libs/leaflet-markercluster/leaflet.markercluster.freezable-src.js"></script>
+<script src="libs/leaflet-markercluster/leaflet.markercluster.freezable.js"></script>
+<script src="libs/leaflet-markercluster/leaflet.markercluster.layersupport.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -46,10 +44,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -264,28 +264,23 @@ map</code></pre>
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           "OSM (default)",
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       },
@@ -298,11 +293,7 @@ map</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
-            "detectRetina": false,
-            "reuseTiles": false
+            "detectRetina": false
           }
         ]
       },
@@ -315,11 +306,7 @@ map</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
-            "detectRetina": false,
-            "reuseTiles": false
+            "detectRetina": false
           }
         ]
       },
@@ -332,10 +319,7 @@ map</code></pre>
           null,
           "Quakes",
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": false,
             "color": "#03F",
@@ -343,8 +327,7 @@ map</code></pre>
             "opacity": 0.5,
             "fill": true,
             "fillColor": "#03F",
-            "fillOpacity": 0.2,
-            "dashArray": null
+            "fillOpacity": 0.2
           },
           null,
           null,
@@ -370,10 +353,7 @@ map</code></pre>
           null,
           "Outline",
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "#FFFFCC",
@@ -382,7 +362,6 @@ map</code></pre>
             "fill": false,
             "fillColor": "#FFFFCC",
             "fillOpacity": 0.2,
-            "dashArray": null,
             "smoothFactor": 1,
             "noClip": false
           },
@@ -439,28 +418,23 @@ map</code></pre>
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           "OSM (default)",
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       },
@@ -473,11 +447,7 @@ map</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
-            "detectRetina": false,
-            "reuseTiles": false
+            "detectRetina": false
           }
         ]
       },
@@ -490,11 +460,7 @@ map</code></pre>
           {
             "errorTileUrl": "",
             "noWrap": false,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
-            "detectRetina": false,
-            "reuseTiles": false
+            "detectRetina": false
           }
         ]
       },
@@ -507,10 +473,7 @@ map</code></pre>
           null,
           "Quakes",
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": false,
             "color": "#03F",
@@ -518,8 +481,7 @@ map</code></pre>
             "opacity": 0.5,
             "fill": true,
             "fillColor": "#03F",
-            "fillOpacity": 0.2,
-            "dashArray": null
+            "fillOpacity": 0.2
           },
           null,
           null,
@@ -545,10 +507,7 @@ map</code></pre>
           null,
           "Outline",
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "#FFFFCC",
@@ -557,7 +516,6 @@ map</code></pre>
             "fill": false,
             "fillColor": "#FFFFCC",
             "fillOpacity": 0.2,
-            "dashArray": null,
             "smoothFactor": 1,
             "noClip": false
           },
@@ -643,28 +601,23 @@ l %&gt;%
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           null,
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       },
@@ -677,7 +630,7 @@ l %&gt;%
           null,
           ">3 & <=4",
           {
-            "clickable": true,
+            "interactive": true,
             "draggable": false,
             "keyboard": true,
             "title": "",
@@ -704,14 +657,13 @@ l %&gt;%
           null,
           ["4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4", "4"],
           {
-            "clickable": false,
-            "noHide": false,
+            "interactive": false,
+            "permanent": false,
             "direction": "auto",
             "opacity": 1,
-            "offset": [12, -15],
+            "offset": [0, 0],
             "textsize": "10px",
             "textOnly": false,
-            "style": null,
             "zoomAnimation": true,
             "className": ""
           },
@@ -727,7 +679,7 @@ l %&gt;%
           null,
           ">4 & <=5",
           {
-            "clickable": true,
+            "interactive": true,
             "draggable": false,
             "keyboard": true,
             "title": "",
@@ -754,14 +706,13 @@ l %&gt;%
           null,
           ["4.8", "4.2", "4.1", "4.8", "4.4", "4.7", "4.3", "4.4", "4.6", "4.4", "4.4", "4.3", "4.5", "4.4", "4.4", "4.5", "4.2", "4.4", "4.7", "4.6", "4.5", "4.4", "4.6", "4.7", "4.8", "4.5", "4.3", "4.5", "4.6", "4.1", "4.4", "4.7", "4.6", "4.4", "4.3", "4.6", "4.9", "4.5", "4.4", "4.3", "4.2", "4.6", "4.3", "4.2", "4.4", "4.5", "4.4", "4.3", "4.7", "4.1", "5", "4.6", "4.9", "4.7", "4.1", "5", "4.5", "4.5", "4.3", "4.4", "4.3", "4.1", "4.5", "4.2", "4.5", "4.6", "4.3", "4.3", "4.7", "4.5", "4.2", "4.3", "4.7", "4.2", "4.2", "4.5", "4.7", "4.1", "4.6", "4.7", "4.7", "4.6", "4.2", "4.4", "4.6", "5", "4.5", "4.2", "4.8", "4.4", "4.2", "4.7", "4.8", "4.2", "4.8", "4.3", "4.7", "4.5", "4.4", "4.2", "5", "4.8", "4.3", "4.5", "4.2", "4.5", "4.6", "4.3", "4.7", "4.6", "4.9", "4.2", "4.6", "5", "4.4", "4.2", "4.2", "4.4", "4.9", "4.3", "4.2", "4.7", "4.7", "4.2", "4.3", "4.9", "4.6", "4.1", "4.8", "4.6", "4.6", "4.8", "5", "4.7", "4.5", "4.3", "4.6", "4.1", "4.1", "4.1", "5", "4.5", "4.1", "4.6", "4.5", "4.3", "4.4", "4.2", "4.1", "4.9", "4.3", "4.9", "4.6", "4.6", "4.7", "4.6", "4.1", "4.6", "4.2", "4.6", "4.5", "4.3", "4.3", "4.7", "4.5", "4.5", "4.3", "4.5", "4.7", "4.2", "4.7", "4.3", "4.1", "4.3", "4.3", "4.2", "4.6", "4.4", "4.2", "4.7", "4.6", "4.9", "4.2", "4.5", "4.9", "4.2", "4.5", "5", "5", "4.7", "4.3", "4.4", "4.9", "4.5", "4.4", "5", "4.7", "4.8", "4.5", "4.1", "4.8", "5", "4.6", "4.3", "4.7", "4.2", "4.7", "4.5", "4.9", "4.4", "4.2", "4.6", "4.7", "4.2", "4.9", "4.7", "4.4", "4.4", "4.2", "4.9", "4.6", "4.4", "4.6", "4.5", "4.4", "4.9", "4.1", "4.2", "4.6", "5", "4.3", "4.5", "4.4", "4.2", "4.6", "4.4", "4.7", "4.2", "4.7", "4.5", "5", "5", "4.8", "4.6", "4.6", "5", "5", "4.6", "4.4", "4.8", "4.7", "4.6", "4.3", "4.7", "4.1", "4.9", "4.6", "4.8", "4.9", "4.5", "4.9", "4.4", "4.1", "4.5", "4.9", "4.8", "4.4", "4.4", "4.9", "4.4", "4.2", "4.6", "4.6", "4.5", "4.4", "5", "4.5", "4.5", "4.5", "4.7", "4.2", "4.8", "4.5", "4.3", "4.3", "4.3", "4.6", "4.5", "5", "4.6", "4.6", "4.9", "4.1", "4.7", "5", "4.6", "4.7", "4.2", "4.3", "4.4", "4.6", "4.5", "4.2", "4.1", "4.4", "4.4", "4.6", "4.4", "5", "5", "4.2", "4.5", "4.9", "4.3", "4.8", "4.4", "4.2", "4.9", "4.2", "5", "4.7", "4.6", "4.3", "4.4", "4.3", "4.3", "4.7", "4.4", "4.2", "4.5", "4.8", "4.8", "4.3", "4.4", "4.4", "4.4", "4.3", "4.8", "4.3", "4.5", "4.1", "4.7", "4.6", "4.7", "4.6", "4.4", "4.2", "4.1", "4.7", "4.8", "4.4", "4.3", "4.4", "4.5", "4.5", "4.7", "4.3", "4.7", "4.8", "4.6", "4.7", "4.3", "4.5", "4.3", "4.3", "4.7", "4.3", "4.3", "4.6", "4.5", "4.5", "4.6", "4.4", "5", "4.4", "4.4", "4.4", "4.8", "4.4", "4.7", "4.7", "4.4", "4.3", "5", "4.5", "4.6", "4.6", "4.5", "4.4", "4.5", "4.1", "4.9", "4.1", "4.4", "4.1", "4.9", "4.6", "4.5", "4.8", "4.2", "4.2", "4.1", "4.4", "4.8", "4.2", "4.8", "4.9", "4.6", "4.5", "4.4", "4.6", "4.2", "4.7", "4.4", "4.5", "4.9", "4.7", "4.7", "4.6", "4.1", "4.7", "4.6", "4.3", "4.4", "4.7", "4.3", "4.1", "4.7", "4.5", "4.5", "4.6", "4.4", "4.7", "4.6", "4.6", "4.8", "4.7", "4.7", "4.2", "4.6", "4.2", "4.5", "4.5", "4.8", "4.6", "4.6", "5", "4.3", "4.3", "4.8", "4.7", "4.7", "4.8", "4.2", "4.2", "4.6", "4.5", "4.9", "4.7", "4.9", "4.2", "4.2", "4.5", "4.5", "4.8", "4.5", "5", "4.4", "4.5", "4.6", "4.5", "4.8", "4.3", "4.7", "4.6", "4.8", "4.6", "4.4", "4.6", "4.3", "4.4", "4.7", "4.8", "4.1", "4.6", "4.9", "4.7", "4.7", "4.6", "4.6", "4.9", "4.7", "4.4", "4.9", "4.8", "4.6", "4.4", "4.8", "4.7", "4.2", "4.8", "4.9", "4.3", "4.4", "4.7", "4.7", "4.9", "4.5", "4.7", "4.2", "4.8", "4.2", "4.8", "4.4", "4.5", "4.3", "5", "4.2", "4.6", "4.6", "4.5", "5", "4.7", "4.6", "4.8", "4.6", "4.4", "4.2", "4.8", "4.4", "4.7", "4.6", "4.6", "4.5", "4.2", "4.8", "4.9", "5", "4.2", "4.8", "4.4", "4.8", "4.4", "4.1", "4.9", "4.6", "4.5", "4.8", "4.6", "4.8", "4.7", "4.9", "4.4", "4.6", "4.3", "4.4", "4.2", "4.1", "4.2", "5", "4.1", "4.3", "4.2", "4.5", "4.4", "4.4", "5", "4.8", "5", "4.2", "4.5", "4.3", "4.5", "4.6", "4.4", "4.3", "4.7", "4.9", "4.6", "4.4", "4.8", "4.2", "4.7", "4.1", "4.7", "4.9", "5", "4.5", "4.4", "4.5", "4.7", "4.4", "4.7", "4.7", "4.2", "4.5", "4.7", "4.5", "4.1", "4.6", "4.3", "4.6", "4.6", "4.7", "5", "4.4", "4.6", "4.5", "4.2", "4.9", "4.5", "4.4", "4.1", "4.3", "4.5", "4.1", "4.5", "4.1", "4.4", "4.7", "4.3", "4.3", "4.1", "4.4", "4.3", "4.2", "4.5", "4.7", "5", "4.3", "4.7", "5", "4.5", "5", "4.1", "4.9", "4.1", "4.4", "4.5", "4.4", "4.5", "4.3", "4.3", "5", "4.5", "4.5", "4.4", "4.5", "4.1", "4.9", "4.7", "4.3", "4.6", "4.6", "4.5", "4.3", "4.6", "4.5", "4.8", "4.6", "4.1", "4.9", "4.7", "4.1", "4.3", "4.4", "4.8", "4.4", "4.4", "4.6", "4.2", "4.1", "4.2", "4.1", "4.1", "4.7", "4.8", "5", "4.8", "4.4", "5", "4.2", "4.1", "4.8", "4.5", "5", "4.1", "4.7", "4.8", "4.5", "4.7", "4.1", "4.3", "4.3", "4.7", "4.1", "4.2", "4.8", "4.8", "4.2", "4.2", "4.2", "4.5", "4.9", "4.4", "4.3", "4.2", "4.5", "4.8", "4.4", "4.2", "4.2", "5", "4.2", "4.5", "4.6", "5", "5", "4.8", "4.2", "4.3", "4.1", "4.4", "4.9", "4.5", "4.9", "4.5", "5", "4.9", "4.5", "4.2", "4.2", "4.2", "4.3", "4.6", "4.6", "4.4", "4.4", "4.9", "4.2", "4.7", "5", "4.3", "4.1", "4.5", "4.9", "4.7", "4.8", "4.5", "4.2", "4.6", "4.6", "4.2", "4.7", "4.3", "4.8", "4.6", "4.8", "4.6", "4.2", "4.7", "4.7", "4.5", "4.5", "4.1", "4.3", "4.7", "4.9", "4.5", "4.7", "4.5", "4.8", "4.3", "4.1", "4.1", "4.8", "4.2", "4.8", "4.4", "4.7", "4.9", "4.9", "4.2", "4.4", "4.4", "4.3", "4.9", "5", "4.7", "4.9", "4.3", "4.5", "4.2", "4.8", "4.7", "4.3", "4.3", "4.9", "4.2", "4.4", "4.7", "4.5", "4.5"],
           {
-            "clickable": false,
-            "noHide": false,
+            "interactive": false,
+            "permanent": false,
             "direction": "auto",
             "opacity": 1,
-            "offset": [12, -15],
+            "offset": [0, 0],
             "textsize": "10px",
             "textOnly": false,
-            "style": null,
             "zoomAnimation": true,
             "className": ""
           },
@@ -777,7 +728,7 @@ l %&gt;%
           null,
           ">5 & <=6",
           {
-            "clickable": true,
+            "interactive": true,
             "draggable": false,
             "keyboard": true,
             "title": "",
@@ -804,14 +755,13 @@ l %&gt;%
           null,
           ["5.4", "6", "5.4", "5.2", "5.1", "5.5", "5.2", "5.3", "5.2", "5.1", "5.2", "5.2", "5.1", "5.7", "5.3", "5.1", "5.1", "5.3", "5.7", "5.6", "5.3", "5.7", "5.3", "5.2", "5.2", "5.4", "5.3", "5.3", "5.1", "5.1", "5.7", "5.2", "5.6", "5.1", "5.4", "5.3", "5.2", "5.3", "5.3", "5.1", "5.4", "5.5", "5.1", "5.5", "5.4", "5.1", "5.1", "5.4", "5.1", "5.1", "5.7", "5.1", "5.5", "5.1", "5.1", "5.1", "5.3", "5.7", "5.3", "5.4", "5.1", "5.1", "5.1", "5.1", "5.5", "5.4", "5.2", "5.1", "5.4", "5.2", "5.5", "5.5", "5.5", "5.1", "5.5", "5.4", "5.5", "5.4", "5.9", "5.3", "5.2", "5.6", "5.2", "5.2", "5.1", "5.1", "5.1", "5.2", "5.7", "5.1", "5.1", "5.3", "5.1", "5.1", "5.6", "5.6", "5.4", "5.6", "5.1", "5.5", "5.2", "5.3", "5.3", "5.2", "5.2", "5.2", "5.1", "5.6", "5.1", "5.2", "5.2", "5.3", "5.9", "5.4", "5.3", "5.1", "5.1", "5.3", "5.1", "5.1", "5.3", "5.2", "5.1", "5.2", "5.1", "5.2", "5.7", "6", "5.2", "5.4", "5.5", "5.2", "5.1", "5.1", "5.6", "5.3", "5.1", "5.4", "5.6", "5.4", "5.2", "5.4", "5.5", "5.5", "5.4", "5.4", "5.2", "5.2", "6"],
           {
-            "clickable": false,
-            "noHide": false,
+            "interactive": false,
+            "permanent": false,
             "direction": "auto",
             "opacity": 1,
-            "offset": [12, -15],
+            "offset": [0, 0],
             "textsize": "10px",
             "textOnly": false,
-            "style": null,
             "zoomAnimation": true,
             "className": ""
           },
@@ -875,7 +825,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

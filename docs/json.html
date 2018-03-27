@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -26,8 +26,6 @@
 <link href="libs/leaflet/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet/leaflet.js"></script>
 <link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
-<link href="libs/leaflet-label/leaflet.label.css" rel="stylesheet" />
-<script src="libs/leaflet-label/leaflet.label.js"></script>
 <script src="libs/Proj4Leaflet/proj4-compressed.js"></script>
 <script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
 <script src="libs/leaflet-binding/leaflet.js"></script>
@@ -40,10 +38,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -233,28 +233,23 @@ leaflet(nycounties) %&gt;%
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           null,
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       },
@@ -804,10 +799,7 @@ leaflet(nycounties) %&gt;%
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": false,
             "color": "#03F",
@@ -816,7 +808,6 @@ leaflet(nycounties) %&gt;%
             "fill": true,
             "fillColor": ["#25848E", "#21918C", "#2C728E", "#31688E", "#20928C", "#38598C", "#440154", "#297B8E", "#297B8E", "#287C8E", "#20938C", "#26AD81", "#25838E", "#25AB82", "#2F6B8E", "#23A983", "#7CD250", "#23898E", "#2B758E", "#51C569", "#27808E", "#2A788E", "#90D743", "#2C718E", "#21908D", "#32648E", "#287C8E", "#1F9E89", "#1E9D89", "#297A8E", "#2F6B8E", "#34608D", "#33B679", "#2D718E", "#39558C", "#2C718E", "#218E8D", "#228C8D", "#1F978B", "#3F4889", "#25838E", "#2D718E", "#2E6F8E", "#297A8E", "#2D718E", "#21A685", "#2C718E", "#24878E", "#1FA287", "#31B57B", "#26828E", "#40BD72", "#228C8D", "#95D840", "#36B779", "#C5E021", "#BFDF25", "#B9DE28", "#CDE11D", "#F1E51D", "#FDE725", "#52C569"],
             "fillOpacity": 1,
-            "dashArray": null,
             "smoothFactor": 0.3,
             "noClip": false
           },
@@ -844,7 +835,8 @@ leaflet(nycounties) %&gt;%
               "p_n": 0.848745942418967
             },
             "layerId": null,
-            "className": "info legend"
+            "className": "info legend",
+            "group": null
           }
         ]
       }
@@ -891,28 +883,23 @@ leaflet() %&gt;% setView(lng = -98.583, lat = 39.833, zoom = 3) %&gt;%
       {
         "method": "addTiles",
         "args": [
-          "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
           null,
           null,
           {
             "minZoom": 0,
             "maxZoom": 18,
-            "maxNativeZoom": null,
             "tileSize": 256,
             "subdomains": "abc",
             "errorTileUrl": "",
             "tms": false,
-            "continuousWorld": false,
             "noWrap": false,
             "zoomOffset": 0,
             "zoomReverse": false,
             "opacity": 1,
-            "zIndex": null,
-            "unloadInvisibleTiles": null,
-            "updateWhenIdle": null,
+            "zIndex": 1,
             "detectRetina": false,
-            "reuseTiles": false,
-            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"
+            "attribution": "&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"
           }
         ]
       },
@@ -923,10 +910,7 @@ leaflet() %&gt;% setView(lng = -98.583, lat = 39.833, zoom = 3) %&gt;%
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "#444444",
@@ -46869,10 +46853,7 @@ leaflet() %&gt;% addGeoJSON(geojson)</code></pre>
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": true,
             "color": "#03F",
@@ -46881,7 +46862,6 @@ leaflet() %&gt;% addGeoJSON(geojson)</code></pre>
             "fill": true,
             "fillColor": "#03F",
             "fillOpacity": 0.2,
-            "dashArray": null,
             "smoothFactor": 1,
             "noClip": false
           }
@@ -46930,7 +46910,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

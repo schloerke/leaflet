@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -26,8 +26,6 @@
 <link href="libs/leaflet/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet/leaflet.js"></script>
 <link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
-<link href="libs/leaflet-label/leaflet.label.css" rel="stylesheet" />
-<script src="libs/leaflet-label/leaflet.label.js"></script>
 <script src="libs/Proj4Leaflet/proj4-compressed.js"></script>
 <script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
 <script src="libs/leaflet-binding/leaflet.js"></script>
@@ -39,10 +37,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -2336,10 +2336,7 @@ map %&gt;%
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": false,
             "color": ["#F7FBFF", "#F6FAFF", "#F7FBFF", "#F5F9FE", "#EFF6FD", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#ECF4FC", "#F3F8FE", "#F6FAFF", "#F7FBFF", "#F2F8FD", "#F7FBFF", "#F7FBFF", "#F4F9FE", "#F6FAFF", "#F7FBFF", "#F7FBFF", "#F5FAFF", "#F7FBFF", "#F6FBFF", "#DDEAF7", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#E6F0F9", "#F3F8FE", "#F4F9FE", "#63A8D2", "#F7FBFF", "#F6FBFF", "#F7FBFF", "#F7FBFF", "#F2F8FD", "#F6FBFF", "#F6FAFF", "#F7FBFF", "#F7FBFF", "#F3F9FE", "#D1E2F3", "#F7FBFF", "#F4F9FE", "#F6FAFF", "#F4F9FE", "#F6FAFF", "#F1F7FD", "#F7FBFF", "#E4EFF9", "#F7FBFF", "#F6FAFF", "#F4F9FE", "#F7FBFF", "#F7FBFF", "#DBE9F6", "#F7FBFF", "#DDEAF7", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F2F8FE", "#F7FBFF", "#F6FAFF", "#F7FBFF", "#F7FBFF", "#F6FAFF", "#F7FBFF", "#F4F9FE", "#EBF3FB", "#CCDFF1", "#F5F9FE", "#ECF4FB", "#F6FAFF", "#F7FBFF", "#F4F9FE", "#DFECF7", "#F7FBFF", "#F7FBFF", "#BAD6EB", "#F5F9FE", "#F6FAFF", "#F7FBFF", "#F7FBFF", "#E5F0F9", "#F7FBFF", "#F5FAFE", "#F7FBFF", "#F6FBFF", "#F7FBFF", "#F6FAFF", "#F6FAFF", "#F7FBFF", "#F6FAFF", "#F6FBFF", "#F6FBFF", "#F5FAFE", "#F7FBFF", "#F7FBFF", "#E2EEF8", "#F7FBFF", "#F7FBFF", "#F6FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F2F8FD", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F3F8FE", "#F7FBFF", "#EEF5FC", "#F3F9FE", "#F7FBFF", "#F5FAFF", "#F6FAFF", "#F1F7FD", "#F6FBFF", "#F4F9FE", "#F3F8FE", "#F7FBFF", "#EEF5FC", "#F6FAFF", "#F6FBFF", "#F4F9FE", "#F7FBFF", "#F7FBFF", "#F6FAFF", "#F3F9FE", "#D9E8F5", "#F7FBFF", "#F7FBFF", "#EFF6FD", "#F6FAFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F6FBFF", "#F7FBFF", "#F7FBFF", "#F6FAFF", "#F7FBFF", "#F5FAFE", "#F6FAFF", "#F2F8FE", "#F7FBFF", "#F6FAFF", "#F7FBFF", "#F7FBFF", "#F0F6FD", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F6FAFF", "#EBF3FB", "#EEF5FC", "#F6FBFF", "#F6FBFF", "#F3F8FE", "#F6FBFF", "#08306B", "#F6FAFF", "#F2F8FD", "#F4F9FE", "#F7FBFF", "#F6FBFF", "#F1F7FD", "#F7FBFF", "#F7FBFF"],
@@ -2348,7 +2345,6 @@ map %&gt;%
             "fill": true,
             "fillColor": ["#F7FBFF", "#F6FAFF", "#F7FBFF", "#F5F9FE", "#EFF6FD", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#ECF4FC", "#F3F8FE", "#F6FAFF", "#F7FBFF", "#F2F8FD", "#F7FBFF", "#F7FBFF", "#F4F9FE", "#F6FAFF", "#F7FBFF", "#F7FBFF", "#F5FAFF", "#F7FBFF", "#F6FBFF", "#DDEAF7", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#E6F0F9", "#F3F8FE", "#F4F9FE", "#63A8D2", "#F7FBFF", "#F6FBFF", "#F7FBFF", "#F7FBFF", "#F2F8FD", "#F6FBFF", "#F6FAFF", "#F7FBFF", "#F7FBFF", "#F3F9FE", "#D1E2F3", "#F7FBFF", "#F4F9FE", "#F6FAFF", "#F4F9FE", "#F6FAFF", "#F1F7FD", "#F7FBFF", "#E4EFF9", "#F7FBFF", "#F6FAFF", "#F4F9FE", "#F7FBFF", "#F7FBFF", "#DBE9F6", "#F7FBFF", "#DDEAF7", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F2F8FE", "#F7FBFF", "#F6FAFF", "#F7FBFF", "#F7FBFF", "#F6FAFF", "#F7FBFF", "#F4F9FE", "#EBF3FB", "#CCDFF1", "#F5F9FE", "#ECF4FB", "#F6FAFF", "#F7FBFF", "#F4F9FE", "#DFECF7", "#F7FBFF", "#F7FBFF", "#BAD6EB", "#F5F9FE", "#F6FAFF", "#F7FBFF", "#F7FBFF", "#E5F0F9", "#F7FBFF", "#F5FAFE", "#F7FBFF", "#F6FBFF", "#F7FBFF", "#F6FAFF", "#F6FAFF", "#F7FBFF", "#F6FAFF", "#F6FBFF", "#F6FBFF", "#F5FAFE", "#F7FBFF", "#F7FBFF", "#E2EEF8", "#F7FBFF", "#F7FBFF", "#F6FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F2F8FD", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F3F8FE", "#F7FBFF", "#EEF5FC", "#F3F9FE", "#F7FBFF", "#F5FAFF", "#F6FAFF", "#F1F7FD", "#F6FBFF", "#F4F9FE", "#F3F8FE", "#F7FBFF", "#EEF5FC", "#F6FAFF", "#F6FBFF", "#F4F9FE", "#F7FBFF", "#F7FBFF", "#F6FAFF", "#F3F9FE", "#D9E8F5", "#F7FBFF", "#F7FBFF", "#EFF6FD", "#F6FAFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F6FBFF", "#F7FBFF", "#F7FBFF", "#F6FAFF", "#F7FBFF", "#F5FAFE", "#F6FAFF", "#F2F8FE", "#F7FBFF", "#F6FAFF", "#F7FBFF", "#F7FBFF", "#F0F6FD", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F7FBFF", "#F6FAFF", "#EBF3FB", "#EEF5FC", "#F6FBFF", "#F6FBFF", "#F3F8FE", "#F6FBFF", "#08306B", "#F6FAFF", "#F2F8FD", "#F4F9FE", "#F7FBFF", "#F6FBFF", "#F1F7FD", "#F7FBFF", "#F7FBFF"],
             "fillOpacity": 1,
-            "dashArray": null,
             "smoothFactor": 0.2,
             "noClip": false
           },
@@ -4473,10 +4469,7 @@ map %&gt;%
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": false,
             "color": ["#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#6BAED6", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#C6DBEF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#C6DBEF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#C6DBEF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#08519C", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF"],
@@ -4485,7 +4478,6 @@ map %&gt;%
             "fill": true,
             "fillColor": ["#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#6BAED6", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#C6DBEF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#C6DBEF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#C6DBEF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#08519C", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF", "#EFF3FF"],
             "fillOpacity": 1,
-            "dashArray": null,
             "smoothFactor": 0.2,
             "noClip": false
           },
@@ -6605,10 +6597,7 @@ map %&gt;%
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": false,
             "color": ["#9ECAE1", "#4292C6", "#9ECAE1", "#4292C6", "#084594", "#9ECAE1", "#EFF3FF", "#EFF3FF", "#084594", "#2171B5", "#4292C6", "#EFF3FF", "#2171B5", "#C6DBEF", "#9ECAE1", "#2171B5", "#4292C6", "#C6DBEF", "#9ECAE1", "#4292C6", "#EFF3FF", "#6BAED6", "#084594", "#9ECAE1", "#EFF3FF", "#9ECAE1", "#EFF3FF", "#084594", "#2171B5", "#2171B5", "#084594", "#6BAED6", "#6BAED6", "#9ECAE1", "#9ECAE1", "#2171B5", "#6BAED6", "#4292C6", "#EFF3FF", "#9ECAE1", "#2171B5", "#084594", "#EFF3FF", "#2171B5", "#4292C6", "#2171B5", "#4292C6", "#084594", "#EFF3FF", "#084594", "#9ECAE1", "#6BAED6", "#2171B5", "#EFF3FF", "#EFF3FF", "#084594", "#9ECAE1", "#084594", "#9ECAE1", "#6BAED6", "#C6DBEF", "#EFF3FF", "#EFF3FF", "#C6DBEF", "#2171B5", "#EFF3FF", "#6BAED6", "#EFF3FF", "#6BAED6", "#4292C6", "#C6DBEF", "#2171B5", "#084594", "#084594", "#4292C6", "#084594", "#4292C6", "#C6DBEF", "#2171B5", "#084594", "#9ECAE1", "#6BAED6", "#084594", "#4292C6", "#6BAED6", "#C6DBEF", "#9ECAE1", "#084594", "#EFF3FF", "#4292C6", "#C6DBEF", "#6BAED6", "#EFF3FF", "#4292C6", "#4292C6", "#EFF3FF", "#6BAED6", "#6BAED6", "#6BAED6", "#4292C6", "#C6DBEF", "#9ECAE1", "#084594", "#9ECAE1", "#C6DBEF", "#6BAED6", "#C6DBEF", "#C6DBEF", "#9ECAE1", "#C6DBEF", "#C6DBEF", "#2171B5", "#C6DBEF", "#EFF3FF", "#C6DBEF", "#2171B5", "#9ECAE1", "#084594", "#2171B5", "#6BAED6", "#4292C6", "#6BAED6", "#2171B5", "#6BAED6", "#2171B5", "#2171B5", "#C6DBEF", "#084594", "#4292C6", "#6BAED6", "#2171B5", "#9ECAE1", "#C6DBEF", "#4292C6", "#2171B5", "#084594", "#C6DBEF", "#EFF3FF", "#084594", "#4292C6", "#C6DBEF", "#9ECAE1", "#EFF3FF", "#EFF3FF", "#6BAED6", "#C6DBEF", "#C6DBEF", "#4292C6", "#EFF3FF", "#4292C6", "#6BAED6", "#2171B5", "#C6DBEF", "#4292C6", "#9ECAE1", "#EFF3FF", "#084594", "#C6DBEF", "#9ECAE1", "#EFF3FF", "#9ECAE1", "#4292C6", "#084594", "#084594", "#6BAED6", "#6BAED6", "#2171B5", "#6BAED6", "#084594", "#4292C6", "#2171B5", "#2171B5", "#EFF3FF", "#6BAED6", "#084594", "#9ECAE1", "#C6DBEF"],
@@ -6617,7 +6606,6 @@ map %&gt;%
             "fill": true,
             "fillColor": ["#9ECAE1", "#4292C6", "#9ECAE1", "#4292C6", "#084594", "#9ECAE1", "#EFF3FF", "#EFF3FF", "#084594", "#2171B5", "#4292C6", "#EFF3FF", "#2171B5", "#C6DBEF", "#9ECAE1", "#2171B5", "#4292C6", "#C6DBEF", "#9ECAE1", "#4292C6", "#EFF3FF", "#6BAED6", "#084594", "#9ECAE1", "#EFF3FF", "#9ECAE1", "#EFF3FF", "#084594", "#2171B5", "#2171B5", "#084594", "#6BAED6", "#6BAED6", "#9ECAE1", "#9ECAE1", "#2171B5", "#6BAED6", "#4292C6", "#EFF3FF", "#9ECAE1", "#2171B5", "#084594", "#EFF3FF", "#2171B5", "#4292C6", "#2171B5", "#4292C6", "#084594", "#EFF3FF", "#084594", "#9ECAE1", "#6BAED6", "#2171B5", "#EFF3FF", "#EFF3FF", "#084594", "#9ECAE1", "#084594", "#9ECAE1", "#6BAED6", "#C6DBEF", "#EFF3FF", "#EFF3FF", "#C6DBEF", "#2171B5", "#EFF3FF", "#6BAED6", "#EFF3FF", "#6BAED6", "#4292C6", "#C6DBEF", "#2171B5", "#084594", "#084594", "#4292C6", "#084594", "#4292C6", "#C6DBEF", "#2171B5", "#084594", "#9ECAE1", "#6BAED6", "#084594", "#4292C6", "#6BAED6", "#C6DBEF", "#9ECAE1", "#084594", "#EFF3FF", "#4292C6", "#C6DBEF", "#6BAED6", "#EFF3FF", "#4292C6", "#4292C6", "#EFF3FF", "#6BAED6", "#6BAED6", "#6BAED6", "#4292C6", "#C6DBEF", "#9ECAE1", "#084594", "#9ECAE1", "#C6DBEF", "#6BAED6", "#C6DBEF", "#C6DBEF", "#9ECAE1", "#C6DBEF", "#C6DBEF", "#2171B5", "#C6DBEF", "#EFF3FF", "#C6DBEF", "#2171B5", "#9ECAE1", "#084594", "#2171B5", "#6BAED6", "#4292C6", "#6BAED6", "#2171B5", "#6BAED6", "#2171B5", "#2171B5", "#C6DBEF", "#084594", "#4292C6", "#6BAED6", "#2171B5", "#9ECAE1", "#C6DBEF", "#4292C6", "#2171B5", "#084594", "#C6DBEF", "#EFF3FF", "#084594", "#4292C6", "#C6DBEF", "#9ECAE1", "#EFF3FF", "#EFF3FF", "#6BAED6", "#C6DBEF", "#C6DBEF", "#4292C6", "#EFF3FF", "#4292C6", "#6BAED6", "#2171B5", "#C6DBEF", "#4292C6", "#9ECAE1", "#EFF3FF", "#084594", "#C6DBEF", "#9ECAE1", "#EFF3FF", "#9ECAE1", "#4292C6", "#084594", "#084594", "#6BAED6", "#6BAED6", "#2171B5", "#6BAED6", "#084594", "#4292C6", "#2171B5", "#2171B5", "#EFF3FF", "#6BAED6", "#084594", "#9ECAE1", "#C6DBEF"],
             "fillOpacity": 1,
-            "dashArray": null,
             "smoothFactor": 0.2,
             "noClip": false
           },
@@ -8746,10 +8734,7 @@ leaflet(countries) %&gt;%
           null,
           null,
           {
-            "lineCap": null,
-            "lineJoin": null,
-            "clickable": true,
-            "pointerEvents": null,
+            "interactive": true,
             "className": "",
             "stroke": false,
             "color": ["#00E5FF", "#00E5FF", "#00FF4D", "#00E5FF", "#4C00FF", "#00E5FF", "#FFFF00", "#004CFF", "#FFFF00", "#00E5FF", "#FFFF00", "#00FF4D", "#FFFF00", "#00E5FF", "#00FF4D", "#FFFF00", "#00FF4D", "#004CFF", "#FFFF00", "#FFFF00", "#FFFF00", "#00FF4D", "#00E5FF", "#00FF4D", "#004CFF", "#004CFF", "#4C00FF", "#00E5FF", "#00E5FF", "#00E5FF", "#004CFF", "#FFFF00", "#4C00FF", "#FFFF00", "#FFFF00", "#004CFF", "#4C00FF", "#FFFF00", "#00FF4D", "#004CFF", "#00FF4D", "#00FF4D", "#00E5FF", "#004CFF", "#4C00FF", "#004CFF", "#4C00FF", "#00E5FF", "#004CFF", "#00FF4D", "#00E5FF", "#00E5FF", "#00E5FF", "#4C00FF", "#00E5FF", "#004CFF", "#FFFF00", "#004CFF", "#FFFF00", "#FFFF00", "#FFFF00", "#4C00FF", "#00E5FF", "#00FF4D", "#4C00FF", "#00FF4D", "#00E5FF", "#4C00FF", "#FFFF00", "#00E5FF", "#FFFF00", "#00E5FF", "#FFFF00", "#004CFF", "#004CFF", "#00E5FF", "#00E5FF", "#4C00FF", "#FFFF00", "#004CFF", "#00FF4D", "#4C00FF", "#00E5FF", "#00E5FF", "#4C00FF", "#004CFF", "#004CFF", "#00FF4D", "#00FF4D", "#004CFF", "#4C00FF", "#004CFF", "#FFFF00", "#00E5FF", "#4C00FF", "#004CFF", "#00FF4D", "#004CFF", "#004CFF", "#00E5FF", "#FFFF00", "#004CFF", "#FFFF00", "#00E5FF", "#4C00FF", "#FFFF00", "#00E5FF", "#FFFF00", "#004CFF", "#004CFF", "#00FF4D", "#4C00FF", "#004CFF", "#004CFF", "#FFFF00", "#004CFF", "#004CFF", "#4C00FF", "#00E5FF", "#4C00FF", "#004CFF", "#004CFF", "#004CFF", "#00E5FF", "#00E5FF", "#4C00FF", "#FFFF00", "#00FF4D", "#FFFF00", "#FFFF00", "#00FF4D", "#00FF4D", "#00E5FF", "#004CFF", "#004CFF", "#00E5FF", "#00E5FF", "#00E5FF", "#00FF4D", "#FFFF00", "#004CFF", "#004CFF", "#00FF4D", "#4C00FF", "#004CFF", "#004CFF", "#00E5FF", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#004CFF", "#4C00FF", "#00E5FF", "#00E5FF", "#FFFF00", "#00E5FF", "#FFFF00", "#00E5FF", "#00E5FF", "#00E5FF", "#00E5FF", "#4C00FF", "#00FF4D", "#4C00FF", "#00E5FF", "#004CFF", "#00FF4D", "#FFFF00", "#4C00FF", "#004CFF", "#00FF4D", "#4C00FF", "#00E5FF", "#00E5FF", "#FFFF00", "#004CFF"],
@@ -8758,7 +8743,6 @@ leaflet(countries) %&gt;%
             "fill": true,
             "fillColor": ["#00E5FF", "#00E5FF", "#00FF4D", "#00E5FF", "#4C00FF", "#00E5FF", "#FFFF00", "#004CFF", "#FFFF00", "#00E5FF", "#FFFF00", "#00FF4D", "#FFFF00", "#00E5FF", "#00FF4D", "#FFFF00", "#00FF4D", "#004CFF", "#FFFF00", "#FFFF00", "#FFFF00", "#00FF4D", "#00E5FF", "#00FF4D", "#004CFF", "#004CFF", "#4C00FF", "#00E5FF", "#00E5FF", "#00E5FF", "#004CFF", "#FFFF00", "#4C00FF", "#FFFF00", "#FFFF00", "#004CFF", "#4C00FF", "#FFFF00", "#00FF4D", "#004CFF", "#00FF4D", "#00FF4D", "#00E5FF", "#004CFF", "#4C00FF", "#004CFF", "#4C00FF", "#00E5FF", "#004CFF", "#00FF4D", "#00E5FF", "#00E5FF", "#00E5FF", "#4C00FF", "#00E5FF", "#004CFF", "#FFFF00", "#004CFF", "#FFFF00", "#FFFF00", "#FFFF00", "#4C00FF", "#00E5FF", "#00FF4D", "#4C00FF", "#00FF4D", "#00E5FF", "#4C00FF", "#FFFF00", "#00E5FF", "#FFFF00", "#00E5FF", "#FFFF00", "#004CFF", "#004CFF", "#00E5FF", "#00E5FF", "#4C00FF", "#FFFF00", "#004CFF", "#00FF4D", "#4C00FF", "#00E5FF", "#00E5FF", "#4C00FF", "#004CFF", "#004CFF", "#00FF4D", "#00FF4D", "#004CFF", "#4C00FF", "#004CFF", "#FFFF00", "#00E5FF", "#4C00FF", "#004CFF", "#00FF4D", "#004CFF", "#004CFF", "#00E5FF", "#FFFF00", "#004CFF", "#FFFF00", "#00E5FF", "#4C00FF", "#FFFF00", "#00E5FF", "#FFFF00", "#004CFF", "#004CFF", "#00FF4D", "#4C00FF", "#004CFF", "#004CFF", "#FFFF00", "#004CFF", "#004CFF", "#4C00FF", "#00E5FF", "#4C00FF", "#004CFF", "#004CFF", "#004CFF", "#00E5FF", "#00E5FF", "#4C00FF", "#FFFF00", "#00FF4D", "#FFFF00", "#FFFF00", "#00FF4D", "#00FF4D", "#00E5FF", "#004CFF", "#004CFF", "#00E5FF", "#00E5FF", "#00E5FF", "#00FF4D", "#FFFF00", "#004CFF", "#004CFF", "#00FF4D", "#4C00FF", "#004CFF", "#004CFF", "#00E5FF", "#FFFF00", "#FFFF00", "#FFFF00", "#FFFF00", "#004CFF", "#4C00FF", "#00E5FF", "#00E5FF", "#FFFF00", "#00E5FF", "#FFFF00", "#00E5FF", "#00E5FF", "#00E5FF", "#00E5FF", "#4C00FF", "#00FF4D", "#4C00FF", "#00E5FF", "#004CFF", "#00FF4D", "#FFFF00", "#4C00FF", "#004CFF", "#00FF4D", "#4C00FF", "#00E5FF", "#00E5FF", "#FFFF00", "#004CFF"],
             "fillOpacity": 1,
-            "dashArray": null,
             "smoothFactor": 0.2,
             "noClip": false
           },
@@ -8815,7 +8799,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
