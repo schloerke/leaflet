@@ -49,7 +49,7 @@ Very detailed (i.e. large) shape data can present a problem for Leafet, since it
 ```{r}
 library(albersusa)
 
-fullsize <- usa_composite()
+fullsize <- usa_sf()
 object.size(fullsize)
 
 simplified <- rmapshaper::ms_simplify(fullsize)

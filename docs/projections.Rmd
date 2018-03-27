@@ -67,13 +67,13 @@ leaflet() %>%
 
 While tiles must be in the same projection as used in the `leafletCRS` function, you must always use WGS 84 longitude/latitude data for markers, circles, polygons, and lines. Leaflet will automatically project the coordinates when displaying.
 
-This example uses [EPSG:2163](http://epsg.io/2163) (US National Atlas Equal Area projection). The dataset we use (`usa_composite` from the `albersusa` package, though we're not actually using Albers projection here) has Alaska and Hawaii moved closer to mainland US as well as rotated and resized accordingly.
+This example uses [EPSG:2163](http://epsg.io/2163) (US National Atlas Equal Area projection). The dataset we use (`usa_sf` from the `albersusa` package, though we're not actually using Albers projection here) has Alaska and Hawaii moved closer to mainland US as well as rotated and resized accordingly.
 
 ```{r message=FALSE,warning=FALSE}
 library(sp)
 library(albersusa)
 
-spdf <- rmapshaper::ms_simplify(usa_composite())
+spdf <- rmapshaper::ms_simplify(usa_sf(), keep = 0.1)
 pal <- colorNumeric("Blues", domain = spdf$pop_2014)
 epsg2163 <- leafletCRS(
   crsClass = "L.Proj.CRS",
