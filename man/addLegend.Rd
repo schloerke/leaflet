@@ -9,7 +9,8 @@ addLegend(map, position = c("topright", "bottomright", "bottomleft",
   "topleft"), pal, values, na.label = "NA", bins = 7, colors,
   opacity = 0.5, labels = NULL, labFormat = labelFormat(), title = NULL,
   className = "info legend", layerId = NULL, group = NULL,
-  data = getMapData(map))
+  data = getMapData(map), orientation = c("vertical", "horizontal"),
+  width = NULL, height = NULL)
 
 labelFormat(prefix = "", suffix = "", between = " &ndash; ", digits = 3,
   big.mark = ",", transform = identity)
@@ -62,6 +63,13 @@ You will need to set the \code{group} when you add a layer
 \item{data}{the data object from which the argument values are derived; by
 default, it is the \code{data} object provided to \code{leaflet()}
 initially, but can be overridden}
+
+\item{orientation}{a string specifying the orientation of the legend. Default:
+"vertical".}
+
+\item{width}{Specifies the legends width (the color-bar; not the overall box) in 'px'. If NULL it will be calculated according to the orientation and tick number. Default = NULL.}
+
+\item{height}{Specifies the legends height (the color-bar; not the overall box) in 'px'. If NULL it will be calculated according to the orientation and tick number. Default = NULL.}
 
 \item{prefix}{a prefix of legend labels}
 
