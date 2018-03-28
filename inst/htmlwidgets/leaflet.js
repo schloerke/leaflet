@@ -1912,22 +1912,26 @@ methods.addLegend = function (options) {
             // offset for both objects and set the 'text-anchor'
             // attribute to the svg's text object to 'middle'
             var offsetXTick = tickOffset;
-            var offsetXLabel = tickOffset;
+            // let offsetXLabel = tickOffset;
             _jquery2.default.each(labels, function (i, label) {
               var x = i * singleBinLength;
 
               var thisLabel = document.createElementNS(ns, "text");
-              thisLabel.setAttribute("text-anchor", "middle");
-              (0, _jquery2.default)(thisLabel).text(labels[i]).attr("x", x).attr("dx", offsetXLabel).attr("dy", "2.5ex");
+              // thisLabel.setAttribute("text-anchor", "middle");
+              (0, _jquery2.default)(thisLabel).text(labels[i]).attr("text-anchor", "middle").attr("x", x + offsetXTick).attr("dx", "0").attr("dy", "2.5ex");
               g.appendChild(thisLabel);
+
               maxLblWidth = Math.max(maxLblWidth, thisLabel.getComputedTextLength());
+
               var thisTick = document.createElementNS(ns, "line");
               (0, _jquery2.default)(thisTick).attr("x1", x + offsetXTick).attr("x2", x + offsetXTick).attr("y1", 0).attr("y2", tickWidth).attr("stroke-width", 1);
               g.appendChild(thisTick);
             });
 
-            // Now that we know the max label width, we can right-justify
-            (0, _jquery2.default)(svg).find("text").attr("dx", labelPadding + maxLblWidth).attr("text-anchor", "end");
+            // // Now that we know the max label width, we can right-justify
+            // $(svg).find("text")
+            //       .attr("dx", labelPadding + maxLblWidth)
+            //       .attr("text-anchor", "end");
           })();
         }
 
@@ -1940,7 +1944,8 @@ methods.addLegend = function (options) {
         } else {
           (0, _jquery2.default)(svg).css({
             width: totalWidth + 2 + "px",
-            height: vMargin * 3 + "px" // font-height + margin
+            height: vMargin * 3 + "px" //, // font-height + margin
+            // "overflow-x": "visible" // just in case the labels are bigger than expected
           });
         }
         if (options.na_color) {
@@ -1953,7 +1958,7 @@ methods.addLegend = function (options) {
         labels.push(options.na_label);
       }
       for (var i = 0; i < colors.length; i++) {
-        legendHTML += "<i style=\"background:" + colors[i] + ";opacity:" + options.opacity + "\"></i> " + labels[i];
+        legendHTML += "<i style=\"background:" + colors[i] + ";opacity:" + options.opacity + "\"></i>" + labels[i];
       }
       div.innerHTML = legendHTML;
     }

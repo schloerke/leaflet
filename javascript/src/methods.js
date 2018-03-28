@@ -787,7 +787,7 @@ methods.addLegend = function(options) {
       // Create tick marks and labels
       if ( options.orientation === "vertical" ){
         $.each(labels, function(i, label) {
-          let y = tickOffset + i*singleBinLength + 0.5;
+          let y = tickOffset + (i * singleBinLength) + 0.5;
 
           let thisLabel = document.createElementNS(ns, "text");
           $(thisLabel)
@@ -818,19 +818,22 @@ methods.addLegend = function(options) {
         // offset for both objects and set the 'text-anchor'
         // attribute to the svg's text object to 'middle'
         let offsetXTick = tickOffset;
-        let offsetXLabel = tickOffset;
+        // let offsetXLabel = tickOffset;
         $.each(labels, function(i, label) {
-          var x = i*singleBinLength;
+          let x = i * singleBinLength;
 
           let thisLabel = document.createElementNS(ns, "text");
-          thisLabel.setAttribute( "text-anchor", "middle" );
+          // thisLabel.setAttribute("text-anchor", "middle");
           $(thisLabel)
             .text(labels[i])
-            .attr("x", x)
-            .attr("dx", offsetXLabel)
+            .attr("text-anchor", "middle")
+            .attr("x", x + offsetXTick)
+            .attr("dx", "0")
             .attr("dy", "2.5ex");
           g.appendChild(thisLabel);
+
           maxLblWidth = Math.max(maxLblWidth, thisLabel.getComputedTextLength());
+
           let thisTick = document.createElementNS(ns, "line");
           $(thisTick)
             .attr("x1", x + offsetXTick)
@@ -841,10 +844,10 @@ methods.addLegend = function(options) {
           g.appendChild(thisTick);
         });
 
-        // Now that we know the max label width, we can right-justify
-        $(svg).find("text")
-              .attr("dx", labelPadding + maxLblWidth)
-              .attr("text-anchor", "end");
+        // // Now that we know the max label width, we can right-justify
+        // $(svg).find("text")
+        //       .attr("dx", labelPadding + maxLblWidth)
+        //       .attr("text-anchor", "end");
       }
 
       // Final size for <svg>
@@ -856,7 +859,8 @@ methods.addLegend = function(options) {
       } else {
         $(svg).css({
           width: totalWidth + 2 + "px",
-          height: vMargin*3 + "px" // font-height + margin
+          height: vMargin*3 + "px"//, // font-height + margin
+          // "overflow-x": "visible" // just in case the labels are bigger than expected
         });
       }
       if (options.na_color) {
@@ -873,7 +877,7 @@ methods.addLegend = function(options) {
       }
       for (let i = 0; i < colors.length; i++) {
         legendHTML += "<i style=\"background:" + colors[i] + ";opacity:" +
-                      options.opacity + "\"></i> " + labels[i];
+                      options.opacity + "\"></i>" + labels[i];
       }
       div.innerHTML = legendHTML;
     }

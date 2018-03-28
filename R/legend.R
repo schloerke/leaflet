@@ -71,37 +71,44 @@ addLegend <- function(
 ) {
   position <- match.arg(position)
   orientation <- match.arg(orientation)
-  type <- "unknown"; na.color <- NULL
+  type <- "unknown"
+  na_color <- NULL
   extra <- NULL  # only used for numeric palettes to store extra info
 
   if (!missing(pal)) {
-    if (!missing(colors))
+    if (!missing(colors)) {
       stop("You must provide either 'pal' or 'colors' (not both)")
+    }
 
     # a better default title when values is formula
-    if (missing(title) && inherits(values, "formula")) title <- deparse(values[[2]])
+    if (missing(title) && inherits(values, "formula")) {
+      title <- deparse(values[[2]])
+    }
     values <- evalFormula(values, data)
 
-    generate.legend <- function( bins = bins ){
+    generate_legend <- function(bins = bins) {
       type <- attr(pal, "colorType", exact = TRUE)
       args <- attr(pal, "colorArgs", exact = TRUE)
-      na.color <- args$na.color
-      # If na.color is transparent, don't show it on the legend
-      if (!is.null(na.color) && col2rgb(na.color, alpha = TRUE)[[4]] == 0) {
-        na.color <- NULL
+      na_color <- args$na.color
+      # If args$na.color is transparent, don't show it on the legend
+      if (!is.null(na_color) && col2rgb(na_color, alpha = TRUE)[[4]] == 0) {
+        na_color <- NULL
       }
 
-      if (type != "numeric" && !missing(bins))
+      if (type != "numeric" && !missing(bins)) {
         warning("'bins' is ignored because the palette type is not numeric")
+      }
 
-      if (type == 'numeric') {
+      if (type == "numeric") {
 
         # choose pretty cut points to draw tick-marks on the color gradient if
         # 'bins' is the number of bins, otherwise 'bins' is just the breaks
         cuts <- if (length(bins) == 1) pretty(values, n = bins) else bins
-        if (length(bins) > 2)
-          if (!all(abs(diff(bins, differences = 2)) <= sqrt(.Machine$double.eps)))
+        if (length(bins) > 2) {
+          if (!all(abs(diff(bins, differences = 2)) <= sqrt(.Machine$double.eps))) {
             stop("The vector of breaks 'bins' must be equally spaced")
+          }
+        }
         n <- length(cuts)
         r <- range(values, na.rm = TRUE)
         # pretty cut points may be out of the range of `values`
@@ -127,36 +134,41 @@ addLegend <- function(
 
         ## Calculating the width and height of the color-bar
         ## taken from the original JS wrapper
-        default.thickness <- 18 # [px]; default width/height
+        default_thickness <- 18 # [px]; default width/height
         ## If width/height is given (depending on the orientation)
         ## this variable will be calculated from them
-        single.bin.length <- 20 # [px]; distance between the ticks
-        single.bin.percentage <- ( extra$p_n - extra$p_1 )/( n - 1 )
-        if ( orientation == "vertical" ){
-          if ( is.null( height ) ){
-            height <- single.bin.length/ single.bin.percentage + 1
-          } else
-            single.bin.length <- height* single.bin.percentage - 1
-          if ( is.null( width ) )
-            width <- default.thickness
+        single_bin_length <- 20 # [px]; distance between the ticks
+        single_bin_percentage <- (extra$p_n - extra$p_1) / (n - 1)
+        if (orientation == "vertical") {
+          if (is.null(height)) {
+            height <- single_bin_length / single_bin_percentage + 1
+          } else {
+            single_bin_length <- height * single_bin_percentage - 1
+          }
+          if (is.null(width)) {
+            width <- default_thickness
+          }
         } else {
-          if ( is.null( height ) )
-            height <- default.thickness
-          if ( is.null( width ) ){
-            width <- single.bin.length/ single.bin.percentage + 1
-          } else
-            single.bin.length <- width* single.bin.percentage - 1
+          if (is.null(height)) {
+            height <- default_thickness
+          }
+          if (is.null(width)) {
+            width <- single_bin_length / single_bin_percentage + 1
+          } else {
+            single_bin_length <- width * single_bin_percentage - 1
+          }
         }
         ## calculating the tickOffset from the original JS wrapper
-        ## via the extra$p_1, the total length and the single.bin.percentage
-        if ( orientation == "vertical" ){
-          tick.offset.beginning <- ( height - 1/ single.bin.percentage )* extra$p_1
-          tick.offset.end <- ( height - 1/ single.bin.percentage )* ( 1 - extra$p_n )
+        ## via the extra$p_1, the total length and the single_bin_percentage
+        if (orientation == "vertical") {
+          tick_offset_beginning <- (height - 1 / single_bin_percentage) * extra$p_1
+          tick_offset_end <- (height - 1 / single_bin_percentage) * (1 - extra$p_n)
         } else {
-          tick.offset.beginning <- ( width - 1/ single.bin.percentage )* extra$p_1
-          tick.offset.end <- ( width - 1/ single.bin.percentage )* ( 1 - extra$p_n )
+          tick_offset_beginning <- (width - 1 / single_bin_percentage) * extra$p_1
+          tick_offset_end <- (width - 1 / single_bin_percentage) * (1 - extra$p_n)
         }
-      } else if (type == 'bin') {
+
+      } else if (type == "bin") {
 
         cuts <- args$bins
         n <- length(cuts)
@@ -165,10 +177,9 @@ addLegend <- function(
         colors <- pal(mids)
         labels <- labFormat(type = "bin", cuts)
 
-        tick.offset.beginning <- tick.offset.end <- single.bin.length <- NULL
+        tick_offset_beginning <- tick_offset_end <- single_bin_length <- NULL
 
-
-      } else if (type == 'quantile') {
+      } else if (type == "quantile") {
 
         p <- args$probs
         n <- length(p)
@@ -178,97 +189,133 @@ addLegend <- function(
         colors <- pal(mids)
         labels <- labFormat(type = "quantile", cuts, p)
 
-        tick.offset.beginning <- tick.offset.end <- single.bin.length <- NULL
+        tick_offset_beginning <- tick_offset_end <- single_bin_length <- NULL
 
-      } else if (type == 'factor') {
+      } else if (type == "factor") {
 
         v <- sort(unique(na.omit(values)))
         colors <- pal(v)
         labels <- labFormat(type = "factor", v)
 
-        tick.offset.beginning <- tick.offset.end <- single.bin.length <- NULL
+        tick_offset_beginning <- tick_offset_end <- single_bin_length <- NULL
 
-      } else stop('Palette function not supported')
+      } else stop("Palette function not supported")
 
-      if (!any(is.na(values))) na.color <- NULL
+      if (!any(is.na(values))) {
+        na_color <- NULL
+      }
 
       ## For convenience I will also provide the former singleBinHeight variable.
       ## It would just cause errors if defined at both this script and the wrapper.
-      legend = list(
-        colors = I(unname(colors)), labels = I(unname(labels)),
-        na_color = na.color, na_label = na.label, opacity = opacity,
-        position = position, type = type, title = title, extra = extra,
-        layerId = layerId, className = className, group = group,
-        orientation = orientation, totalWidth = width, totalHeight = height,
-        tickOffset = tick.offset.beginning, tickOffsetEnd = tick.offset.end,
-        singleBinLength = single.bin.length
-      )
-      return( legend )
-    }
-
-    legend <- generate.legend( bins )
-  } else {
-    if ( !missing( labels ) && !missing( colors ) ){
-      if (length(colors) != length( labels ) )
-        stop("'colors' and 'labels' must be of the same length")
-      if ( orientation == "horizontal" ){
-        warning( "To use the horizontal orientation of the legend please supply a palette." )
-        orientation <- "vertical"
-      }
-
-      ## Heuristic width and height for supplied colors and corresponding labels
-      singleBinLength <- 18 # size of colored square
-      if ( is.null( title ) ){
-          title.height <- title.width <- 0
-      } else {
-          title.height <- 18 # 16px character + 2px padding
-          title.width <- nchar( title )* 8
-      }
-      ## width of colored bar + margin + label
-      column.width <- singleBinLength + 8 + max( nchar( labels ) )* 8
-      ## height colored bins + title + padding
-      if ( is.null( height ) )
-        height <- singleBinLength* length( colors ) + title.width + 2* 6
-      ## the widest element controls the width + padding
-      if ( is.null( width ) )
-        widht <- max( column.width, title.width ) + 2*8
-
       legend <- list(
-        colors = I( unname( colors ) ), labels = I( unname( labels ) ),
-        na_color = na.color, na_label = na.label, opacity = opacity,
+        colors = I(unname(colors)), labels = I(unname(labels)),
+        na_color = na_color, na_label = na.label, opacity = opacity,
         position = position, type = type, title = title, extra = extra,
         layerId = layerId, className = className, group = group,
         orientation = orientation, totalWidth = width, totalHeight = height,
-        tickOffset = 0, tickOffsetEnd = 0,
-        singleBinLength = singleBinLength
+        tickOffset = tick_offset_beginning, tickOffsetEnd = tick_offset_end,
+        singleBinLength = single_bin_length
       )
-    } else
-    stop( "'colors' and 'labels' must be supplied when 'pal' if omitted!" )
-  }
-
-  if ( legend$orientation == "horizontal" ){
-    ## In case of the vertical orientation the labels can be whatever
-    ## Now we have to check if the labels actually fit in the color-bar
-    ## I will assign a default width of a character. (Via the inspector)
-    ## With the two spaces in the collapse argument I took care of the
-    ## spaces between the labels (which should be present)
-    character.width <- 4 # [px]
-    calculate.width <- function( legend ){
-      label.width <- nchar( paste( legend$labels, sep = ' ', collapse = '  ' ) )*
-        character.width
-      total.width <- label.width + legend$tickOffset + legend$tickOffsetEnd
-      return( total.width )
+      return(legend)
     }
-    ## reduce the number of bins until the labels fit below the color-bar
-    while( calculate.width( legend ) > legend$totalWidth ){
-      ## It does not fit. So lets take less bins.
-      bins <- bins - 1
-      legend <- generate.legend( bins )
-      if ( bins == 1 ){
-        warning( "No labels fitting below your leaflet legend could be found!" )
-        break
+
+    legend <- generate_legend(bins)
+
+    if (orientation == "horizontal") {
+      ## In case of the vertical orientation the labels can be whatever
+      ## Now we have to check if the labels actually fit in the color-bar
+      ## I will assign a default width of a character. (Via the inspector)
+      ## With the two spaces in the collapse argument I took care of the
+      ## spaces between the labels (which should be present)
+      # character_width <- 4 # [px]
+      character_width <- 7.784 # - Barret - I found it to be 7.784 px wide in the svg
+
+      # calculate label width with two spaces inbetween labels
+      # (using a single space buffer on each side where applicable)
+      calculate_width <- function(legend) {
+        labels_with_space <- legend$labels
+        n_labels <- length(labels_with_space)
+        if (length(labels_with_space) > 1) {
+          # add space to right
+          labels_with_space[1:(n_labels - 1)] <- paste0(
+            labels_with_space[1:(n_labels - 1)], " "
+          )
+          # add space to left
+          labels_with_space[2:n_labels] <- paste0(
+            " ", labels_with_space[2:n_labels]
+          )
+        }
+        label_char_groups <- strsplit(labels_with_space, ",|\\.")
+        max_label_width <- max(
+          vapply(label_char_groups, FUN.VALUE = numeric(1), function(char_groups) {
+            # periods and commas were half the width
+            periods_and_commas_len <- (length(char_groups) - 1) * character_width / 2
+            char_len <- sum(vapply(char_groups, nchar, numeric(1))) * character_width
+            char_len + periods_and_commas_len
+          })
+        )
+        # pretend all labels are the max size
+        labels_width <- max_label_width * n_labels
+        if (legend$type == "numeric") {
+          total_width <- labels_width + legend$tickOffset + legend$tickOffsetEnd
+        } else {
+          total_width <- labels_width
+        }
+        return(total_width)
+      }
+
+      ## reduce the number of bins until the labels fit below the color-bar
+      while (calculate_width(legend) > legend$totalWidth) {
+        ## It does not fit. So lets take less bins.
+        bins <- bins - 1
+        legend <- generate_legend(bins) # TODO needs to respect bin size
+        if (bins == 1) {
+          warning("No labels fitting below your leaflet legend could be found. Please set the 'width' parameter to add more space")
+          break
+        }
       }
     }
+
+  } else {
+    if (missing(labels) || missing(colors)) {
+      stop("'colors' and 'labels' must be supplied when 'pal' if omitted!")
+    }
+    if (length(colors) != length(labels)) {
+      stop("'colors' and 'labels' must be of the same length")
+    }
+    if (orientation == "horizontal") {
+      warning("To use the horizontal orientation of the legend, please supply a palette.")
+      orientation <- "vertical"
+    }
+
+    ## Heuristic width and height for supplied colors and corresponding labels
+    singleBinLength <- 18 # size of colored square
+    if (is.null(title)) {
+      title_height <- title_width <- 0
+    } else {
+      title_height <- 18 # 16px character + 2px padding
+      title_width <- nchar(title) * 8
+    }
+    ## width of colored bar + margin + label
+    column_width <- singleBinLength + 8 + max(nchar(labels)) * 8
+    ## height colored bins + title + padding
+    if (is.null(height)) {
+      height <- singleBinLength * length(colors) + title_width + 2 * 6
+    }
+    ## the widest element controls the width + padding
+    if (is.null(width)) {
+      width <- max(column_width, title_width) + 2 * 8
+    }
+
+    legend <- list(
+      colors = I(unname(colors)), labels = I(unname(labels)),
+      na_color = na_color, na_label = na.label, opacity = opacity,
+      position = position, type = type, title = title, extra = extra,
+      layerId = layerId, className = className, group = group,
+      orientation = orientation, totalWidth = width, totalHeight = height,
+      tickOffset = 0, tickOffsetEnd = 0,
+      singleBinLength = singleBinLength
+    )
   }
 
   invokeMethod(map, getMapData(map), "addLegend", legend)
