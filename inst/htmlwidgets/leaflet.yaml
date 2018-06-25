@@ -8,6 +8,7 @@ dependencies:
     src: "htmlwidgets/lib/leaflet"
     script: leaflet.js
     stylesheet: leaflet.css
+    attachment: leaflet.js.map
   - name: leafletfix
     version: 1.0.0
     src: "htmlwidgets/lib/leafletfix"
