@@ -12,6 +12,7 @@ leafletAwesomeMarkersDependencies <- function() {
 
 leafletAmBootstrapDependencies <- function(map) {
   list(
+    htmldeps::html_dependency_bootstrap()
     htmltools::htmlDependency(
       "bootstrap",
       "3.3.7",
@@ -31,12 +32,7 @@ addBootstrap <- function(map) {
 
 leafletAmFontAwesomeDependencies <- function(map) {
   list(
-    htmltools::htmlDependency(
-      "fontawesome",
-      "4.7.0",
-      system.file("htmlwidgets/plugins/Leaflet.awesome-markers", package = "leaflet"),
-      stylesheet = c("font-awesome.min.css")
-    )
+    htmldeps::html_dependency_font_awesome()
   )
 }
 
@@ -49,12 +45,7 @@ addFontAwesome <- function(map) {
 
 leafletAmIonIconDependencies <- function(map) {
   list(
-    htmltools::htmlDependency(
-      "ionicons",
-      "2.0.1",
-      system.file("htmlwidgets/plugins/Leaflet.awesome-markers", package = "leaflet"),
-      stylesheet = c("ionicons.min.css")
-    )
+    htmldeps::html_dependency_ionicons()
   )
 }
 

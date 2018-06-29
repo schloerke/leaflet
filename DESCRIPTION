@@ -39,6 +39,7 @@ Depends: R (>= 3.1.0)
 Imports:
     base64enc,
     crosstalk,
+    htmldeps,
     htmlwidgets,
     htmltools,
     magrittr,
@@ -63,5 +64,7 @@ Suggests:
     RJSONIO,
     purrr,
     testthat
+Remotes:
+    rstudio/htmldeps
 RoxygenNote: 6.0.1
 LazyData: true
